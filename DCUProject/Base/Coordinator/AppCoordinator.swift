@@ -26,6 +26,4 @@ class AppCoordinator: Coordinator {
         add(childCoordinator)
         childCoordinator.start()
     }
-    
-    
 }

@@ -1,0 +1,6 @@
+framework module Pods_DCUProject_DCUProjectUITests {
+  umbrella header "Pods-DCUProject-DCUProjectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
