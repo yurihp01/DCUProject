@@ -6,7 +6,9 @@ target 'DCUProject' do
   use_frameworks!
 
   # Pods for DCUProject
-
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  
   target 'DCUProjectTests' do
     inherit! :search_paths
     # Pods for testing
