@@ -13,6 +13,8 @@
 		15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15667CB627BDB6DF0096D85E /* Storyboarded.swift */; };
 		15667CB927BDB9280096D85E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15667CB827BDB9280096D85E /* LoginViewModel.swift */; };
 		15667CBC27BDBC2F0096D85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15667CBB27BDBC2F0096D85E /* GoogleService-Info.plist */; };
+		1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591975E27BDC3C600B3CC6B /* FirebaseService.swift */; };
+		1591976327BDC93F00B3CC6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591976227BDC93F00B3CC6B /* User.swift */; };
 		15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0DA6627B880C1001FF469 /* AppDelegate.swift */; };
 		15A0DA6B27B880C1001FF469 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0DA6A27B880C1001FF469 /* LoginViewController.swift */; };
 		15A0DA6E27B880C1001FF469 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A0DA6C27B880C1001FF469 /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		15667CB627BDB6DF0096D85E /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		15667CB827BDB9280096D85E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		15667CBB27BDBC2F0096D85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1591975E27BDC3C600B3CC6B /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		1591976227BDC93F00B3CC6B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15A0DA6327B880C1001FF469 /* DCUProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCUProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A0DA6627B880C1001FF469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A0DA6A27B880C1001FF469 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -180,8 +184,26 @@
 		15667CBA27BDBB1A0096D85E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1591975E27BDC3C600B3CC6B /* FirebaseService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		1591976027BDC3F500B3CC6B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1591976127BDC93500B3CC6B /* Model */,
+				15667CBA27BDBB1A0096D85E /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1591976127BDC93500B3CC6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1591976227BDC93F00B3CC6B /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		15A0DA5A27B880C1001FF469 = {
@@ -209,10 +231,10 @@
 		15A0DA6527B880C1001FF469 /* DCUProject */ = {
 			isa = PBXGroup;
 			children = (
+				1591976027BDC3F500B3CC6B /* Data */,
 				15667CB327BDB4FD0096D85E /* View */,
 				15667CAB27BDB3F30096D85E /* Login */,
 				15667CA427BDB3130096D85E /* Base */,
-				15667CBA27BDBB1A0096D85E /* Network */,
 				15667CB227BDB4CC0096D85E /* Common */,
 				15A0DA6627B880C1001FF469 /* AppDelegate.swift */,
 				15A0DA6F27B880C3001FF469 /* Assets.xcassets */,
@@ -259,7 +281,6 @@
 				0E932C65933CEB2935D85C2B /* Pods-DCUProjectTests.debug.xcconfig */,
 				42F1DD6BCAFE4E3B3683E581 /* Pods-DCUProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -505,8 +526,10 @@
 			files = (
 				15667CA327BDB2A60096D85E /* Coordinator.swift in Sources */,
 				15667CA127BD7C0A0096D85E /* AppCoordinator.swift in Sources */,
+				1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */,
 				15667CB527BDB51E0096D85E /* LoginCoordinator.swift in Sources */,
 				15A0DA6B27B880C1001FF469 /* LoginViewController.swift in Sources */,
+				1591976327BDC93F00B3CC6B /* User.swift in Sources */,
 				15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */,
 				15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */,
 				15667CB927BDB9280096D85E /* LoginViewModel.swift in Sources */,
