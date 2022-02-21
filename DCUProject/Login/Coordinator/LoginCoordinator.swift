@@ -25,10 +25,17 @@ class LoginCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
  
-//    func register() {
-//        let childCoordinator = RegisterCoordinator(navigationController: navigationController)
-//        childCoordinator.parentCoordinator = self
-//        add(childCoordinator)
-//        childCoordinator.start()
-//    }
+    func goToRegisterScreen() {
+        let childCoordinator = RegisterCoordinator(navigationController: navigationController)
+        childCoordinator.parentCoordinator = self
+        add(childCoordinator)
+        childCoordinator.start()
+    }
+    
+    func goToProjectsScreen() {
+        let coordinator = ProjectsCoordinator(with: navigationController)
+        coordinator.parentCoordinator = self
+        add(coordinator)
+        coordinator.start()
+    }
 }

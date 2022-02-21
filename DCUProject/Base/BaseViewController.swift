@@ -33,4 +33,10 @@ class BaseViewController: UIViewController, Storyboarded {
         let alert = UIAlertController.showAlertDialog(title: Constants.titleError, message: message)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func showMessage(message: String?, completion: (() -> ())? = nil) {
+        guard let message = message else { return }
+        let alert = UIAlertController.showAlertDialog(title: "Sucesso", message: message)
+        self.present(alert, animated: true, completion: completion)
+    }
 }

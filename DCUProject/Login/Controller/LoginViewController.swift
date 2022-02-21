@@ -7,11 +7,13 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, Storyboarded {
-
+class LoginViewController: BaseViewController {
     var viewModel: LoginViewModel?
-    var coordinator: LoginCoordinator?
+    weak var coordinator: LoginCoordinator?
     var handle: Handle?
+    
+    @IBOutlet weak var userField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,23 @@ class LoginViewController: UIViewController, Storyboarded {
         super.viewWillDisappear(animated)
         viewModel?.removeHandle(handle: handle)
     }
-
-
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        indicator.startAnimating()
+        Task.init {
+            do {
+                guard let message = try await viewModel?.login(email: userField.text, password: passwordField.text) else { return }
+                indicator.stopAnimating()
+                self.coordinator?.goToProjectsScreen()
+            } catch {
+                showAlert(message: error.localizedDescription)
+                indicator.stopAnimating()
+            }
+        }
+    }
+    
+    @IBAction func RegisterButtonPressed(_ sender: UIButton) {
+        coordinator?.goToRegisterScreen()
+    }
 }
 

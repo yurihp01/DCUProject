@@ -29,6 +29,10 @@
 		15A3126E27C128D700B2177C /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3126D27C128D700B2177C /* RegisterViewModel.swift */; };
 		15A3127027C128E300B2177C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3126F27C128E300B2177C /* RegisterViewController.swift */; };
 		15A3127227C128F300B2177C /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3127127C128F300B2177C /* RegisterCoordinator.swift */; };
+		15A3127827C1E67800B2177C /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3127727C1E67800B2177C /* ProjectsViewModel.swift */; };
+		15A3127A27C1E6AA00B2177C /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3127927C1E6AA00B2177C /* ProjectsViewController.swift */; };
+		15A3127C27C1E6F900B2177C /* ProjectsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3127B27C1E6F900B2177C /* ProjectsCoordinator.swift */; };
+		15A3127E27C30C5A00B2177C /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3127D27C30C5A00B2177C /* Project.swift */; };
 		652F75A61AD5CBA264A7F58F /* Pods_DCUProject_DCUProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9482EB95846E44BE6C0C88E /* Pods_DCUProject_DCUProjectUITests.framework */; };
 		6D82450DA7B66179CD24321C /* Pods_DCUProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC232315D004582931B64374 /* Pods_DCUProjectTests.framework */; };
 		EA5588F5114228ACB11FF24F /* Pods_DCUProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */; };
@@ -79,6 +83,10 @@
 		15A3126D27C128D700B2177C /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		15A3126F27C128E300B2177C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		15A3127127C128F300B2177C /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
+		15A3127727C1E67800B2177C /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
+		15A3127927C1E6AA00B2177C /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
+		15A3127B27C1E6F900B2177C /* ProjectsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsCoordinator.swift; sourceTree = "<group>"; };
+		15A3127D27C30C5A00B2177C /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		42F1DD6BCAFE4E3B3683E581 /* Pods-DCUProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProjectTests.release.xcconfig"; path = "Target Support Files/Pods-DCUProjectTests/Pods-DCUProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		9E7DA23FDDA8BD03CE74147A /* Pods-DCUProject-DCUProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2480D08E864CAF7F58D0EAB /* Pods-DCUProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject/Pods-DCUProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				1591976227BDC93F00B3CC6B /* User.swift */,
+				15A3127D27C30C5A00B2177C /* Project.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +253,7 @@
 		15A0DA6527B880C1001FF469 /* DCUProject */ = {
 			isa = PBXGroup;
 			children = (
+				15A3127327C1E64D00B2177C /* Projects */,
 				15667CAB27BDB3F30096D85E /* Login */,
 				15A3126527C1289600B2177C /* Register */,
 				15A3125E27C125B500B2177C /* Utils */,
@@ -315,6 +325,40 @@
 			isa = PBXGroup;
 			children = (
 				15A3126D27C128D700B2177C /* RegisterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		15A3127327C1E64D00B2177C /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				15A3127627C1E66300B2177C /* ViewModel */,
+				15A3127527C1E65C00B2177C /* Controller */,
+				15A3127427C1E65600B2177C /* Coordinator */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
+		15A3127427C1E65600B2177C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				15A3127B27C1E6F900B2177C /* ProjectsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		15A3127527C1E65C00B2177C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				15A3127927C1E6AA00B2177C /* ProjectsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		15A3127627C1E66300B2177C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15A3127727C1E67800B2177C /* ProjectsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -583,13 +627,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				15667CA327BDB2A60096D85E /* Coordinator.swift in Sources */,
+				15A3127A27C1E6AA00B2177C /* ProjectsViewController.swift in Sources */,
 				15A3126227C1260E00B2177C /* Constants.swift in Sources */,
 				15667CA127BD7C0A0096D85E /* AppCoordinator.swift in Sources */,
 				15A3126027C125D200B2177C /* UIAlertController+Extensions.swift in Sources */,
 				1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */,
+				15A3127E27C30C5A00B2177C /* Project.swift in Sources */,
 				15A3126427C1268200B2177C /* BaseViewController.swift in Sources */,
 				15667CB527BDB51E0096D85E /* LoginCoordinator.swift in Sources */,
+				15A3127C27C1E6F900B2177C /* ProjectsCoordinator.swift in Sources */,
 				15A0DA6B27B880C1001FF469 /* LoginViewController.swift in Sources */,
+				15A3127827C1E67800B2177C /* ProjectsViewModel.swift in Sources */,
 				15A3126E27C128D700B2177C /* RegisterViewModel.swift in Sources */,
 				15A3127027C128E300B2177C /* RegisterViewController.swift in Sources */,
 				1591976327BDC93F00B3CC6B /* User.swift in Sources */,
