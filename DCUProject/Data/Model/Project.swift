@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 struct Project {
-    private let name, description, team, category, key, id: String
-    private let date: Date
+    let name, description, team, category, key, id: String
+    let date: Date
     
     init(name: String, description: String, team: String, category: String, key: String, id: String, date: Date) {
         self.name = name

@@ -12,9 +12,9 @@ typealias Handle = AuthStateDidChangeListenerHandle
 
 protocol FirebaseServiceProtocol: AnyObject {
     var handle: Handle { get }
-    var ref: DatabaseReference { get set }
+    var ref: DatabaseReference { get }
     func removeHandle(handle: Handle)
-    func login(email: String, password: String) async throws -> String
+    func login(email: String, password: String) async -> String
     func register(email: String, password: String) async -> String
     func getProjects() async -> [Project]
 }
@@ -24,7 +24,7 @@ class FirebaseService: FirebaseServiceProtocol {
         return Auth.auth().addStateDidChangeListener { auth, user in }
     }
     
-    final var ref: DatabaseReference {
+    var ref: DatabaseReference {
         Database.database().reference(withPath: "")
     }
     
@@ -32,7 +32,7 @@ class FirebaseService: FirebaseServiceProtocol {
         Auth.auth().removeStateDidChangeListener(handle)
     }
     
-    func login(email: String, password: String) async throws -> String {
+    func login(email: String, password: String) async -> String {
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)
             return "Logado com sucesso!"
@@ -50,10 +50,11 @@ class FirebaseService: FirebaseServiceProtocol {
         }
     }
     
-    func getProjects() async throws -> [Project] {
+    func getProjects() async -> [Project] {
         do {
-            try await Firestore.collection(<#T##self: Firestore##Firestore#>)
+//            try await 
         }
+        return []
     }
 }
 
