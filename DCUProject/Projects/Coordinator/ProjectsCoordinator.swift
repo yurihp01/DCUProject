@@ -25,5 +25,9 @@ class ProjectsCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    
+    func goToCompletedProject(with project: Project) {
+        let coordinator = HomeCoordinator(navigationController: navigationController, project: project)
+        add(coordinator)
+        coordinator.start()
+    }
 }

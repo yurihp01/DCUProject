@@ -15,25 +15,35 @@ class ProjectsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
         // Do any additional setup after loading the view.
     }
 }
 
 extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let projects = viewModel?.getProjects(by: searchBar.text),
+                projects.count > 0 else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = projects[indexPath.row].name
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        coordinator.goToProjectsDetail
+        guard let project = viewModel?.getProjects(by: searchBar.text)[indexPath.row] else { return }
+        coordinator?.goToCompletedProject(with: project)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.getProjects(by: searchBar.text) .count ?? 0
+    }
 }
 
 extension ProjectsViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        viewModel
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        tableView.reloadData()
     }
 }

@@ -13,6 +13,9 @@
 		15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15667CB627BDB6DF0096D85E /* Storyboarded.swift */; };
 		15667CB927BDB9280096D85E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15667CB827BDB9280096D85E /* LoginViewModel.swift */; };
 		15667CBC27BDBC2F0096D85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15667CBB27BDBC2F0096D85E /* GoogleService-Info.plist */; };
+		15707BDB27C847FD00C89AAB /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15707BDA27C847FD00C89AAB /* HomeCoordinator.swift */; };
+		15707BDD27C8481000C89AAB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15707BDC27C8481000C89AAB /* HomeViewModel.swift */; };
+		15707BDF27C8487700C89AAB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15707BDE27C8487700C89AAB /* HomeViewController.swift */; };
 		1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591975E27BDC3C600B3CC6B /* FirebaseService.swift */; };
 		1591976327BDC93F00B3CC6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591976227BDC93F00B3CC6B /* User.swift */; };
 		15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0DA6627B880C1001FF469 /* AppDelegate.swift */; };
@@ -63,6 +66,9 @@
 		15667CB627BDB6DF0096D85E /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		15667CB827BDB9280096D85E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		15667CBB27BDBC2F0096D85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15707BDA27C847FD00C89AAB /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		15707BDC27C8481000C89AAB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		15707BDE27C8487700C89AAB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1591975E27BDC3C600B3CC6B /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1591976227BDC93F00B3CC6B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15A0DA6327B880C1001FF469 /* DCUProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCUProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +216,40 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		15707BD627C8475400C89AAB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				15707BD927C8478300C89AAB /* Controller */,
+				15707BD827C8477B00C89AAB /* Coordinator */,
+				15707BD727C8476A00C89AAB /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		15707BD727C8476A00C89AAB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15707BDC27C8481000C89AAB /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		15707BD827C8477B00C89AAB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				15707BDA27C847FD00C89AAB /* HomeCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		15707BD927C8478300C89AAB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				15707BDE27C8487700C89AAB /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1591976027BDC3F500B3CC6B /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +293,7 @@
 		15A0DA6527B880C1001FF469 /* DCUProject */ = {
 			isa = PBXGroup;
 			children = (
+				15707BD627C8475400C89AAB /* Home */,
 				15A3127327C1E64D00B2177C /* Projects */,
 				15667CAB27BDB3F30096D85E /* Login */,
 				15A3126527C1289600B2177C /* Register */,
@@ -633,6 +674,7 @@
 				15A3126027C125D200B2177C /* UIAlertController+Extensions.swift in Sources */,
 				1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */,
 				15A3127E27C30C5A00B2177C /* Project.swift in Sources */,
+				15707BDF27C8487700C89AAB /* HomeViewController.swift in Sources */,
 				15A3126427C1268200B2177C /* BaseViewController.swift in Sources */,
 				15667CB527BDB51E0096D85E /* LoginCoordinator.swift in Sources */,
 				15A3127C27C1E6F900B2177C /* ProjectsCoordinator.swift in Sources */,
@@ -642,7 +684,9 @@
 				15A3127027C128E300B2177C /* RegisterViewController.swift in Sources */,
 				1591976327BDC93F00B3CC6B /* User.swift in Sources */,
 				15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */,
+				15707BDD27C8481000C89AAB /* HomeViewModel.swift in Sources */,
 				15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */,
+				15707BDB27C847FD00C89AAB /* HomeCoordinator.swift in Sources */,
 				15667CB927BDB9280096D85E /* LoginViewModel.swift in Sources */,
 				15A3127227C128F300B2177C /* RegisterCoordinator.swift in Sources */,
 			);
