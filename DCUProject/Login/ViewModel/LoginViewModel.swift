@@ -10,7 +10,7 @@ import Firebase
 protocol LoginViewModelProtocol {
     var handle: Handle { get }
     func removeHandle(handle: Handle?)
-    func login(email: String?, password: String?) async throws -> String
+    func login(email: String?, password: String?) async -> String
 }
 
 class LoginViewModel {
@@ -36,13 +36,9 @@ extension LoginViewModel: LoginViewModelProtocol {
         firebaseService.removeHandle(handle: handle)
     }
     
-    func login(email: String?, password: String?) async throws -> String {
-        do {
+    func login(email: String?, password: String?) async -> String {
             guard let email = email,
-                  let password = password else { return "Campos Nulos" }
-            return try await firebaseService.login(email: email, password: password)
-        } catch {
-            return error.localizedDescription
-        }
+                  let password = password else { return "Email ou senha inválidos." }
+            return await firebaseService.login(email: email, password: password)
     }
 }

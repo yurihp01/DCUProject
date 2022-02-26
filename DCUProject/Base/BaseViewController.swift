@@ -34,9 +34,9 @@ class BaseViewController: UIViewController, Storyboarded {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showMessage(message: String?, completion: (() -> ())? = nil) {
+    func showMessage(message: String?, handler: ((UIAlertAction) -> ())? = nil) {
         guard let message = message else { return }
-        let alert = UIAlertController.showAlertDialog(title: "Sucesso", message: message)
-        self.present(alert, animated: true, completion: completion)
+        let alert = UIAlertController.showAlertDialog(title: "Sucesso", message: message, handler: handler)
+        self.present(alert, animated: true, completion: nil)
     }
 }

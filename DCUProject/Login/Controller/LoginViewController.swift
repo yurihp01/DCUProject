@@ -33,13 +33,14 @@ class LoginViewController: BaseViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         indicator.startAnimating()
         Task.init {
-            do {
-                guard let message = try await viewModel?.login(email: userField.text, password: passwordField.text) else { return }
-                indicator.stopAnimating()
-                self.coordinator?.goToProjectsScreen()
-            } catch {
-                showAlert(message: error.localizedDescription)
-                indicator.stopAnimating()
+            let message = await viewModel?.login(email: userField.text, password: passwordField.text)
+            indicator.stopAnimating()
+            if let message = message, message.contains("Logado") {
+                showMessage(message: message) {_ in
+                    self.coordinator?.goToProjectsScreen()
+                }
+            } else {
+                showAlert(message: message)
             }
         }
     }

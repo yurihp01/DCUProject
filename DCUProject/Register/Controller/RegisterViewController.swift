@@ -24,7 +24,9 @@ class RegisterViewController: BaseViewController {
             if let message = await viewModel?.registerUser(with: userField.text, password: password.text),
                message.contains("criado") {
                 indicator.stopAnimating()
-                self.coordinator?.goToProjectsScreen()
+                showMessage(message: message) {_ in
+                    self.coordinator?.goToProjectsScreen()
+                }
             } else {
                 indicator.stopAnimating()
                 showAlert(message: "Email ou senha incorretos. Verifique os campos e tente novamente!")
