@@ -21,4 +21,8 @@ struct Project {
         self.id = id
         self.date = date
     }
+    
+    static var mockedProject: Project {
+        return Project(name: "Project 1", description: "1", team: "Team 1", category: "Category 1", key: "Key 1", id: "ID 1", date: Date())
+    }
 }
