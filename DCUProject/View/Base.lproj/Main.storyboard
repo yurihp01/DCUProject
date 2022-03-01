@@ -370,7 +370,7 @@
         <!--Definir Projeto-->
         <scene sceneID="dRk-uQ-Nal">
             <objects>
-                <viewController id="aV4-ht-RVa" customClass="DefinitionViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DefinitionViewController" id="aV4-ht-RVa" customClass="DefinitionViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cgM-t3-mCE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,7 +381,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYX-mA-psj">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYX-mA-psj">
                                 <rect key="frame" x="16" y="788" width="382" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fFD-et-eoy"/>
@@ -392,33 +392,38 @@
                                     <action selector="continueButtonPressed:" destination="aV4-ht-RVa" eventType="touchUpInside" id="QIY-8I-BHM"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" usesAttributedText="YES" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Or3-j1-gH8">
-                                <rect key="frame" x="16" y="129" width="382" height="579"/>
-                                <attributedString key="attributedText"/>
-                                <string key="placeholder">Definindo seu tema, já temos um passo realizado! Para que você entenda todo o processo de desenvolvimento de um projeto completo, deixamos
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8SX-QP-Fmr">
+                                <rect key="frame" x="16" y="137" width="382" height="611"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Definindo seu tema, já temos um passo realizado! Para que você entenda todo o processo de desenvolvimento de um projeto completo, deixamos
 aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HvJ-nJ-VbG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ZYX-mA-psj" firstAttribute="leading" secondItem="HvJ-nJ-VbG" secondAttribute="leading" constant="16" id="99w-Yv-1fO"/>
-                            <constraint firstItem="Or3-j1-gH8" firstAttribute="top" secondItem="SZJ-LO-wcC" secondAttribute="bottom" constant="24" id="9Jl-el-snJ"/>
                             <constraint firstItem="HvJ-nJ-VbG" firstAttribute="trailing" secondItem="SZJ-LO-wcC" secondAttribute="trailing" constant="16" id="Asv-1x-qB2"/>
                             <constraint firstItem="SZJ-LO-wcC" firstAttribute="leading" secondItem="HvJ-nJ-VbG" secondAttribute="leading" constant="16" id="BQS-3x-BpK"/>
                             <constraint firstItem="HvJ-nJ-VbG" firstAttribute="trailing" secondItem="ZYX-mA-psj" secondAttribute="trailing" constant="16" id="F85-AK-xAs"/>
-                            <constraint firstItem="ZYX-mA-psj" firstAttribute="top" secondItem="Or3-j1-gH8" secondAttribute="bottom" constant="80" id="IZv-q7-oZO"/>
-                            <constraint firstItem="Or3-j1-gH8" firstAttribute="leading" secondItem="HvJ-nJ-VbG" secondAttribute="leading" constant="16" id="IvY-te-NKs"/>
+                            <constraint firstItem="8SX-QP-Fmr" firstAttribute="leading" secondItem="HvJ-nJ-VbG" secondAttribute="leading" constant="16" id="Jng-qk-s6U"/>
                             <constraint firstItem="SZJ-LO-wcC" firstAttribute="top" secondItem="HvJ-nJ-VbG" secondAttribute="top" constant="40" id="eOY-dF-guX"/>
-                            <constraint firstItem="HvJ-nJ-VbG" firstAttribute="trailing" secondItem="Or3-j1-gH8" secondAttribute="trailing" constant="16" id="hSJ-vT-C8x"/>
+                            <constraint firstItem="8SX-QP-Fmr" firstAttribute="top" secondItem="SZJ-LO-wcC" secondAttribute="bottom" constant="32" id="mUA-9q-BKW"/>
                             <constraint firstItem="HvJ-nJ-VbG" firstAttribute="bottom" secondItem="ZYX-mA-psj" secondAttribute="bottom" constant="24" id="q7W-YN-EAd"/>
+                            <constraint firstItem="ZYX-mA-psj" firstAttribute="top" secondItem="8SX-QP-Fmr" secondAttribute="bottom" constant="40" id="uCC-Zy-4Lh"/>
+                            <constraint firstItem="HvJ-nJ-VbG" firstAttribute="trailing" secondItem="8SX-QP-Fmr" secondAttribute="trailing" constant="16" id="xyx-K3-KTU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Definir Projeto" id="jUx-cv-me7"/>
                     <connections>
                         <outlet property="continueButton" destination="ZYX-mA-psj" id="ORg-Hq-cxF"/>
-                        <outlet property="definitionTextField" destination="Or3-j1-gH8" id="8Rr-wI-DAU"/>
+                        <outlet property="definitionText" destination="8SX-QP-Fmr" id="xru-em-BGD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTE-AM-UdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
