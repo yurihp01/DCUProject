@@ -42,6 +42,9 @@
 		15CEE40027CE9D880098CA0B /* AnalysisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE3F827CE9D880098CA0B /* AnalysisViewModel.swift */; };
 		15CEE40127CE9D880098CA0B /* AnalysisCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE3FA27CE9D880098CA0B /* AnalysisCoordinator.swift */; };
 		15CEE40227CE9D880098CA0B /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE3FC27CE9D880098CA0B /* AnalysisViewController.swift */; };
+		15CEE40527CE9E670098CA0B /* DefinitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE40427CE9E670098CA0B /* DefinitionViewModel.swift */; };
+		15CEE40827CE9EB60098CA0B /* DefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE40727CE9EB60098CA0B /* DefinitionViewController.swift */; };
+		15CEE40B27CE9EF30098CA0B /* DefinitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE40A27CE9EF30098CA0B /* DefinitionCoordinator.swift */; };
 		652F75A61AD5CBA264A7F58F /* Pods_DCUProject_DCUProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9482EB95846E44BE6C0C88E /* Pods_DCUProject_DCUProjectUITests.framework */; };
 		6D82450DA7B66179CD24321C /* Pods_DCUProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC232315D004582931B64374 /* Pods_DCUProjectTests.framework */; };
 		EA5588F5114228ACB11FF24F /* Pods_DCUProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */; };
@@ -105,6 +108,9 @@
 		15CEE3F827CE9D880098CA0B /* AnalysisViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewModel.swift; sourceTree = "<group>"; };
 		15CEE3FA27CE9D880098CA0B /* AnalysisCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisCoordinator.swift; sourceTree = "<group>"; };
 		15CEE3FC27CE9D880098CA0B /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		15CEE40427CE9E670098CA0B /* DefinitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionViewModel.swift; sourceTree = "<group>"; };
+		15CEE40727CE9EB60098CA0B /* DefinitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionViewController.swift; sourceTree = "<group>"; };
+		15CEE40A27CE9EF30098CA0B /* DefinitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionCoordinator.swift; sourceTree = "<group>"; };
 		42F1DD6BCAFE4E3B3683E581 /* Pods-DCUProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProjectTests.release.xcconfig"; path = "Target Support Files/Pods-DCUProjectTests/Pods-DCUProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		9E7DA23FDDA8BD03CE74147A /* Pods-DCUProject-DCUProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2480D08E864CAF7F58D0EAB /* Pods-DCUProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject/Pods-DCUProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -345,6 +351,9 @@
 		15CEE3C827CE9C9D0098CA0B /* Define */ = {
 			isa = PBXGroup;
 			children = (
+				15CEE40927CE9EE40098CA0B /* Coordinator */,
+				15CEE40627CE9EA20098CA0B /* Controller */,
+				15CEE40327CE9E570098CA0B /* ViewModel */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -540,6 +549,30 @@
 				15CEE3FC27CE9D880098CA0B /* AnalysisViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		15CEE40327CE9E570098CA0B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15CEE40427CE9E670098CA0B /* DefinitionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		15CEE40627CE9EA20098CA0B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				15CEE40727CE9EB60098CA0B /* DefinitionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		15CEE40927CE9EE40098CA0B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				15CEE40A27CE9EF30098CA0B /* DefinitionCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		1F6777F45D38CAFBF35AC8F7 /* Frameworks */ = {
@@ -819,14 +852,17 @@
 				15CEE3EC27CE9C9D0098CA0B /* LoginViewController.swift in Sources */,
 				15CEE3E727CE9C9D0098CA0B /* ProjectsViewModel.swift in Sources */,
 				15CEE3FE27CE9D880098CA0B /* AnalyseCoordinator.swift in Sources */,
+				15CEE40527CE9E670098CA0B /* DefinitionViewModel.swift in Sources */,
 				15CEE3E827CE9C9D0098CA0B /* ProjectsCoordinator.swift in Sources */,
 				15A3127E27C30C5A00B2177C /* Project.swift in Sources */,
 				15A3126427C1268200B2177C /* BaseViewController.swift in Sources */,
 				15CEE3E427CE9C9D0098CA0B /* RegisterViewModel.swift in Sources */,
+				15CEE40827CE9EB60098CA0B /* DefinitionViewController.swift in Sources */,
 				1591976327BDC93F00B3CC6B /* User.swift in Sources */,
 				15CEE3E627CE9C9D0098CA0B /* RegisterViewController.swift in Sources */,
 				15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */,
 				15CEE3E327CE9C9D0098CA0B /* HomeViewController.swift in Sources */,
+				15CEE40B27CE9EF30098CA0B /* DefinitionCoordinator.swift in Sources */,
 				15CEE3FD27CE9D880098CA0B /* AnalyseViewModel.swift in Sources */,
 				15CEE40027CE9D880098CA0B /* AnalysisViewModel.swift in Sources */,
 				15CEE40127CE9D880098CA0B /* AnalysisCoordinator.swift in Sources */,
