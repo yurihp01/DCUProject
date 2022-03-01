@@ -239,36 +239,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="yr4-33-EKe">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="yr4-33-EKe">
                                 <rect key="frame" x="16" y="32" width="382" height="760"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4DD-dT-4QJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="97.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4DD-dT-4QJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Descrição" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfj-8s-ldx">
-                                        <rect key="frame" x="0.0" y="110.5" width="382" height="97.5"/>
+                                        <rect key="frame" x="0.0" y="93" width="382" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Equipe" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="imU-Vm-4zC">
-                                        <rect key="frame" x="0.0" y="221" width="382" height="97.5"/>
+                                        <rect key="frame" x="0.0" y="186" width="382" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XVF-pG-RJY">
-                                        <rect key="frame" x="0.0" y="331.5" width="382" height="97"/>
+                                        <rect key="frame" x="0.0" y="279" width="382" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Data" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="80Z-PC-Ifd">
-                                        <rect key="frame" x="0.0" y="441.5" width="382" height="97.5"/>
+                                        <rect key="frame" x="0.0" y="372" width="382" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-5a-yVd">
-                                        <rect key="frame" x="0.0" y="552" width="382" height="97.5"/>
+                                        <rect key="frame" x="0.0" y="465" width="382" height="73"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Criar"/>
                                         <connections>
@@ -276,7 +276,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGF-Cn-gJt">
-                                        <rect key="frame" x="0.0" y="662.5" width="382" height="97.5"/>
+                                        <rect key="frame" x="0.0" y="551" width="382" height="209"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Convidar" imagePadding="0.0">
                                             <imageReference key="image" image="person.fill.badge.plus" catalog="system" symbolScale="default"/>
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxL-4S-Iwa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2387" y="90"/>
+            <point key="canvasLocation" x="2383" y="80"/>
         </scene>
         <!--Detalhes-->
         <scene sceneID="rOT-vC-U2O">
@@ -438,7 +438,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTE-AM-UdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3539" y="90"/>
+            <point key="canvasLocation" x="3538" y="80"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="aiZ-3d-Ioe">
