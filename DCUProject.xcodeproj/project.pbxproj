@@ -46,6 +46,9 @@
 		15CEE40827CE9EB60098CA0B /* DefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE40727CE9EB60098CA0B /* DefinitionViewController.swift */; };
 		15CEE40B27CE9EF30098CA0B /* DefinitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE40A27CE9EF30098CA0B /* DefinitionCoordinator.swift */; };
 		15CEE40D27CED5C40098CA0B /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE40C27CED5C40098CA0B /* UITextView+Extensions.swift */; };
+		15CEE41027CED8230098CA0B /* InsertProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE40F27CED8230098CA0B /* InsertProjectViewModel.swift */; };
+		15CEE41427CEDBC40098CA0B /* InsertProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE41327CEDBC40098CA0B /* InsertProjectViewController.swift */; };
+		15CEE41727CEDE2B0098CA0B /* InsertProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEE41627CEDE2B0098CA0B /* InsertProjectCoordinator.swift */; };
 		652F75A61AD5CBA264A7F58F /* Pods_DCUProject_DCUProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9482EB95846E44BE6C0C88E /* Pods_DCUProject_DCUProjectUITests.framework */; };
 		6D82450DA7B66179CD24321C /* Pods_DCUProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC232315D004582931B64374 /* Pods_DCUProjectTests.framework */; };
 		EA5588F5114228ACB11FF24F /* Pods_DCUProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */; };
@@ -113,6 +116,9 @@
 		15CEE40727CE9EB60098CA0B /* DefinitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionViewController.swift; sourceTree = "<group>"; };
 		15CEE40A27CE9EF30098CA0B /* DefinitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionCoordinator.swift; sourceTree = "<group>"; };
 		15CEE40C27CED5C40098CA0B /* UITextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
+		15CEE40F27CED8230098CA0B /* InsertProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertProjectViewModel.swift; sourceTree = "<group>"; };
+		15CEE41327CEDBC40098CA0B /* InsertProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertProjectViewController.swift; sourceTree = "<group>"; };
+		15CEE41627CEDE2B0098CA0B /* InsertProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertProjectCoordinator.swift; sourceTree = "<group>"; };
 		42F1DD6BCAFE4E3B3683E581 /* Pods-DCUProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProjectTests.release.xcconfig"; path = "Target Support Files/Pods-DCUProjectTests/Pods-DCUProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		9E7DA23FDDA8BD03CE74147A /* Pods-DCUProject-DCUProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2480D08E864CAF7F58D0EAB /* Pods-DCUProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject/Pods-DCUProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -347,6 +353,9 @@
 		15CEE3C627CE9C9D0098CA0B /* Insert */ = {
 			isa = PBXGroup;
 			children = (
+				15CEE41527CEDE160098CA0B /* Coordinator */,
+				15CEE41227CEDBB00098CA0B /* Controller */,
+				15CEE40E27CED80C0098CA0B /* ViewModel */,
 			);
 			path = Insert;
 			sourceTree = "<group>";
@@ -574,6 +583,30 @@
 			isa = PBXGroup;
 			children = (
 				15CEE40A27CE9EF30098CA0B /* DefinitionCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		15CEE40E27CED80C0098CA0B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				15CEE40F27CED8230098CA0B /* InsertProjectViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		15CEE41227CEDBB00098CA0B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				15CEE41327CEDBC40098CA0B /* InsertProjectViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		15CEE41527CEDE160098CA0B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				15CEE41627CEDE2B0098CA0B /* InsertProjectCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -843,9 +876,11 @@
 			files = (
 				15667CA327BDB2A60096D85E /* Coordinator.swift in Sources */,
 				15CEE3E927CE9C9D0098CA0B /* ProjectsViewController.swift in Sources */,
+				15CEE41727CEDE2B0098CA0B /* InsertProjectCoordinator.swift in Sources */,
 				15CEE3E127CE9C9D0098CA0B /* HomeViewModel.swift in Sources */,
 				15A3126227C1260E00B2177C /* Constants.swift in Sources */,
 				15667CA127BD7C0A0096D85E /* AppCoordinator.swift in Sources */,
+				15CEE41427CEDBC40098CA0B /* InsertProjectViewController.swift in Sources */,
 				15A3126027C125D200B2177C /* UIAlertController+Extensions.swift in Sources */,
 				15CEE3E227CE9C9D0098CA0B /* HomeCoordinator.swift in Sources */,
 				1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */,
@@ -871,6 +906,7 @@
 				15CEE40027CE9D880098CA0B /* AnalysisViewModel.swift in Sources */,
 				15CEE40127CE9D880098CA0B /* AnalysisCoordinator.swift in Sources */,
 				15CEE3FF27CE9D880098CA0B /* AnalyseViewController.swift in Sources */,
+				15CEE41027CED8230098CA0B /* InsertProjectViewModel.swift in Sources */,
 				15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */,
 				15CEE3E527CE9C9D0098CA0B /* RegisterCoordinator.swift in Sources */,
 			);

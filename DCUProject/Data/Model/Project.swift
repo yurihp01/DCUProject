@@ -9,20 +9,19 @@ import Foundation
 import UIKit
 
 struct Project {
-    var name, description, team, category, key, id: String
+    var name, description, team, category, id: String
     var date: Date
     
-    init(name: String, description: String, team: String, category: String, key: String, id: String, date: Date) {
+    init(name: String, description: String, team: String, category: String, id: String, date: Date) {
         self.name = name
         self.description = description
         self.team = team
         self.category = category
-        self.key = key
         self.id = id
         self.date = date
     }
     
     static var mockedProject: Project {
-        return Project(name: "Project 1", description: "1", team: "Team 1", category: "Category 1", key: "Key 1", id: "ID 1", date: Date())
+        return Project(name: "Project 1", description: "1", team: "Team 1", category: "Category 1", id: "ID 1", date: Date())
     }
 }

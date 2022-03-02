@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum DefinitionType {
+    case insert
+    case home
+}
+
 class DefinitionCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []

@@ -21,7 +21,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let childCoordinator = DefinitionCoordinator(navigationController, project: Project.mockedProject)
+        let childCoordinator = InsertProjectCoordinator(navigationController: navigationController)
         childCoordinator.parentCoordinator = self
         add(childCoordinator)
         childCoordinator.start()
