@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VwK-eu-37A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -11,7 +11,7 @@
         <!--Cadastrar-->
         <scene sceneID="YQQ-5K-o7F">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" interfaceStyle="light" id="KcM-ag-dap" customClass="RegisterViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" title="Cadastrar" interfaceStyle="light" id="KcM-ag-dap" customClass="RegisterViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lp8-Z6-j8k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,7 +156,7 @@
         <!--Projetos-->
         <scene sceneID="E7Q-bz-CQd">
             <objects>
-                <viewController storyboardIdentifier="ProjectsViewController" id="7Z5-4L-gbK" customClass="ProjectsViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProjectsViewController" title="Projetos" id="7Z5-4L-gbK" customClass="ProjectsViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PqV-Ak-3z6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,12 +211,7 @@
                             <constraint firstItem="Vk1-Lk-csi" firstAttribute="trailing" secondItem="NTp-JF-EsL" secondAttribute="trailing" constant="16" id="hd7-6w-bbv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Projetos" id="YHg-S9-AYS">
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="action" id="KoM-A8-Fkl"/>
-                            <barButtonItem style="plain" systemItem="add" id="EG9-92-sGA"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Projetos" id="YHg-S9-AYS"/>
                     <connections>
                         <outlet property="searchBar" destination="HmL-Ez-Kbm" id="fqO-Zo-LYe"/>
                         <outlet property="tableView" destination="NTp-JF-EsL" id="e6T-en-cOv"/>

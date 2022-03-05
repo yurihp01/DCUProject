@@ -19,7 +19,17 @@ class ProjectsViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        setNavigationController()
         // Do any additional setup after loading the view.
+    }
+    
+    func setNavigationController() {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToInsertProject))
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc func goToInsertProject() {
+        coordinator?.goToInsertProject()
     }
 }
 

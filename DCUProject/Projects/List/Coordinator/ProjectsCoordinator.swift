@@ -30,4 +30,10 @@ class ProjectsCoordinator: Coordinator {
         add(coordinator)
         coordinator.start()
     }
+    
+    func goToInsertProject() {
+        let coordinator = InsertProjectCoordinator(navigationController: navigationController)
+        add(coordinator)
+        coordinator.start()
+    }
 }

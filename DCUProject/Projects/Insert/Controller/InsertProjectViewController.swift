@@ -36,7 +36,6 @@ class InsertProjectViewController: BaseViewController {
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         datePicker.date = sender.date
-        
     }
 }
 

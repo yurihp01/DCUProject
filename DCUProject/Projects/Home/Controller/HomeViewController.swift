@@ -13,6 +13,7 @@ class HomeViewController: BaseViewController {
     weak var coordinator: HomeCoordinator?
     
     @IBOutlet weak var tabBar: UITabBar!
+//    var viewControllers: [UIViewController] = [DetailsVC, AnalyseVC, AvaliationVC, DefinitionViewController]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,18 @@ class HomeViewController: BaseViewController {
             UITabBarItem(title: "Definição", image: UIImage(systemName:""), tag: 4)
         ]
         
+        tabBar.delegate = self
         tabBar.items = tabBarItems
         tabBar.selectedItem = tabBarItems.first
+    }
+    
+    private func addTabBarViewControllers() {
+        
+    }
+}
+
+extension HomeViewController: UITabBarDelegate {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        <#code#>
     }
 }

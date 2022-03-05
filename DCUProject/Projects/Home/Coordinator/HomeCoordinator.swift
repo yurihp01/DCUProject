@@ -29,4 +29,24 @@ class HomeCoordinator: Coordinator {
         navigationController.viewControllers.removeAll()
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func changeToDetails() {
+        
+    }
+    
+    func changeToAnalyse() {
+        
+    }
+    
+    func changeToAvaliation() {
+        
+    }
+    
+    func changeToDefinition() {
+        
+    }
+    
+    func changeToDesign() {
+        
+    }
 }
