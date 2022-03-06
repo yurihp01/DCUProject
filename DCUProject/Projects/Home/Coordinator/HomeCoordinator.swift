@@ -30,20 +30,24 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func changeToDetails() {
-        
+    func changeToDetails() -> DetailsViewController {
+        let coordinator = DetailsCoordinator(navigationController: navigationController, project: project)
+        return coordinator.getViewController()
     }
     
-    func changeToAnalyse() {
-        
+    func changeToAnalyse() -> AnalysisViewController {
+        let coordinator = AnalysisCoordinator(navigationController: navigationController, project: project)
+        return coordinator.getViewController()
     }
     
-    func changeToAvaliation() {
-        
+    func changeToAvaliation() -> AvaliationViewController {
+        let coordinator = AvaliationCoordinator(navigationController: navigationController, project: project)
+        return coordinator.getViewController()
     }
     
-    func changeToDefinition() {
-        
+    func changeToDefinition() -> DefinitionViewController {
+        let coordinator = DefinitionCoordinator(navigationController, project: project)
+        return coordinator.getViewController()
     }
     
     func changeToDesign() {

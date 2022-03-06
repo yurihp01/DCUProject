@@ -317,7 +317,7 @@
         <!--Detalhes-->
         <scene sceneID="rOT-vC-U2O">
             <objects>
-                <viewController id="URj-3c-3bl" customClass="UITabBarController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" id="URj-3c-3bl" customClass="DetailsViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qcO-iV-tjR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -333,52 +333,65 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-4V-RY6">
-                                <rect key="frame" x="16" y="132" width="382" height="665"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tFj-Ha-BUn">
+                                <rect key="frame" x="16" y="108" width="382" height="424"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome Projeto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPx-y9-NId">
-                                        <rect key="frame" x="0.0" y="0.0" width="104" height="63.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3U6-RG-o74">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="pvX-wl-gUd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Equipe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9A-Kg-SaG">
+                                        <rect key="frame" x="0.0" y="76" width="382" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Iie-F8-BhT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Epy-1k-mSf">
+                                        <rect key="frame" x="0.0" y="152" width="382" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="eTN-1W-caW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecionar Data:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2SV-eQ-ECk">
+                                        <rect key="frame" x="0.0" y="228" width="382" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="1bB-uG-IEN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Equipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYd-Bq-Zer">
-                                        <rect key="frame" x="0.0" y="150.5" width="52.5" height="63.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categoria" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zig-UV-BhB">
-                                        <rect key="frame" x="0.0" y="301" width="74" height="63"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pei-cr-WxB">
-                                        <rect key="frame" x="0.0" y="451" width="36" height="63.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kc-8c-OFA">
-                                        <rect key="frame" x="0.0" y="601.5" width="49" height="63.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="bVR-24-3Yo">
+                                        <rect key="frame" x="0.0" y="274" width="382" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="TWE-cB-Mu9"/>
+                                        </constraints>
+                                        <locale key="locale" localeIdentifier="pt_BR"/>
+                                        <connections>
+                                            <action selector="datePickerValueChanged:" destination="VwK-eu-37A" eventType="valueChanged" id="8v9-3s-BnI"/>
+                                        </connections>
+                                    </datePicker>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iPO-Fk-RyH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Dv9-4V-RY6" firstAttribute="top" secondItem="5y9-xS-6GS" secondAttribute="bottom" constant="40" id="Esx-RF-Oc9"/>
-                            <constraint firstItem="Dv9-4V-RY6" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" constant="16" id="F8d-Se-TAC"/>
+                            <constraint firstItem="tFj-Ha-BUn" firstAttribute="top" secondItem="5y9-xS-6GS" secondAttribute="bottom" constant="16" id="6iz-fo-Ldd"/>
+                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="trailing" secondItem="tFj-Ha-BUn" secondAttribute="trailing" constant="16" id="9JC-Gd-3G4"/>
+                            <constraint firstItem="tFj-Ha-BUn" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" constant="16" id="IUK-c4-b1D"/>
                             <constraint firstItem="5y9-xS-6GS" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" id="ZOa-6A-Z9L"/>
-                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="trailing" secondItem="Dv9-4V-RY6" secondAttribute="trailing" constant="16" id="fS7-iC-Y1F"/>
                             <constraint firstItem="5y9-xS-6GS" firstAttribute="trailing" secondItem="iPO-Fk-RyH" secondAttribute="trailing" id="maA-Zd-ZL9"/>
-                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="bottom" secondItem="Dv9-4V-RY6" secondAttribute="bottom" constant="16" id="mml-Zh-Rf0"/>
                             <constraint firstItem="5y9-xS-6GS" firstAttribute="top" secondItem="iPO-Fk-RyH" secondAttribute="top" id="p9j-4X-TmE"/>
+                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tFj-Ha-BUn" secondAttribute="bottom" constant="16" id="ycy-v9-hKX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Detalhes" image="info.circle.fill" catalog="system" id="OA1-7g-Anb"/>
@@ -491,7 +504,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Avaliação-->
         <scene sceneID="3ac-5i-6rp">
             <objects>
-                <viewController id="Ff4-IK-rJB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AvaliationViewController" id="Ff4-IK-rJB" customClass="AvaliationViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f7L-ef-hwV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -535,7 +548,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Análise-->
         <scene sceneID="hGn-Ts-maB">
             <objects>
-                <viewController id="H5a-tl-HSf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnalysisViewController" id="H5a-tl-HSf" customClass="AnalysisViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K5m-d9-cfS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -626,6 +639,11 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Análise" image="rectangle.and.pencil.and.ellipsis" catalog="system" id="0A1-zl-1wM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="analyseSegmentedControl" destination="EBJ-T7-wch" id="JxV-AX-ixt"/>
+                        <outlet property="searchBar" destination="OZg-6j-ZvC" id="Iav-cY-RMn"/>
+                        <outlet property="tableView" destination="f8A-wu-Gay" id="NY4-PK-uvk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpS-bo-k3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -727,7 +745,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Definição-->
         <scene sceneID="3E8-S9-smP">
             <objects>
-                <viewController id="gMZ-5c-AkW" sceneMemberID="viewController">
+                <viewController id="gMZ-5c-AkW" customClass="DefinitionViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wbb-bu-UQ5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

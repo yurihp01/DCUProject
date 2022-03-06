@@ -7,16 +7,14 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController {
+class HomeViewController: UITabBarController, Storyboarded {
 
     var viewModel: HomeViewModel?
     weak var coordinator: HomeCoordinator?
     
-    @IBOutlet weak var tabBar: UITabBar!
-//    var viewControllers: [UIViewController] = [DetailsVC, AnalyseVC, AvaliationVC, DefinitionViewController]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTabBarViewControllers()
         addTabBar()
     }
     
@@ -29,18 +27,23 @@ class HomeViewController: BaseViewController {
             UITabBarItem(title: "Definição", image: UIImage(systemName:""), tag: 4)
         ]
         
-        tabBar.delegate = self
-        tabBar.items = tabBarItems
-        tabBar.selectedItem = tabBarItems.first
+        self.delegate = self
+        setViewControllers(viewControllers, animated: true)
+        tabBarController?.selectedViewController = viewControllers?.first
     }
     
     private func addTabBarViewControllers() {
-        
+        guard let coordinator = coordinator else {
+            return
+        }
+
+        // it still needs to add designVC
+        viewControllers = [coordinator.changeToDetails(), coordinator.changeToAnalyse(), coordinator.changeToAvaliation(), coordinator.changeToDefinition()]
     }
 }
 
-extension HomeViewController: UITabBarDelegate {
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        <#code#>
+extension HomeViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        tabBarController.selectedViewController = viewController
     }
 }
