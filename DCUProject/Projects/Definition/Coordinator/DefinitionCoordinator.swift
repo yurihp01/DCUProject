@@ -13,11 +13,18 @@ enum DefinitionType {
 }
 
 class DefinitionCoordinator: Coordinator {
+    let project: Project
+
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
     
-    let project: Project
+    lazy var viewController: DefinitionViewController = {
+        let viewController = DefinitionViewController.instantiate(storyboardName: .main)
+        viewController.viewModel = DefinitionViewModel(project: project)
+        viewController.coordinator = self
+        return viewController
+    }()
     
     init(_ navigationController: UINavigationController, project: Project) {
         self.navigationController = navigationController
@@ -25,9 +32,6 @@ class DefinitionCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = DefinitionViewController.instantiate(storyboardName: .main)
-        viewController.viewModel = DefinitionViewModel(project: project)
-        viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
     
@@ -35,5 +39,9 @@ class DefinitionCoordinator: Coordinator {
         let coordinator = HomeCoordinator(navigationController: navigationController, project: project)
         coordinator.parentCoordinator = self
         coordinator.start()
+    }
+    
+    func getViewController() -> DefinitionViewController {
+        return viewController
     }
 }
