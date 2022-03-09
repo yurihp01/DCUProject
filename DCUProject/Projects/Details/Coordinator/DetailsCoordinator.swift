@@ -33,6 +33,4 @@ class DetailsCoordinator: Coordinator {
         start()
         return controller
     }
-    
-    
 }

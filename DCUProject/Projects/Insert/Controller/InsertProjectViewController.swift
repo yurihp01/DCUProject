@@ -30,7 +30,7 @@ class InsertProjectViewController: BaseViewController {
                showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
                return
            }
-        let project = Project(name: name, description: "", team: team, category: category, id: "", date: datePicker.date)
+        let project = Project(name: name, team: team, category: category, date: datePicker.date)
         coordinator?.goToDefinition(from: .insert, project: project)
     }
     

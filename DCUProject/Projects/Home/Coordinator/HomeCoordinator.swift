@@ -26,8 +26,9 @@ class HomeCoordinator: Coordinator {
         let viewController = HomeViewController.instantiate(storyboardName: .main)
         viewController.viewModel = HomeViewModel(project: project)
         viewController.coordinator = self
-        navigationController.viewControllers.removeAll()
         navigationController.pushViewController(viewController, animated: true)
+        navigationController.viewControllers.removeAll { !($0 is HomeViewController) }
+        navigationController.isNavigationBarHidden = true
     }
     
     func changeToDetails() -> DetailsViewController {

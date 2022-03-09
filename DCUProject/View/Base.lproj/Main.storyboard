@@ -317,26 +317,15 @@
         <!--Detalhes-->
         <scene sceneID="rOT-vC-U2O">
             <objects>
-                <viewController storyboardIdentifier="DetailsViewController" id="URj-3c-3bl" customClass="DetailsViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsViewController" title="Detalhes" id="URj-3c-3bl" customClass="DetailsViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qcO-iV-tjR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5y9-xS-6GS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="gCR-Qf-2Re"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Detalhes do Projeto" id="Qe7-bI-p7p">
-                                        <barButtonItem key="rightBarButtonItem" title="Editar" style="plain" id="9Hr-Cm-nB8"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tFj-Ha-BUn">
-                                <rect key="frame" x="16" y="108" width="382" height="424"/>
+                                <rect key="frame" x="16" y="60" width="382" height="424"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3U6-RG-o74">
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3U6-RG-o74">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="pvX-wl-gUd"/>
@@ -344,7 +333,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Equipe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9A-Kg-SaG">
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Equipe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9A-Kg-SaG">
                                         <rect key="frame" x="0.0" y="76" width="382" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Iie-F8-BhT"/>
@@ -352,7 +341,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Epy-1k-mSf">
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Epy-1k-mSf">
                                         <rect key="frame" x="0.0" y="152" width="382" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="eTN-1W-caW"/>
@@ -369,7 +358,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="bVR-24-3Yo">
+                                    <datePicker contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="bVR-24-3Yo">
                                         <rect key="frame" x="0.0" y="274" width="382" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="TWE-cB-Mu9"/>
@@ -385,18 +374,20 @@
                         <viewLayoutGuide key="safeArea" id="iPO-Fk-RyH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tFj-Ha-BUn" firstAttribute="top" secondItem="5y9-xS-6GS" secondAttribute="bottom" constant="16" id="6iz-fo-Ldd"/>
+                            <constraint firstItem="tFj-Ha-BUn" firstAttribute="top" secondItem="iPO-Fk-RyH" secondAttribute="top" constant="16" id="524-Qa-Uyb"/>
                             <constraint firstItem="iPO-Fk-RyH" firstAttribute="trailing" secondItem="tFj-Ha-BUn" secondAttribute="trailing" constant="16" id="9JC-Gd-3G4"/>
                             <constraint firstItem="tFj-Ha-BUn" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" constant="16" id="IUK-c4-b1D"/>
-                            <constraint firstItem="5y9-xS-6GS" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" id="ZOa-6A-Z9L"/>
-                            <constraint firstItem="5y9-xS-6GS" firstAttribute="trailing" secondItem="iPO-Fk-RyH" secondAttribute="trailing" id="maA-Zd-ZL9"/>
-                            <constraint firstItem="5y9-xS-6GS" firstAttribute="top" secondItem="iPO-Fk-RyH" secondAttribute="top" id="p9j-4X-TmE"/>
                             <constraint firstItem="iPO-Fk-RyH" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tFj-Ha-BUn" secondAttribute="bottom" constant="16" id="ycy-v9-hKX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Detalhes" image="info.circle.fill" catalog="system" id="OA1-7g-Anb"/>
-                    <navigationItem key="navigationItem" id="8uO-H5-TJc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="category" destination="Epy-1k-mSf" id="H10-u4-WjR"/>
+                        <outlet property="datePicker" destination="bVR-24-3Yo" id="Mtk-ic-ZkD"/>
+                        <outlet property="name" destination="3U6-RG-o74" id="3j2-Ee-6ZI"/>
+                        <outlet property="team" destination="h9A-Kg-SaG" id="Q83-bK-VBC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2E-UK-sUG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -455,7 +446,6 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                             <constraint firstItem="HvJ-nJ-VbG" firstAttribute="trailing" secondItem="8SX-QP-Fmr" secondAttribute="trailing" constant="16" id="xyx-K3-KTU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Definir Projeto" id="jUx-cv-me7"/>
                     <connections>
                         <outlet property="continueButton" destination="ZYX-mA-psj" id="ORg-Hq-cxF"/>
                         <outlet property="definitionText" destination="8SX-QP-Fmr" id="xru-em-BGD"/>
@@ -504,24 +494,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Avaliação-->
         <scene sceneID="3ac-5i-6rp">
             <objects>
-                <viewController storyboardIdentifier="AvaliationViewController" id="Ff4-IK-rJB" customClass="AvaliationViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AvaliationViewController" title="Avaliação" id="Ff4-IK-rJB" customClass="AvaliationViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f7L-ef-hwV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ahp-wR-9Xl">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="02h-Nq-yuq"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Avaliação" id="E1Q-FE-LTQ">
-                                        <barButtonItem key="rightBarButtonItem" title="Editar" style="plain" id="w7b-tc-Aai"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Digite os seus critérios de avaliação" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="alz-RO-B7J">
-                                <rect key="frame" x="16" y="116" width="382" height="681"/>
+                                <rect key="frame" x="16" y="60" width="382" height="737"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -529,13 +508,10 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <viewLayoutGuide key="safeArea" id="owy-VR-gS6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ahp-wR-9Xl" firstAttribute="leading" secondItem="owy-VR-gS6" secondAttribute="leading" id="4JB-wx-jCz"/>
                             <constraint firstItem="owy-VR-gS6" firstAttribute="trailing" secondItem="alz-RO-B7J" secondAttribute="trailing" constant="16" id="SBv-Pn-mUh"/>
                             <constraint firstItem="alz-RO-B7J" firstAttribute="leading" secondItem="owy-VR-gS6" secondAttribute="leading" constant="16" id="USz-ej-xoe"/>
-                            <constraint firstItem="Ahp-wR-9Xl" firstAttribute="top" secondItem="owy-VR-gS6" secondAttribute="top" id="WaO-Gi-E14"/>
                             <constraint firstItem="owy-VR-gS6" firstAttribute="bottom" secondItem="alz-RO-B7J" secondAttribute="bottom" constant="16" id="X8t-aS-ECh"/>
-                            <constraint firstItem="Ahp-wR-9Xl" firstAttribute="trailing" secondItem="owy-VR-gS6" secondAttribute="trailing" id="jNH-7l-qqu"/>
-                            <constraint firstItem="alz-RO-B7J" firstAttribute="top" secondItem="Ahp-wR-9Xl" secondAttribute="bottom" constant="16" id="oeQ-Z2-tqF"/>
+                            <constraint firstItem="alz-RO-B7J" firstAttribute="top" secondItem="owy-VR-gS6" secondAttribute="top" constant="16" id="dfM-9I-lro"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Avaliação" image="checklist" catalog="system" id="YTh-Fs-8fB"/>
@@ -548,25 +524,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Análise-->
         <scene sceneID="hGn-Ts-maB">
             <objects>
-                <viewController storyboardIdentifier="AnalysisViewController" id="H5a-tl-HSf" customClass="AnalysisViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnalysisViewController" title="Análise" id="H5a-tl-HSf" customClass="AnalysisViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K5m-d9-cfS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssa-Df-myQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Análise" id="Cfy-uD-msr">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="P3F-qv-zzd">
-                                            <connections>
-                                                <segue destination="350-aG-giv" kind="show" id="Dyj-Gy-Tl8"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EBJ-T7-wch">
-                                <rect key="frame" x="16" y="128" width="382" height="32"/>
+                                <rect key="frame" x="16" y="60" width="382" height="32"/>
                                 <segments>
                                     <segment title="Persona"/>
                                     <segment title="Questionário"/>
@@ -574,7 +538,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f8A-wu-Gay">
-                                <rect key="frame" x="16" y="175" width="382" height="622"/>
+                                <rect key="frame" x="16" y="107" width="382" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Digite o nome" id="OZg-6j-ZvC">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
@@ -598,9 +562,6 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="350-aG-giv" kind="show" id="Vhj-Zd-evf"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="krK-ka-5TV" style="IBUITableViewCellStyleDefault" id="CY8-J9-iXR">
                                         <rect key="frame" x="0.0" y="132" width="382" height="43.5"/>
@@ -625,14 +586,11 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <viewLayoutGuide key="safeArea" id="Y3L-fn-Rkb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ssa-Df-myQ" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" id="1Yt-1l-UWo"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="EBJ-T7-wch" secondAttribute="trailing" constant="16" id="2km-Xu-rGf"/>
-                            <constraint firstItem="ssa-Df-myQ" firstAttribute="trailing" secondItem="Y3L-fn-Rkb" secondAttribute="trailing" id="CNS-Qs-eFT"/>
-                            <constraint firstItem="EBJ-T7-wch" firstAttribute="top" secondItem="ssa-Df-myQ" secondAttribute="bottom" constant="40" id="CSX-Up-ocu"/>
                             <constraint firstItem="EBJ-T7-wch" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="EDa-wn-Bhu"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="bottom" secondItem="f8A-wu-Gay" secondAttribute="bottom" constant="16" id="KIV-dH-J0U"/>
                             <constraint firstItem="f8A-wu-Gay" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="Te0-je-43X"/>
-                            <constraint firstItem="ssa-Df-myQ" firstAttribute="top" secondItem="Y3L-fn-Rkb" secondAttribute="top" id="Wjd-4Z-jmN"/>
+                            <constraint firstItem="EBJ-T7-wch" firstAttribute="top" secondItem="Y3L-fn-Rkb" secondAttribute="top" constant="16" id="qNQ-4e-mi6"/>
                             <constraint firstItem="f8A-wu-Gay" firstAttribute="top" secondItem="EBJ-T7-wch" secondAttribute="bottom" constant="16" id="ykt-Zz-5bL"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="f8A-wu-Gay" secondAttribute="trailing" constant="16" id="z9J-Hk-WMd"/>
                         </constraints>
@@ -649,16 +607,16 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
             </objects>
             <point key="canvasLocation" x="3930" y="1098"/>
         </scene>
-        <!--Análise-->
+        <!--Detalhes-->
         <scene sceneID="62J-z7-fNg">
             <objects>
-                <viewController id="350-aG-giv" sceneMemberID="viewController">
+                <viewController title="Detalhes" id="350-aG-giv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qyc-IE-c3v">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAi-9y-5QD">
-                                <rect key="frame" x="16" y="742" width="382" height="50"/>
+                                <rect key="frame" x="16" y="796" width="382" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0Mo-Cj-ric"/>
                                 </constraints>
@@ -666,7 +624,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 <buttonConfiguration key="configuration" style="filled" title="Adicionar"/>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="41I-Tx-9fu">
-                                <rect key="frame" x="16" y="32" width="382" height="41"/>
+                                <rect key="frame" x="16" y="76" width="382" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Y1t-Qc-fsH"/>
                                 </constraints>
@@ -677,7 +635,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 </segments>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Insira todos os detalhes da tua análise de acordo\n com o seu modelo: Persona, Questionário ou Entrevista." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sqC-us-3RO">
-                                <rect key="frame" x="16" y="104" width="382" height="622"/>
+                                <rect key="frame" x="16" y="148" width="382" height="632"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -708,7 +666,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Design-->
         <scene sceneID="rwR-WX-dUc">
             <objects>
-                <viewController id="efh-Ew-GGt" sceneMemberID="viewController">
+                <viewController title="Design" id="efh-Ew-GGt" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A9a-dk-cyB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -720,20 +678,9 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUk-Vh-FxE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="Design" id="Nv9-t6-7Yo"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z2d-0p-RIt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="lUk-Vh-FxE" firstAttribute="leading" secondItem="z2d-0p-RIt" secondAttribute="leading" id="7iS-x9-PjI"/>
-                            <constraint firstItem="lUk-Vh-FxE" firstAttribute="top" secondItem="z2d-0p-RIt" secondAttribute="top" id="Onu-h7-M3d"/>
-                            <constraint firstItem="lUk-Vh-FxE" firstAttribute="trailing" secondItem="z2d-0p-RIt" secondAttribute="trailing" id="n64-eY-cac"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Design" image="paintpalette.fill" catalog="system" id="tkt-TH-8rS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -745,24 +692,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Definição-->
         <scene sceneID="3E8-S9-smP">
             <objects>
-                <viewController id="gMZ-5c-AkW" customClass="DefinitionViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Definição" id="gMZ-5c-AkW" customClass="DefinitionViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wbb-bu-UQ5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66M-4E-nre">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="ffa-Us-Nzn"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Definição" id="24c-SW-ZQP">
-                                        <barButtonItem key="rightBarButtonItem" title="Editar" style="plain" id="hFV-2P-o2h"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome do Projeto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMz-Hv-w5c">
-                                <rect key="frame" x="16" y="136" width="382" height="30"/>
+                                <rect key="frame" x="16" y="60" width="382" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xZx-w9-8HC"/>
                                 </constraints>
@@ -771,7 +707,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AYe-AK-ZgD">
-                                <rect key="frame" x="16" y="202" width="382" height="595"/>
+                                <rect key="frame" x="16" y="126" width="382" height="671"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -791,13 +727,10 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                             <constraint firstItem="zFp-mR-JT4" firstAttribute="trailing" secondItem="hMz-Hv-w5c" secondAttribute="trailing" constant="16" id="741-7g-wRn"/>
                             <constraint firstItem="AYe-AK-ZgD" firstAttribute="top" secondItem="hMz-Hv-w5c" secondAttribute="bottom" constant="36" id="A0D-Dq-RuT"/>
                             <constraint firstItem="zFp-mR-JT4" firstAttribute="trailing" secondItem="AYe-AK-ZgD" secondAttribute="trailing" constant="16" id="HF7-v1-pbK"/>
-                            <constraint firstItem="66M-4E-nre" firstAttribute="top" secondItem="zFp-mR-JT4" secondAttribute="top" id="Okz-z3-MmI"/>
                             <constraint firstItem="hMz-Hv-w5c" firstAttribute="leading" secondItem="zFp-mR-JT4" secondAttribute="leading" constant="16" id="Sv1-9n-Pcu"/>
-                            <constraint firstItem="66M-4E-nre" firstAttribute="trailing" secondItem="zFp-mR-JT4" secondAttribute="trailing" id="jzu-Rc-pIv"/>
-                            <constraint firstItem="hMz-Hv-w5c" firstAttribute="top" secondItem="66M-4E-nre" secondAttribute="bottom" constant="36" id="ooz-wP-9BN"/>
-                            <constraint firstItem="66M-4E-nre" firstAttribute="leading" secondItem="zFp-mR-JT4" secondAttribute="leading" id="qe8-Yz-jha"/>
                             <constraint firstItem="zFp-mR-JT4" firstAttribute="bottom" secondItem="AYe-AK-ZgD" secondAttribute="bottom" constant="16" id="qgT-Dw-AHt"/>
                             <constraint firstItem="AYe-AK-ZgD" firstAttribute="leading" secondItem="zFp-mR-JT4" secondAttribute="leading" constant="16" id="uIZ-de-bfK"/>
+                            <constraint firstItem="hMz-Hv-w5c" firstAttribute="top" secondItem="zFp-mR-JT4" secondAttribute="top" constant="16" id="wGJ-4b-Ifa"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Definição" id="say-QN-Ani"/>
@@ -808,9 +741,6 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
             <point key="canvasLocation" x="6194" y="1098"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Dyj-Gy-Tl8"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="checklist" catalog="system" width="128" height="105"/>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
