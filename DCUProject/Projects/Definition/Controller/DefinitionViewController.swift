@@ -9,45 +9,78 @@ import UIKit
 
 class DefinitionViewController: BaseViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var definitionText: UITextView!
-    @IBOutlet weak var continueButton: UIButton!
     
     weak var coordinator: DefinitionCoordinator?
     var viewModel: DefinitionProtocol?
+    var buttonType: ButtonType = .save
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNavigationBar()
         setTextView()
+        setLabel()
     }
     
-    @IBAction func continueButtonPressed(_ sender: UIButton) {
-        guard let viewModel = viewModel else {
-            return
-        }
-
-        viewModel.setDefinition(definitionText.text!)
-        showMessage(message: "Projeto salvo com sucesso!") { _ in
-            self.coordinator?.goToHome(project: viewModel.project)
+    @objc func continueButtonPressed() {
+        switch viewModel?.type {
+        case .insert:
+            saveDefinition {
+                guard let project = viewModel?.project else { return }
+                showMessage(message: "Projeto salvo com sucesso!") { _ in
+                    self.coordinator?.goToHome(project: project)
+                }
+            }
+        case .home:
+            if buttonType == .save {
+                saveDefinition {
+                    showMessage(message: "Projeto salvo com sucesso!", handler: nil)
+                    self.buttonType = .edit
+                }
+            } else {
+                buttonType = .save
+            }
+            definitionText.isEditable = buttonType == .edit ? false : true
+            navigationItem.rightBarButtonItem?.title = buttonType.rawValue
+        case .none:
+            print("Error")
         }
     }
 }
 
 private extension DefinitionViewController {
+    func setLabel() {
+        titleLabel.text = viewModel?.label
+    }
+    
     func setTextView() {
+        definitionText.isEditable = viewModel?.type == .insert ? true : false
         definitionText.text = viewModel?.placeholder
         definitionText.textColor = UIColor.lightGray
         definitionText.delegate = self
     }
+    
+    func setNavigationBar() {
+        if let type = viewModel?.type, type != .insert {
+            buttonType = .edit
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonType.rawValue, style: .plain, target: self, action: #selector(continueButtonPressed))
+    }
+    
+    func saveDefinition(complete: () -> ()) {
+        guard let viewModel = viewModel, let text = definitionText.text, !text.isEmpty, !text.contains(viewModel.placeholder) else {
+            showAlert(message: "O campo definição está vazio. Preencha e tente novamente!")
+            return
+        }
+
+        viewModel.setDefinition(text)
+        complete()
+    }
 }
 
 extension DefinitionViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        continueButton.isEnabled = !text.isEmpty && textView.text.count <= 1 ? false : true
-
-        return true
-    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.textColor = UIColor.black

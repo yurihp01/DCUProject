@@ -26,12 +26,10 @@ class InsertProjectCoordinator: Coordinator {
     }
     
     func goToDefinition(from: DefinitionType, project: Project) {
-        let coordinator = DefinitionCoordinator(navigationController, project: project)
+        let coordinator = DefinitionCoordinator(navigationController, project: project, type: from)
         
-        if from == .insert {
             coordinator.parentCoordinator = self
             add(coordinator)
-        }
         
         coordinator.start()
     }

@@ -19,7 +19,6 @@ class HomeCoordinator: Coordinator {
     init(navigationController: UINavigationController, project: Project) {
         self.project = project
         self.navigationController = navigationController
-        parentCoordinator = self
     }
     
     func start() {
@@ -27,7 +26,8 @@ class HomeCoordinator: Coordinator {
         viewController.viewModel = HomeViewModel(project: project)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
-        navigationController.viewControllers.removeAll { !($0 is HomeViewController) }
+        navigationController.viewControllers.removeFirst(navigationController.viewControllers.count - 1)
+        parentCoordinator = self
         navigationController.isNavigationBarHidden = true
     }
     
@@ -47,7 +47,7 @@ class HomeCoordinator: Coordinator {
     }
     
     func changeToDefinition() -> DefinitionViewController {
-        let coordinator = DefinitionCoordinator(navigationController, project: project)
+        let coordinator = DefinitionCoordinator(navigationController, project: project, type: .home)
         return coordinator.getViewController()
     }
     

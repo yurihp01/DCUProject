@@ -18,17 +18,19 @@ class DefinitionCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
+    let type: DefinitionType
     
     lazy var viewController: DefinitionViewController = {
         let viewController = DefinitionViewController.instantiate(storyboardName: .main)
-        viewController.viewModel = DefinitionViewModel(project: project)
+        viewController.viewModel = DefinitionViewModel(project: project, type: type)
         viewController.coordinator = self
         return viewController
     }()
     
-    init(_ navigationController: UINavigationController, project: Project) {
+    init(_ navigationController: UINavigationController, project: Project, type: DefinitionType) {
         self.navigationController = navigationController
         self.project = project
+        self.type = type
     }
     
     func start() {

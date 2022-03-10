@@ -32,5 +32,7 @@ struct Constants {
     static let header = "header"
     static let cells = "cells"
     static let okButton = "OK"
+    static let question = "Qual a sua ideia de projeto?"
+
     
 }
