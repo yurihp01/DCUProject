@@ -12,6 +12,12 @@ enum ButtonType: String {
     case save = "Salvar"
 }
 
+extension ButtonType {
+    mutating func toggle() {
+        self = self == .edit ? .save : .edit
+    }
+}
+
 class DetailsViewController: BaseViewController {
     
     @IBOutlet weak var name: UITextField!

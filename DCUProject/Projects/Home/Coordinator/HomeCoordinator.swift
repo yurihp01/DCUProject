@@ -33,21 +33,29 @@ class HomeCoordinator: Coordinator {
     
     func changeToDetails() -> DetailsViewController {
         let coordinator = DetailsCoordinator(navigationController: navigationController, project: project)
+        coordinator.parentCoordinator = self
+        add(coordinator)
         return coordinator.getViewController()
     }
     
     func changeToAnalyse() -> AnalysisViewController {
         let coordinator = AnalysisCoordinator(navigationController: navigationController, project: project)
+        coordinator.parentCoordinator = self
+        add(coordinator)
         return coordinator.getViewController()
     }
     
     func changeToAvaliation() -> AvaliationViewController {
         let coordinator = AvaliationCoordinator(navigationController: navigationController, project: project)
+        coordinator.parentCoordinator = self
+        add(coordinator)
         return coordinator.getViewController()
     }
     
     func changeToDefinition() -> DefinitionViewController {
         let coordinator = DefinitionCoordinator(navigationController, project: project, type: .home)
+        coordinator.parentCoordinator = self
+        add(coordinator)
         return coordinator.getViewController()
     }
     

@@ -30,9 +30,10 @@ class AnalysisCoordinator: Coordinator {
         return viewController
     }
     
-    func goToCompletedProject(with project: Project) {
-        let coordinator = HomeCoordinator(navigationController: navigationController, project: project)
+    func goToAnalyseFlow(flow: AnalyseFlow, delegate: AnalysisDelegate, analyse: Analyse? = nil) {
+        let coordinator = AnalyseCoordinator(navigationController: navigationController, analyseFlow: flow, delegate: delegate)
+        coordinator.parentCoordinator = self
         add(coordinator)
-        coordinator.start()
+        coordinator.start(analyse: analyse)
     }
 }

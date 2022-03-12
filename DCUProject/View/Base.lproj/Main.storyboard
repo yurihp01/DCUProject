@@ -567,6 +567,9 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     <segment title="Questionário"/>
                                     <segment title="Entrevista"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="H5a-tl-HSf" eventType="valueChanged" id="GP5-w8-Low"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f8A-wu-Gay">
                                 <rect key="frame" x="16" y="107" width="382" height="690"/>
@@ -577,7 +580,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0i8-oj-AUC" style="IBUITableViewCellStyleDefault" id="tGq-p9-W8j">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="0i8-oj-AUC" style="IBUITableViewCellStyleDefault" id="tGq-p9-W8j">
                                         <rect key="frame" x="0.0" y="88.5" width="382" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tGq-p9-W8j" id="rvJ-lu-gbu">
@@ -585,23 +588,6 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Nome 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0i8-oj-AUC">
-                                                    <rect key="frame" x="20" y="0.0" width="325.5" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="krK-ka-5TV" style="IBUITableViewCellStyleDefault" id="CY8-J9-iXR">
-                                        <rect key="frame" x="0.0" y="132" width="382" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CY8-J9-iXR" id="02L-0o-skW">
-                                            <rect key="frame" x="0.0" y="0.0" width="353.5" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Nome 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="krK-ka-5TV">
                                                     <rect key="frame" x="20" y="0.0" width="325.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
@@ -641,19 +627,11 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Detalhes-->
         <scene sceneID="62J-z7-fNg">
             <objects>
-                <viewController title="Detalhes" id="350-aG-giv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnalyseViewController" title="Detalhes" id="350-aG-giv" customClass="AnalyseViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qyc-IE-c3v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAi-9y-5QD">
-                                <rect key="frame" x="16" y="796" width="382" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0Mo-Cj-ric"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Adicionar"/>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="41I-Tx-9fu">
                                 <rect key="frame" x="16" y="76" width="382" height="41"/>
                                 <constraints>
@@ -664,31 +642,54 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     <segment title="Questionário"/>
                                     <segment title="Entrevista"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="350-aG-giv" eventType="valueChanged" id="4D0-3r-Q7Q"/>
+                                </connections>
                             </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Insira todos os detalhes da tua análise de acordo\n com o seu modelo: Persona, Questionário ou Entrevista." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sqC-us-3RO">
-                                <rect key="frame" x="16" y="148" width="382" height="632"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome da Análise" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nvA-ub-sTv">
+                                <rect key="frame" x="16" y="148" width="382" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="MRd-11-sTa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mi-8F-ekY">
+                                <rect key="frame" x="16" y="224" width="382" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Definindo seu tema, já temos um passo realizado! Para que você entenda todo o processo de desenvolvimento de um projeto completo, deixamos
+aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Yx-5B-QLW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="bottom" secondItem="3mi-8F-ekY" secondAttribute="bottom" constant="16" id="2w5-R4-av4"/>
                             <constraint firstItem="41I-Tx-9fu" firstAttribute="top" secondItem="8Yx-5B-QLW" secondAttribute="top" constant="32" id="70p-7S-XX9"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="sqC-us-3RO" secondAttribute="trailing" constant="16" id="QeT-fu-9tL"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="bottom" secondItem="SAi-9y-5QD" secondAttribute="bottom" constant="16" id="RdL-7E-Eoh"/>
+                            <constraint firstItem="nvA-ub-sTv" firstAttribute="top" secondItem="41I-Tx-9fu" secondAttribute="bottom" constant="32" id="Cw7-cZ-p1Z"/>
+                            <constraint firstItem="3mi-8F-ekY" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="OQf-AL-X0i"/>
+                            <constraint firstItem="3mi-8F-ekY" firstAttribute="top" secondItem="nvA-ub-sTv" secondAttribute="bottom" constant="16" id="Pgs-DR-SsD"/>
+                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="nvA-ub-sTv" secondAttribute="trailing" constant="16" id="i8x-Oz-6F2"/>
+                            <constraint firstItem="nvA-ub-sTv" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="j5x-Ry-Plo"/>
                             <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="41I-Tx-9fu" secondAttribute="trailing" constant="16" id="jXa-zv-ET0"/>
-                            <constraint firstItem="sqC-us-3RO" firstAttribute="top" secondItem="41I-Tx-9fu" secondAttribute="bottom" constant="32" id="mYb-67-sxW"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="SAi-9y-5QD" secondAttribute="trailing" constant="16" id="qCG-Tc-2oY"/>
-                            <constraint firstItem="sqC-us-3RO" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="ri3-Wa-kj4"/>
                             <constraint firstItem="41I-Tx-9fu" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="tIA-a4-fOc"/>
-                            <constraint firstItem="SAi-9y-5QD" firstAttribute="top" secondItem="sqC-us-3RO" secondAttribute="bottom" constant="16" id="uJR-EE-WP4"/>
-                            <constraint firstItem="SAi-9y-5QD" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="ztf-Te-bXM"/>
+                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="3mi-8F-ekY" secondAttribute="trailing" constant="16" id="vIt-9R-LpG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Análise" id="GSR-qN-9fo">
                         <barButtonItem key="rightBarButtonItem" title="Editar" style="plain" id="jcn-E5-4RN"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detail" destination="3mi-8F-ekY" id="Wtk-WT-fhl"/>
+                        <outlet property="name" destination="nvA-ub-sTv" id="GR1-02-gfM"/>
+                        <outlet property="segmentedControl" destination="41I-Tx-9fu" id="DT8-UH-mk8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eQ3-2l-PCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

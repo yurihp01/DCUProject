@@ -1,49 +1,128 @@
-////
-////  ProjectsViewController.swift
-////  DCUProject
-////
-////  Created by PRO on 20/02/2022.
-////
 //
-//import UIKit
+//  AnalyseViewController.swift
+//  DCUProject
 //
-//class ProjectsViewController: BaseViewController {
-//    weak var coordinator: ProjectsCoordinator?
-//    var viewModel: ProjectsViewModelProtocol?
-//    @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var searchBar: UISearchBar!
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        searchBar.delegate = self
-//        // Do any additional setup after loading the view.
-//    }
-//}
+//  Created by PRO on 10/03/2022.
 //
-//extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let projects = viewModel?.getProjects(by: searchBar.text),
-//                projects.count > 0 else { return UITableViewCell() }
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        cell.textLabel?.text = projects[indexPath.row].name
-//        return cell
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let project = viewModel?.getProjects(by: searchBar.text)[indexPath.row] else { return }
-//        coordinator?.goToCompletedProject(with: project)
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel?.getProjects(by: searchBar.text) .count ?? 0
-//    }
-//}
-//
-//extension ProjectsViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        tableView.reloadData()
-//    }
-//}
+
+import UIKit
+
+class AnalyseViewController: BaseViewController {
+
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var detail: UITextView!
+    
+    weak var coordinator: AnalyseCoordinator?
+    weak var delegate: AnalysisDelegate?
+    
+    var viewModel: AnalyseProtocol?
+    var segmentedType = AnalyseType.persona
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setViewsVisibility()
+        setViews()
+        setTextView()
+        setNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc func continueButtonPressed() {
+        guard let delegate = delegate,
+              let coordinator = coordinator else { return }
+        
+        switch viewModel?.type {
+        case .insert:
+            saveAnalyse {
+                guard let analyse = viewModel?.analyse else { return }
+                showMessage(message: "Análise salva com sucesso!") { _ in
+                    delegate.getAnalyse(with: analyse)
+                    coordinator.stop()
+                }
+            }
+        case .edit:
+            if viewModel?.buttonType == .save {
+                saveAnalyse {
+                    guard let analyse = viewModel?.analyse else { return }
+                    showMessage(message: "Análise salva com sucesso!") { _ in
+                        delegate.getAnalyse(with: analyse)
+                        coordinator.stop()
+                    }
+                }
+            }
+            viewModel?.buttonType.toggle()
+            navigationItem.rightBarButtonItem?.title = viewModel?.buttonType.rawValue
+            setViewsVisibility()
+        case .none:
+            print("Error")
+        }
+    }
+    
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            segmentedType = AnalyseType.persona
+        case 1:
+            segmentedType = AnalyseType.quiz
+        case 2:
+            segmentedType = AnalyseType.interview
+        default:
+            print("Error")
+        }
+    }
+}
+
+private extension AnalyseViewController {
+    func setViews() {
+        let analyse = viewModel?.analyse
+        name.text = analyse?.name ?? ""
+        detail.text = analyse?.detail ?? viewModel?.placeholder
+        segmentedControl.selectedSegmentIndex = analyse?.type.getTypeId ?? 0
+    }
+    
+    func setViewsVisibility() {
+        detail.isEditable = viewModel?.buttonType == .edit ? false : true
+        name.isEnabled = detail.isEditable
+        segmentedControl.isEnabled = detail.isEditable
+    }
+    
+    func setTextView() {
+        guard let placeholder = viewModel?.placeholder else { return }
+        detail.textColor = detail.text.contains(placeholder) ? .lightGray : .black
+        detail.delegate = self
+    }
+    
+    func saveAnalyse(complete: () -> ()) {
+        guard var viewModel = viewModel,
+              let name = name.text, !name.isEmpty,
+              let detail = detail.text, !detail.isEmpty,
+              !detail.contains(viewModel.placeholder) else {
+            showAlert(message: "O campo definição está vazio. Preencha e tente novamente!")
+            return
+        }
+        
+        let analyse = Analyse(detail: detail, type: segmentedType, name: name)
+        viewModel.analyse = analyse
+        complete()
+    }
+    
+    func setNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel?.buttonType.rawValue, style: .plain, target: self, action: #selector(continueButtonPressed))
+        navigationItem.rightBarButtonItem?.title = viewModel?.buttonType.rawValue
+    }
+}
+
+extension AnalyseViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.textColor = UIColor.black
+            textView.text = ""
+        }
+    }
+}
+

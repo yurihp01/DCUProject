@@ -33,6 +33,7 @@ struct Constants {
     static let cells = "cells"
     static let okButton = "OK"
     static let question = "Qual a sua ideia de projeto?"
-
+    
+    static let analysePlaceholder = "Definindo seu tema, já temos um passo realizado! Para que você entenda todo o processo de desenvolvimento de um projeto completo, deixamos aqui um processo completo utilizando a ferramenta! Bora lá ver?"
     
 }
