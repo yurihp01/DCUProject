@@ -19,8 +19,7 @@ class DefinitionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        setTextView()
-        setLabel()
+        setViews()
     }
     
     @objc func continueButtonPressed() {
@@ -50,14 +49,16 @@ class DefinitionViewController: BaseViewController {
 }
 
 private extension DefinitionViewController {
-    func setLabel() {
-        titleLabel.text = viewModel?.label
+    func setViews() {
+        guard let viewModel = viewModel else { return }
+        titleLabel.text = viewModel.project.name ?? viewModel.label
+        definitionText.text =  viewModel.project.description ?? viewModel.placeholder
+        definitionText.textColor = definitionText.text.contains(viewModel.placeholder) ? .lightGray : .black
+        setTextView()
     }
     
     func setTextView() {
         definitionText.isEditable = viewModel?.type == .insert ? true : false
-        definitionText.text = viewModel?.placeholder
-        definitionText.textColor = UIColor.lightGray
         definitionText.delegate = self
     }
     

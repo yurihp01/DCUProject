@@ -127,7 +127,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SIJ-Ia-qyl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7Ia-Zg-Ejv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K1J-2t-IQB" secondAttribute="trailing" constant="16" id="8SN-WA-O1y"/>
@@ -380,7 +380,7 @@
                             <constraint firstItem="iPO-Fk-RyH" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="tFj-Ha-BUn" secondAttribute="bottom" constant="16" id="ycy-v9-hKX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Detalhes" image="info.circle.fill" catalog="system" id="OA1-7g-Anb"/>
+                    <tabBarItem key="tabBarItem" title="Detalhes" image="list.bullet.rectangle" catalog="system" id="OA1-7g-Anb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="category" destination="Epy-1k-mSf" id="H10-u4-WjR"/>
@@ -612,7 +612,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="f8A-wu-Gay" secondAttribute="trailing" constant="16" id="z9J-Hk-WMd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Análise" image="rectangle.and.pencil.and.ellipsis" catalog="system" id="0A1-zl-1wM"/>
+                    <tabBarItem key="tabBarItem" title="Análise" image="doc.text.magnifyingglass" catalog="system" id="0A1-zl-1wM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="analyseSegmentedControl" destination="EBJ-T7-wch" id="JxV-AX-ixt"/>
@@ -765,7 +765,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                             <constraint firstItem="hMz-Hv-w5c" firstAttribute="top" secondItem="zFp-mR-JT4" secondAttribute="top" constant="16" id="wGJ-4b-Ifa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Definição" id="say-QN-Ani"/>
+                    <tabBarItem key="tabBarItem" title="Definição" image="square.and.pencil" catalog="system" id="say-QN-Ani"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="details" destination="AYe-AK-ZgD" id="tqR-YL-K3d"/>
@@ -780,13 +780,17 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
     <resources>
         <image name="checklist" catalog="system" width="128" height="105"/>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
-        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="doc.text.magnifyingglass" catalog="system" width="107" height="128"/>
+        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="paintpalette.fill" catalog="system" width="128" height="105"/>
-        <image name="rectangle.and.pencil.and.ellipsis" catalog="system" width="128" height="81"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
