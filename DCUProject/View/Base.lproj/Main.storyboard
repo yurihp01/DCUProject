@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -698,24 +698,49 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <!--Design-->
         <scene sceneID="rwR-WX-dUc">
             <objects>
-                <viewController title="Design" id="efh-Ew-GGt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DesignViewController" title="Design" id="efh-Ew-GGt" customClass="DesignViewController" customModule="DCUProject" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A9a-dk-cyB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pencil kit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch0-AK-pg7">
-                                <rect key="frame" x="153" y="261" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clique e escolha um protótipo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch0-AK-pg7">
+                                <rect key="frame" x="16" y="99.5" width="227.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="251" image="macwindow.badge.plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7JB-Lz-5AQ">
+                                <rect key="frame" x="258" y="61.5" width="101.5" height="99"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="J2k-UA-OgU"/>
+                                    <constraint firstAttribute="height" constant="100" id="gdf-gc-qzE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zhe-ie-dl5">
+                                <rect key="frame" x="16" y="176" width="382" height="621"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z2d-0p-RIt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7JB-Lz-5AQ" firstAttribute="top" secondItem="z2d-0p-RIt" secondAttribute="top" constant="16" id="0vE-1s-wpu"/>
+                            <constraint firstItem="Zhe-ie-dl5" firstAttribute="top" secondItem="7JB-Lz-5AQ" secondAttribute="bottom" constant="16" id="4an-uT-UBt"/>
+                            <constraint firstItem="z2d-0p-RIt" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7JB-Lz-5AQ" secondAttribute="trailing" constant="16" id="5Kv-kH-SJK"/>
+                            <constraint firstItem="z2d-0p-RIt" firstAttribute="trailing" secondItem="Zhe-ie-dl5" secondAttribute="trailing" constant="16" id="9pI-al-Kff"/>
+                            <constraint firstItem="Ch0-AK-pg7" firstAttribute="leading" secondItem="z2d-0p-RIt" secondAttribute="leading" constant="16" id="HbI-Ta-fpc"/>
+                            <constraint firstItem="7JB-Lz-5AQ" firstAttribute="leading" secondItem="Ch0-AK-pg7" secondAttribute="trailing" constant="16" id="L7K-Oh-TmW"/>
+                            <constraint firstItem="Ch0-AK-pg7" firstAttribute="centerY" secondItem="7JB-Lz-5AQ" secondAttribute="centerY" id="PW2-Gn-Q60"/>
+                            <constraint firstItem="z2d-0p-RIt" firstAttribute="bottom" secondItem="Zhe-ie-dl5" secondAttribute="bottom" constant="16" id="WhF-VV-03w"/>
+                            <constraint firstItem="Zhe-ie-dl5" firstAttribute="leading" secondItem="z2d-0p-RIt" secondAttribute="leading" constant="16" id="oQH-Ie-RQL"/>
+                            <constraint firstItem="7JB-Lz-5AQ" firstAttribute="top" secondItem="z2d-0p-RIt" secondAttribute="top" constant="16" id="tW4-YP-VI0"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Design" image="paintpalette.fill" catalog="system" id="tkt-TH-8rS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="prototypeImage" destination="7JB-Lz-5AQ" id="5m5-w0-R57"/>
+                        <outlet property="selectedImage" destination="Zhe-ie-dl5" id="OyY-3I-sNw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11c-c3-fNS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -782,6 +807,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="107" height="128"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
+        <image name="macwindow.badge.plus" catalog="system" width="128" height="95"/>
         <image name="paintpalette.fill" catalog="system" width="128" height="105"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">

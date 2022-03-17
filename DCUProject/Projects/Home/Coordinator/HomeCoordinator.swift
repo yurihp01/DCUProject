@@ -59,7 +59,10 @@ class HomeCoordinator: Coordinator {
         return coordinator.getViewController()
     }
     
-    func changeToDesign() {
-        
+    func changeToDesign() -> DesignViewController {
+        let coordinator = DesignCoordinator(navigationController: navigationController)
+        coordinator.parentCoordinator = self
+        add(coordinator)
+        return coordinator.getViewController()
     }
 }

@@ -4,5 +4,9 @@
 <dict>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Este app deseja utilizar a câmera para tirar fotos.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Este app deseja utilizar as suas fotos da galeria.</string>
 </dict>
 </plist>

@@ -29,8 +29,7 @@ class HomeViewController: UITabBarController, Storyboarded {
             return
         }
 
-        // it still needs to add designVC
-        viewControllers = [coordinator.changeToDetails(), coordinator.changeToAnalyse(), coordinator.changeToAvaliation(), coordinator.changeToDefinition()].map {
+        viewControllers = [coordinator.changeToDetails(), coordinator.changeToAnalyse(), coordinator.changeToAvaliation(), coordinator.changeToDesign(), coordinator.changeToDefinition()].map {
             let navigation = UINavigationController(rootViewController: $0)
             navigation.title = $0.title
             return navigation

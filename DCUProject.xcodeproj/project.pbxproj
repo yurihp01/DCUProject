@@ -58,6 +58,10 @@
 		15EA486B27DA9B4400D3A3B4 /* Analyse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EA486A27DA9B4400D3A3B4 /* Analyse.swift */; };
 		652F75A61AD5CBA264A7F58F /* Pods_DCUProject_DCUProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9482EB95846E44BE6C0C88E /* Pods_DCUProject_DCUProjectUITests.framework */; };
 		6D82450DA7B66179CD24321C /* Pods_DCUProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC232315D004582931B64374 /* Pods_DCUProjectTests.framework */; };
+		DAA26E9627E1709100D85059 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA26E9527E1709100D85059 /* ImagePicker.swift */; };
+		DAA26E9E27E173BA00D85059 /* DesignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA26E9927E173B900D85059 /* DesignViewModel.swift */; };
+		DAA26E9F27E173BA00D85059 /* DesignCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA26E9B27E173B900D85059 /* DesignCoordinator.swift */; };
+		DAA26EA027E173BA00D85059 /* DesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA26E9D27E173B900D85059 /* DesignViewController.swift */; };
 		EA5588F5114228ACB11FF24F /* Pods_DCUProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +141,10 @@
 		9E7DA23FDDA8BD03CE74147A /* Pods-DCUProject-DCUProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C2480D08E864CAF7F58D0EAB /* Pods-DCUProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject.debug.xcconfig"; path = "Target Support Files/Pods-DCUProject/Pods-DCUProject.debug.xcconfig"; sourceTree = "<group>"; };
 		C9482EB95846E44BE6C0C88E /* Pods_DCUProject_DCUProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProject_DCUProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA26E9527E1709100D85059 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DAA26E9927E173B900D85059 /* DesignViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignViewModel.swift; sourceTree = "<group>"; };
+		DAA26E9B27E173B900D85059 /* DesignCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignCoordinator.swift; sourceTree = "<group>"; };
+		DAA26E9D27E173B900D85059 /* DesignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignViewController.swift; sourceTree = "<group>"; };
 		DC232315D004582931B64374 /* Pods_DCUProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC573371D7C8716462B399D2 /* Pods-DCUProject-DCUProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,9 +308,9 @@
 		15A3125E27C125B500B2177C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				15A3125F27C125D200B2177C /* UIAlertController+Extensions.swift */,
+				DAA26E9427E1706E00D85059 /* Custom */,
+				DAA26E9327E1705C00D85059 /* Extensions */,
 				15A3126127C1260E00B2177C /* Constants.swift */,
-				15CEE40C27CED5C40098CA0B /* UITextView+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -310,8 +318,8 @@
 		15CEE3BD27CE9C9D0098CA0B /* Projects */ = {
 			isa = PBXGroup;
 			children = (
+				DAA26E9727E173B900D85059 /* Design */,
 				15CEE3BE27CE9C9D0098CA0B /* Home */,
-				15CEE3C527CE9C9D0098CA0B /* Design */,
 				15CEE3C627CE9C9D0098CA0B /* Insert */,
 				15CEE3EE27CE9D880098CA0B /* Analysis */,
 				15CEE3C827CE9C9D0098CA0B /* Definition */,
@@ -356,13 +364,6 @@
 				15CEE3C427CE9C9D0098CA0B /* HomeViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		15CEE3C527CE9C9D0098CA0B /* Design */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Design;
 			sourceTree = "<group>";
 		};
 		15CEE3C627CE9C9D0098CA0B /* Insert */ = {
@@ -690,6 +691,57 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DAA26E9327E1705C00D85059 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				15A3125F27C125D200B2177C /* UIAlertController+Extensions.swift */,
+				15CEE40C27CED5C40098CA0B /* UITextView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DAA26E9427E1706E00D85059 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				DAA26E9527E1709100D85059 /* ImagePicker.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		DAA26E9727E173B900D85059 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				DAA26E9827E173B900D85059 /* ViewModel */,
+				DAA26E9A27E173B900D85059 /* Coordinator */,
+				DAA26E9C27E173B900D85059 /* Controller */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		DAA26E9827E173B900D85059 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAA26E9927E173B900D85059 /* DesignViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DAA26E9A27E173B900D85059 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DAA26E9B27E173B900D85059 /* DesignCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DAA26E9C27E173B900D85059 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DAA26E9D27E173B900D85059 /* DesignViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E183B176E81489FCE9535B95 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -973,13 +1025,17 @@
 				15CEE3E627CE9C9D0098CA0B /* RegisterViewController.swift in Sources */,
 				15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */,
 				15CEE3E327CE9C9D0098CA0B /* HomeViewController.swift in Sources */,
+				DAA26E9627E1709100D85059 /* ImagePicker.swift in Sources */,
 				15CEE40B27CE9EF30098CA0B /* DefinitionCoordinator.swift in Sources */,
 				15CEE3FD27CE9D880098CA0B /* AnalyseViewModel.swift in Sources */,
 				15CEE40027CE9D880098CA0B /* AnalysisViewModel.swift in Sources */,
 				15EA486327D4DB0B00D3A3B4 /* AvaliationViewController.swift in Sources */,
+				DAA26E9F27E173BA00D85059 /* DesignCoordinator.swift in Sources */,
 				15CEE40127CE9D880098CA0B /* AnalysisCoordinator.swift in Sources */,
 				15CEE3FF27CE9D880098CA0B /* AnalyseViewController.swift in Sources */,
 				15CEE41027CED8230098CA0B /* InsertProjectViewModel.swift in Sources */,
+				DAA26E9E27E173BA00D85059 /* DesignViewModel.swift in Sources */,
+				DAA26EA027E173BA00D85059 /* DesignViewController.swift in Sources */,
 				15EA485F27D4DAB800D3A3B4 /* AvaliationViewModel.swift in Sources */,
 				15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */,
 				15EA486B27DA9B4400D3A3B4 /* Analyse.swift in Sources */,
