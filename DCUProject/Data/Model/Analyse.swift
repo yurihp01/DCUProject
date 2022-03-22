@@ -27,9 +27,41 @@ extension AnalyseType {
 }
 
 struct Analyse {
-    var detail: String
-    var type: AnalyseType
     var name: String
+    var detail: String
+    var type: String = ""
+    var analyseType: AnalyseType {
+        didSet {
+            type = analyseType.rawValue
+        }
+    }
+    
+    init(detail: String, type: AnalyseType, name: String) {
+        self.name = name
+        self.detail = detail
+        self.analyseType = type
+    }
+}
+
+extension Analyse: Codable {
+    enum CodingKeys: String, CodingKey {
+        case detail, type, name, analyseType
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        name = try values.decode(String.self, forKey: .name)
+        detail = try values.decode(String.self, forKey: .detail)
+        type = try values.decode(String.self, forKey: .type)
+        analyseType = AnalyseType(rawValue: type)!
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(detail, forKey: .detail)
+        try container.encode(type, forKey: .type)
+    }
     
     static let mockedAnalyse = Analyse(detail: "O detalhe é legal ", type: .interview, name: "Análise 1")
     

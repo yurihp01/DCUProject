@@ -34,6 +34,7 @@ class DetailsViewController: BaseViewController {
         setFields()
         setNavigationBar()
         setDatePicker()
+        checkOwner()
     }
     
     @objc func buttonTouched() {
@@ -52,6 +53,14 @@ class DetailsViewController: BaseViewController {
 }
 
 private extension DetailsViewController {
+    func checkOwner() {
+        if let email = viewModel?.getCurrentUser()?.email,
+           let projectOwner = viewModel?.project.owner,
+           !email.elementsEqual(projectOwner) {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
     func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonType.rawValue, style: .plain, target: self, action: #selector(buttonTouched))
     }
@@ -65,7 +74,7 @@ private extension DetailsViewController {
     
     func addFields() {
         if buttonType == .save {
-            let project = Project(name: name.text, team: team.text, category: category.text, date: datePicker.date)
+            let project = Project(name: name.text, team: team.text, category: category.text, owner: viewModel?.getCurrentUser()?.email, date: datePicker.date)
             viewModel?.project = project
             showMessage(message: "Projeto alterado com sucesso!", handler: nil)
         }

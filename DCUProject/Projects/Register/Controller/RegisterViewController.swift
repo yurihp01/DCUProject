@@ -21,7 +21,9 @@ class RegisterViewController: BaseViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         indicator.startAnimating()
         Task.init {
-            if let message = await viewModel?.registerUser(with: userField.text, password: password.text),
+            let user = User(email: userField.text ?? "")
+            let password = password.text ?? ""
+            if let message = await viewModel?.registerUser(with: user.email, password: password),
                message.contains("criado") {
                 indicator.stopAnimating()
                 showMessage(message: message) {_ in

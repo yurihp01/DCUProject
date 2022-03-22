@@ -49,6 +49,14 @@ class DefinitionViewController: BaseViewController {
 }
 
 private extension DefinitionViewController {
+    func checkOwner() {
+        if let email = viewModel?.getCurrentUser()?.email,
+           let projectOwner = viewModel?.project.owner,
+           !email.elementsEqual(projectOwner) {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+    
     func setViews() {
         guard let viewModel = viewModel else { return }
         titleLabel.text = viewModel.project.name ?? viewModel.label

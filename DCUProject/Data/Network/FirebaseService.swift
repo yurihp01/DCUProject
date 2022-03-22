@@ -12,20 +12,41 @@ typealias Handle = AuthStateDidChangeListenerHandle
 
 protocol FirebaseServiceProtocol: AnyObject {
     var handle: Handle { get }
-    var ref: DatabaseReference { get }
+    var currentUser: Firebase.User? { get }
+    var project: Project? { get set }
     func removeHandle(handle: Handle)
     func login(email: String, password: String) async -> String
     func register(email: String, password: String) async -> String
     func getProjects() async -> [Project]
+    func addAnalyse(analyse: Analyse)
+    func addUser(email: String)
 }
 
 class FirebaseService: FirebaseServiceProtocol {
+    var project: Project? {
+        didSet {
+            addProject()
+        }
+    }
+    
+    var currentUser: Firebase.User? {
+        return Auth.auth().currentUser
+    }
+    
     var handle: Handle {
         return Auth.auth().addStateDidChangeListener { auth, user in }
     }
     
-    var ref: DatabaseReference {
-        Database.database().reference(withPath: "")
+    var userRef: DatabaseReference {
+        Database.database().reference(withPath: "user")
+    }
+    
+    var projectRef: DatabaseReference {
+        userRef.database.reference(withPath: "project")
+    }
+    
+    var analyseRef: DatabaseReference {
+        projectRef.database.reference(withPath: "analyse")
     }
     
     func removeHandle(handle: Handle) {
@@ -44,6 +65,7 @@ class FirebaseService: FirebaseServiceProtocol {
     func register(email: String, password: String) async -> String {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
+            addUser(email: email)
             return "Usuário criado com sucesso!"
         } catch {
             return error.localizedDescription
@@ -56,10 +78,30 @@ class FirebaseService: FirebaseServiceProtocol {
         }
         return []
     }
+    
+    func addProject() {
+        let child = projectRef.childByAutoId()
+        project?.id = child.key
+//        projectRef.setValue(child)
+        child.setValue(project)
+    }
+    
+    func addAnalyse(analyse: Analyse) {
+        analyseRef.setValue(try? DictionaryEncoder.encode(analyse))
+    }
+    
+    func addUser(email: String) {
+        let email = NSString(string: email)
+        userRef.setValue(email)
+    }
+    
+    func removeDots(text: String) -> String {
+        return text.replacingOccurrences(of: ".", with: ",,")
+    }
 }
 
 private extension FirebaseService {
-    func getData() async throws -> Any {
-        return await ref.observeSingleEventAndPreviousSiblingKey(of: .value)
-    }
+//    func getData() async throws -> Any {
+//        return await ref.observeSingleEventAndPreviousSiblingKey(of: .value)
+//    }
 }

@@ -16,12 +16,15 @@ class DesignCoordinator: Coordinator {
     
     let viewController = DesignViewController.instantiate(storyboardName: .main)
     
-    init(navigationController: UINavigationController) {
+    let project: Project
+    
+    init(navigationController: UINavigationController, project: Project) {
         self.navigationController = navigationController
+        self.project = project
     }
     
     func start() {
-        viewController.viewModel = DesignViewModel()
+        viewController.viewModel = DesignViewModel(project: project)
         viewController.coordinator = self
     }
     

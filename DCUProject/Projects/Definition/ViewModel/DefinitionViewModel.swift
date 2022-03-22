@@ -5,24 +5,26 @@
 //  Created by PRO on 01/03/2022.
 //
 
-import Foundation
+import Firebase
 
 protocol DefinitionProtocol {
     var project: Project { get }
     var placeholder: String { get }
     var label: String? { get }
     var type: DefinitionType { get }
-
     func setDefinition(_ definition: String)
+    func getCurrentUser() -> Firebase.User?
 }
 
 class DefinitionViewModel {
     var project: Project
     var type: DefinitionType
+    let firebase: FirebaseServiceProtocol
     
     init(project: Project, type: DefinitionType) {
         self.project = project
         self.type = type
+        firebase = FirebaseService()
         print("INIT: DefinitionViewModel")
     }
     
@@ -42,6 +44,10 @@ extension DefinitionViewModel: DefinitionProtocol {
     
     func setDefinition(_ definition: String) {
         project.description = definition
-//        firebaseService.addProject()
+        firebase.project = project
+    }
+    
+    func getCurrentUser() -> Firebase.User? {
+        return firebase.currentUser
     }
 }

@@ -79,10 +79,10 @@ class AnalyseViewController: BaseViewController {
 
 private extension AnalyseViewController {
     func setViews() {
-        let analyse = viewModel?.analyse
-        name.text = analyse?.name ?? ""
-        detail.text = analyse?.detail ?? viewModel?.placeholder
-        segmentedControl.selectedSegmentIndex = analyse?.type.getTypeId ?? 0
+        guard let analyse = viewModel?.analyse else { return }
+        name.text = analyse.name
+        detail.text = analyse.detail
+        segmentedControl.selectedSegmentIndex = AnalyseType(rawValue: analyse.type)?.getTypeId ?? 0
     }
     
     func setViewsVisibility() {

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RegisterViewModelProtocol: AnyObject {
-    func registerUser(with email: String?, password: String?) async -> String
+    func registerUser(with email: String, password: String) async -> String
 }
 
 class RegisterViewModel {
@@ -25,9 +25,7 @@ class RegisterViewModel {
 }
 
 extension RegisterViewModel: RegisterViewModelProtocol {
-    func registerUser(with email: String?, password: String?) async -> String {
-        guard let email = email,
-              let password = password else { return "Email ou senha inválidos. Valide os campos e tente novamente!" }
+    func registerUser(with email: String, password: String) async -> String {
         return await firebaseService.register(email: email, password: password)
     }
 }
