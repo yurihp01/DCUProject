@@ -34,8 +34,6 @@ class LoginCoordinator: Coordinator {
     
     func goToProjectsScreen() {
         let coordinator = ProjectsCoordinator(with: navigationController)
-        coordinator.parentCoordinator = self
-        add(coordinator)
         coordinator.start()
     }
 }

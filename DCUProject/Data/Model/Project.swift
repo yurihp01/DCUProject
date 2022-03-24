@@ -26,6 +26,19 @@ struct Project: Codable {
         case name, description, team, category, date, analysis, users, owner, id
     }
     
+    func toDict() -> NSDictionary {
+        let dict = [
+            "name":NSString(string: name!),
+            "team":NSString(string: team!),
+            "category":NSString(string: category!),
+            "date":NSString(string: date!.formatted()),
+            "description":NSString(string: description!),
+            "owner":NSString(string: owner!),
+            "id":NSString(string: id ?? "")
+        ]
+        return NSDictionary(dictionary: dict)
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)

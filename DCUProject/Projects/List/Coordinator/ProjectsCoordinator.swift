@@ -16,13 +16,15 @@ class ProjectsCoordinator: Coordinator {
     
     init (with navigationController: UINavigationController) {
         self.navigationController = navigationController
+        parentCoordinator = self
     }
     
     func start() {
         let viewController = ProjectsViewController.instantiate(storyboardName: .main)
         viewController.viewModel = ProjectsViewModel()
         viewController.coordinator = self
-        navigationController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: false)
+        navigationController.viewControllers.removeFirst(navigationController.viewControllers.count - 1)
     }
     
     func goToCompletedProject(with project: Project) {

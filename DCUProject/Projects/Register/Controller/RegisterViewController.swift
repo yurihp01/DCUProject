@@ -18,6 +18,11 @@ class RegisterViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        coordinator?.childDidFinish(coordinator)
+        super.viewDidDisappear(animated)
+    }
+    
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         indicator.startAnimating()
         Task.init {

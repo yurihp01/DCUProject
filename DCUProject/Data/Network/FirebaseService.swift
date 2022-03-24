@@ -19,15 +19,12 @@ protocol FirebaseServiceProtocol: AnyObject {
     func register(email: String, password: String) async -> String
     func getProjects() async -> [Project]
     func addAnalyse(analyse: Analyse)
+    func addProject(project: Project)
     func addUser(email: String)
 }
 
 class FirebaseService: FirebaseServiceProtocol {
-    var project: Project? {
-        didSet {
-            addProject()
-        }
-    }
+    var project: Project?
     
     var currentUser: Firebase.User? {
         return Auth.auth().currentUser
@@ -79,11 +76,14 @@ class FirebaseService: FirebaseServiceProtocol {
         return []
     }
     
-    func addProject() {
-        let child = projectRef.childByAutoId()
-        project?.id = child.key
-//        projectRef.setValue(child)
-        child.setValue(project)
+    func addProject(project: Project) {
+        self.project = project
+        self.projectRef.childByAutoId().setValue(project.toDict()) { [self] error, database in
+            if error == nil {
+                self.project?.id = database.key
+                projectRef.child(database.key ?? "").setValue(self.project?.toDict())
+            }
+        }
     }
     
     func addAnalyse(analyse: Analyse) {
@@ -95,8 +95,8 @@ class FirebaseService: FirebaseServiceProtocol {
         userRef.setValue(email)
     }
     
-    func removeDots(text: String) -> String {
-        return text.replacingOccurrences(of: ".", with: ",,")
+    func removeDots(text: String?) -> String {
+        return text!.replacingOccurrences(of: ".", with: ",,")
     }
 }
 

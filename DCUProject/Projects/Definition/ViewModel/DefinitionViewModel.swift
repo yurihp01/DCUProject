@@ -44,7 +44,7 @@ extension DefinitionViewModel: DefinitionProtocol {
     
     func setDefinition(_ definition: String) {
         project.description = definition
-        firebase.project = project
+        firebase.addProject(project: project)
     }
     
     func getCurrentUser() -> Firebase.User? {
