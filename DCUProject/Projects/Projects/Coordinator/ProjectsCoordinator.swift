@@ -29,6 +29,7 @@ class ProjectsCoordinator: Coordinator {
     
     func goToCompletedProject(with project: Project) {
         let coordinator = HomeCoordinator(navigationController: navigationController, project: project)
+        coordinator.parentCoordinator = self
         add(coordinator)
         coordinator.start()
     }

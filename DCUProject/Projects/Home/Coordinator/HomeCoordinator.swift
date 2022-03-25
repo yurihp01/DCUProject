@@ -26,9 +26,8 @@ class HomeCoordinator: Coordinator {
         viewController.viewModel = HomeViewModel(project: project)
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
-        navigationController.viewControllers.removeFirst(navigationController.viewControllers.count - 1)
         parentCoordinator = self
-        navigationController.isNavigationBarHidden = true
+//        navigationController.isNavigationBarHidden = true
     }
     
     func changeToDetails() -> DetailsViewController {

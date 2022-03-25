@@ -14,31 +14,23 @@ class HomeViewController: UITabBarController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTabBarViewControllers()
         addTabBar()
     }
     
     private func addTabBar() {
+        guard let coordinator = coordinator else { return }
         self.delegate = self
+        viewControllers = [coordinator.changeToDetails(), coordinator.changeToAnalyse(), coordinator.changeToAvaliation(), coordinator.changeToDesign(), coordinator.changeToDefinition()]
         setViewControllers(viewControllers, animated: true)
         tabBarController?.selectedViewController = viewControllers?.first
-    }
-    
-    private func addTabBarViewControllers() {
-        guard let coordinator = coordinator else {
-            return
-        }
-
-        viewControllers = [coordinator.changeToDetails(), coordinator.changeToAnalyse(), coordinator.changeToAvaliation(), coordinator.changeToDesign(), coordinator.changeToDefinition()].map {
-            let navigation = UINavigationController(rootViewController: $0)
-            navigation.title = $0.title
-            return navigation
-        }
+        navigationItem.title = viewControllers?.first?.title
+        
     }
 }
 
 extension HomeViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         tabBarController.selectedViewController = viewController
+        navigationItem.title = viewController.title
     }
 }

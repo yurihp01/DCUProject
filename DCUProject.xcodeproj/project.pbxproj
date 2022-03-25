@@ -325,7 +325,7 @@
 				15CEE3C827CE9C9D0098CA0B /* Definition */,
 				15CEE3C927CE9C9D0098CA0B /* Details */,
 				15CEE3CA27CE9C9D0098CA0B /* Register */,
-				15CEE3D227CE9C9D0098CA0B /* List */,
+				15CEE3D227CE9C9D0098CA0B /* Projects */,
 				15CEE3D927CE9C9D0098CA0B /* Avaliation */,
 				15CEE3DA27CE9C9D0098CA0B /* Login */,
 			);
@@ -430,14 +430,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		15CEE3D227CE9C9D0098CA0B /* List */ = {
+		15CEE3D227CE9C9D0098CA0B /* Projects */ = {
 			isa = PBXGroup;
 			children = (
 				15CEE3D327CE9C9D0098CA0B /* ViewModel */,
 				15CEE3D527CE9C9D0098CA0B /* Coordinator */,
 				15CEE3D727CE9C9D0098CA0B /* Controller */,
 			);
-			path = List;
+			path = Projects;
 			sourceTree = "<group>";
 		};
 		15CEE3D327CE9C9D0098CA0B /* ViewModel */ = {
