@@ -27,6 +27,7 @@ class HomeCoordinator: Coordinator {
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
         parentCoordinator = self
+        navigationController.viewControllers.removeAll( where: { $0 is InsertProjectViewController || $0 is DefinitionViewController })
 //        navigationController.isNavigationBarHidden = true
     }
     
