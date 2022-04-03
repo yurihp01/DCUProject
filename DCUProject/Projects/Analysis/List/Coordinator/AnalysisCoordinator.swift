@@ -36,4 +36,11 @@ class AnalysisCoordinator: Coordinator {
         add(coordinator)
         coordinator.start(analyse: analyse)
     }
+    
+    func goToDesign(project: Project) {
+        let coordinator = DesignCoordinator(navigationController: navigationController, project: project)
+        coordinator.parentCoordinator = self
+        add(coordinator)
+        coordinator.start()
+    }
 }

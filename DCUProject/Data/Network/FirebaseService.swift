@@ -18,7 +18,8 @@ protocol FirebaseServiceProtocol: AnyObject {
     func login(email: String, password: String) async -> String
     func register(email: String, password: String) async -> String
     func getProjects() async -> [Project]
-    func addAnalyse(analyse: Analyse)
+    func addAnalyse(analyse: Analyse, onCompletion: @escaping (String) -> ())
+    func addPreAvaliation(preAvaliation: PreAvaliation, onCompletion: @escaping (String) -> ())
     func addProject(project: Project)
     func addUser(email: String)
 }
@@ -78,25 +79,43 @@ class FirebaseService: FirebaseServiceProtocol {
     
     func addProject(project: Project) {
         self.project = project
-        self.projectRef.childByAutoId().setValue(project.toDict()) { [self] error, database in
+        self.projectRef.childByAutoId().setValue(project.toDict()) { [weak self] error, database in
             if error == nil {
-                self.project?.id = database.key
-                projectRef.child(database.key ?? "").setValue(self.project?.toDict())
+                self?.project?.id = database.key
+                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
             }
         }
     }
     
-    func addAnalyse(analyse: Analyse) {
-        analyseRef.setValue(try? DictionaryEncoder.encode(analyse))
+    func addAnalyse(analyse: Analyse, onCompletion: @escaping (String) -> ()) {
+        self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
+            if error == nil {
+                self?.project?.id = database.key
+                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
+                self?.project?.analysis.append(analyse)
+                onCompletion("Análise adicionada com sucesso!")
+            } else {
+                onCompletion(error?.localizedDescription ?? "")
+            }
+        }
+    }
+    
+    func addPreAvaliation(preAvaliation: PreAvaliation, onCompletion: @escaping (String) -> ()) {
+        self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
+            if error == nil {
+                self?.project?.id = database.key
+                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
+                self?.project?.preAvaliation = preAvaliation
+                onCompletion("Pré-Avaliação adicionada com sucesso!")
+            } else {
+                onCompletion(error?.localizedDescription ?? "")
+            }
+        }
     }
     
     func addUser(email: String) {
         let email = NSString(string: email)
         userRef.setValue(email)
-    }
-    
-    func removeDots(text: String?) -> String {
-        return text!.replacingOccurrences(of: ".", with: ",,")
     }
 }
 

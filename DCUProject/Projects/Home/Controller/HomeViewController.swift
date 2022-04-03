@@ -20,7 +20,7 @@ class HomeViewController: UITabBarController, Storyboarded {
     private func addTabBar() {
         guard let coordinator = coordinator else { return }
         self.delegate = self
-        viewControllers = [coordinator.changeToDetails(), coordinator.changeToAnalyse(), coordinator.changeToAvaliation(), coordinator.changeToDesign(), coordinator.changeToDefinition()]
+        viewControllers = [coordinator.changeToDetails(),coordinator.changeToAnalyse(), coordinator.changeToPreAvaliation(), coordinator.changeToAvaliation()]
         setViewControllers(viewControllers, animated: true)
         tabBarController?.selectedViewController = viewControllers?.first
         navigationItem.title = viewControllers?.first?.title

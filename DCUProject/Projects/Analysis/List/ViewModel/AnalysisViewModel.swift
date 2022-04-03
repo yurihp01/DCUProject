@@ -14,9 +14,11 @@ protocol AnalysisViewModelProtocol {
 
 class AnalysisViewModel {
     var project: Project
+    var firebase: FirebaseServiceProtocol
     
     init(project: Project) {
         self.project = project
+        self.firebase = FirebaseService()
         print("INIT - AnalysisViewModel ")
     }
     
@@ -33,5 +35,9 @@ extension AnalysisViewModel: AnalysisViewModelProtocol {
         }
         return analysis.filter({ $0.name.lowercased().contains(name.lowercased()) && $0.analyseType.rawValue.elementsEqual(type)
         })
+    }
+    
+    func getProject() -> Project {
+        return firebase.project ?? Project.mockedProject
     }
 }

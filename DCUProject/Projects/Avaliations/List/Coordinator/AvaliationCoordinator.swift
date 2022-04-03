@@ -29,4 +29,11 @@ class AvaliationCoordinator: Coordinator {
         start()
         return viewController
     }
+    
+    func goToInsertAvaliation(avaliation: Avaliation?) {
+        let coordinator = InsertAvaliationCoordinator(navigationController: navigationController, avaliation: avaliation)
+        add(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
+    }
 }

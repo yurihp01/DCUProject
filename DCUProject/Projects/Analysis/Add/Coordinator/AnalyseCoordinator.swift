@@ -36,7 +36,7 @@ class AnalyseCoordinator: Coordinator {
         navigationController.isNavigationBarHidden = false
     }
     
-    func stop() {
-        navigationController.popViewController(animated: true)
-    }
+//    func stop() {
+//        navigationController.popViewController(animated: true)
+//    }
 }

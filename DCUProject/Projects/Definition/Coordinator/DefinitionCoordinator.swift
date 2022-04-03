@@ -22,7 +22,7 @@ class DefinitionCoordinator: Coordinator {
     
     lazy var viewController: DefinitionViewController = {
         let viewController = DefinitionViewController.instantiate(storyboardName: .main)
-        viewController.viewModel = DefinitionViewModel(project: project, type: type)
+        viewController.viewModel = DefinitionViewModel(project: project)
         viewController.coordinator = self
         return viewController
     }()

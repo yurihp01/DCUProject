@@ -19,10 +19,12 @@ extension AnalyseFlow {
 }
 
 protocol AnalyseProtocol {
-    var analyse: Analyse? { get set }
+    var analyse: Analyse? { get }
     var placeholder: String { get }
     var type: AnalyseFlow { get }
     var buttonType: ButtonType { get set }
+    
+    func addAnalyse(_ analyse: Analyse, onCompletion: @escaping (String?) -> ())
 }
 
 class AnalyseViewModel {
@@ -34,10 +36,13 @@ class AnalyseViewModel {
         return Constants.analysePlaceholder
     }
     
+    let firebase: FirebaseServiceProtocol
+    
     init (type: AnalyseFlow, analyse: Analyse? = nil) {
         self.analyse = analyse
         self.type = type
         buttonType = type == .insert ? .save : .edit
+        firebase = FirebaseService()
         print("INIT: AnalyseViewModel")
     }
     
@@ -46,4 +51,10 @@ class AnalyseViewModel {
     }
 }
 
-extension AnalyseViewModel: AnalyseProtocol { }
+extension AnalyseViewModel: AnalyseProtocol {
+    func addAnalyse(_ analyse: Analyse, onCompletion: @escaping (String?) -> ()) {
+        firebase.addAnalyse(analyse: analyse) { message in
+                onCompletion(message)
+        }
+    }
+}

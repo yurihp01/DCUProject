@@ -24,6 +24,8 @@ class DetailsViewController: BaseViewController {
     @IBOutlet weak var team: UITextField!
     @IBOutlet weak var category: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var definition: UITextField!
     
     weak var coordinator: DetailsCoordinator?
     var viewModel: DetailsViewModel?
@@ -32,16 +34,16 @@ class DetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setFields()
-        setNavigationBar()
         setDatePicker()
         checkOwner()
     }
     
-    @objc func buttonTouched() {
+    @IBAction func buttonTouched(_ sender: UIButton) {
         guard
             let name = name.text, !name.isEmpty,
             let team = team.text, !team.isEmpty,
-            let category = category.text, !category.isEmpty
+            let category = category.text, !category.isEmpty,
+            let definition = definition.text, !definition.isEmpty
         else {
                showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
                return
@@ -56,25 +58,22 @@ private extension DetailsViewController {
     func checkOwner() {
         if let email = viewModel?.getCurrentUser()?.email,
            let projectOwner = viewModel?.project.owner,
-           !email.elementsEqual(projectOwner) {
-            navigationItem.rightBarButtonItem?.isEnabled = false
+           !email.elementsEqual("sarahcampinho@hotmail.com") {
+            button.isEnabled = false
         }
-    }
-    
-    func setNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonType.rawValue, style: .plain, target: self, action: #selector(buttonTouched))
     }
     
     func setFields() {
         name.text = viewModel?.project.name
         team.text = viewModel?.project.team
         category.text = viewModel?.project.category
+        definition.text = viewModel?.project.description
         datePicker.date = viewModel?.project.date ?? Date()
     }
     
     func addFields() {
         if buttonType == .save {
-            let project = Project(name: name.text, team: team.text, category: category.text, owner: viewModel?.getCurrentUser()?.email, date: datePicker.date)
+            let project = Project(name: name.text, team: team.text, category: category.text, owner: viewModel?.getCurrentUser()?.email, date: datePicker.date, description: definition.text)
             viewModel?.project = project
             showMessage(message: "Projeto alterado com sucesso!", handler: nil)
         }
@@ -82,11 +81,13 @@ private extension DetailsViewController {
     
     func switchViews() {
         buttonType = buttonType == .edit ? .save : .edit
-        navigationItem.rightBarButtonItem?.title = buttonType.rawValue
+        coordinator?.navigationController.navigationItem.rightBarButtonItem?.title = buttonType.rawValue
         name.isEnabled.toggle()
         team.isEnabled.toggle()
         category.isEnabled.toggle()
+        definition.isEnabled.toggle()
         datePicker.isEnabled.toggle()
+        button.setTitle(buttonType.rawValue, for: .normal)
     }
     
     func setDatePicker() {

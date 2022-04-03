@@ -8,6 +8,7 @@ target 'DCUProject' do
   # Pods for DCUProject
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'iOSDropDown'
   
   target 'DCUProjectTests' do
     inherit! :search_paths

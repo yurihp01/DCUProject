@@ -50,6 +50,11 @@ class AnalysisViewController: BaseViewController {
         tableView.reloadData()
     }
     
+    @IBAction func createDesign(_ sender: UIButton) {
+        guard let project = viewModel?.project else { return }
+        coordinator?.goToDesign(project: project)
+    }
+    
 }
 
 private extension AnalysisViewController {

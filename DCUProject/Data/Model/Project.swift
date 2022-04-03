@@ -12,6 +12,8 @@ struct Project: Codable {
     var date: Date?
     var analysis: [Analyse] = []
     var users: [String] = []
+    var preAvaliation: PreAvaliation?
+    var avaliations: [Avaliation] = []
     
     init(name: String?, team: String?, category: String?, owner: String?, date: Date?, description: String? = nil) {
         self.name = name
@@ -23,7 +25,7 @@ struct Project: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case name, description, team, category, date, analysis, users, owner, id
+        case name, description, team, category, date, analysis, users, owner, id, preAvaliation, avaliations
     }
     
     func toDict() -> NSDictionary {
@@ -34,8 +36,12 @@ struct Project: Codable {
             "date":NSString(string: date!.formatted()),
             "description":NSString(string: description!),
             "owner":NSString(string: owner!),
-            "id":NSString(string: id ?? "")
-        ]
+            "id":NSString(string: id ?? ""),
+            "preAvaliation":preAvaliation ?? PreAvaliation(screens: [], heuristics: []),
+            "avaliations":avaliations,
+            "users":NSArray(array: users),
+            "analysis":NSArray(array: analysis)
+        ] as [String : Any]
         return NSDictionary(dictionary: dict)
     }
     
@@ -50,6 +56,8 @@ struct Project: Codable {
         users = try values.decode([String].self, forKey: .users)
         owner = try values.decode(String.self, forKey: .owner)
         id = try values.decode(String.self, forKey: .id)
+        preAvaliation = try values.decode(PreAvaliation.self, forKey: .preAvaliation)
+        avaliations = try values.decode([Avaliation].self, forKey: .avaliations)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -63,11 +71,27 @@ struct Project: Codable {
         try container.encode(users, forKey: .users)
         try container.encode(owner, forKey: .owner)
         try container.encode(id, forKey: .id)
+        try container.encode(preAvaliation, forKey: .preAvaliation)
+        try container.encode(avaliations, forKey: .avaliations)
+    }
+    
+    static var mockedPreAvaliation: PreAvaliation {
+        let preAvaliation = PreAvaliation(screens: ["Tela 1", "Tela 2", "Tela 3", "Tela 4"], heuristics: ["Heurística 1", "Heurística 2", "Heurística 3", "Heurística 4"])
+        return preAvaliation
+    }
+    
+    static var mockedAvaliation: [Avaliation] {
+        let avaliations = [Avaliation(screen: "Tela 1", heuristic: "Heurística 1", avaliator: "Yuri", comments: "A tela estava meio ruim", status: Severity.serious.rawValue, date: Date()),
+                          Avaliation(screen: "Tela 2", heuristic: "Heurística 2", avaliator: "Sarah", comments: "A tela estava boa", status: Status.success.description, date: Date()),
+                          Avaliation(screen: "Tela 3", heuristic: "Heurística 3", avaliator: "Sergio", comments: "A tela estava péssima", status: Severity.disaster.rawValue, date: Date())]
+        return avaliations
     }
     
     static var mockedProject: Project {
-        var project = Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "a@a.com", date: Date())
+        var project = Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "sarahcampinho@hotmail.com", date: Date())
         project.analysis = Analyse.mockedAnalyses
+        project.preAvaliation = mockedPreAvaliation
+        project.avaliations = mockedAvaliation
         project.description = "The best project in the world!"
         return project
     }

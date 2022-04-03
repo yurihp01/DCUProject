@@ -35,12 +35,12 @@ class AnalyseViewController: BaseViewController {
     @objc func continueButtonPressed() {
         guard let delegate = delegate,
               let coordinator = coordinator else { return }
-        
+                
         switch viewModel?.type {
         case .insert:
             saveAnalyse {
-                guard let analyse = viewModel?.analyse else { return }
-                showMessage(message: "Análise salva com sucesso!") { _ in
+                guard let analyse = self.viewModel?.analyse else { return }
+                self.showMessage(message: "Análise salva com sucesso!") { _ in
                     delegate.getAnalyse(with: analyse)
                     coordinator.stop()
                 }
@@ -48,8 +48,8 @@ class AnalyseViewController: BaseViewController {
         case .edit:
             if viewModel?.buttonType == .save {
                 saveAnalyse {
-                    guard let analyse = viewModel?.analyse else { return }
-                    showMessage(message: "Análise salva com sucesso!") { _ in
+                    guard let analyse = self.viewModel?.analyse else { return }
+                    self.showMessage(message: "Análise salva com sucesso!") { _ in
                         delegate.getAnalyse(with: analyse)
                         coordinator.stop()
                     }
@@ -97,18 +97,21 @@ private extension AnalyseViewController {
         detail.delegate = self
     }
     
-    func saveAnalyse(complete: () -> ()) {
-        guard var viewModel = viewModel,
+    func saveAnalyse(complete: @escaping () -> ()) {
+        guard let viewModel = viewModel,
               let name = name.text, !name.isEmpty,
               let detail = detail.text, !detail.isEmpty,
               !detail.contains(viewModel.placeholder) else {
             showAlert(message: "O campo definição está vazio. Preencha e tente novamente!")
             return
         }
-        
+        indicator.startAnimating()
+
         let analyse = Analyse(detail: detail, type: segmentedType, name: name)
-        viewModel.analyse = analyse
-        complete()
+        viewModel.addAnalyse(analyse) { message in
+            self.indicator.stopAnimating()
+            message != nil ? self.showAlert(message: message) : complete()
+        }
     }
     
     func setNavigationBar() {

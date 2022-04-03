@@ -52,15 +52,8 @@ class HomeCoordinator: Coordinator {
         return coordinator.getViewController()
     }
     
-    func changeToDefinition() -> DefinitionViewController {
-        let coordinator = DefinitionCoordinator(navigationController, project: project, type: .home)
-        coordinator.parentCoordinator = self
-        add(coordinator)
-        return coordinator.getViewController()
-    }
-    
-    func changeToDesign() -> DesignViewController {
-        let coordinator = DesignCoordinator(navigationController: navigationController, project: project)
+    func changeToPreAvaliation() -> PreAvaliationViewController {
+        let coordinator = PreAvaliationCoordinator(navigationController: navigationController, project: project)
         coordinator.parentCoordinator = self
         add(coordinator)
         return coordinator.getViewController()
