@@ -9,7 +9,7 @@ import UIKit
 
 enum ButtonType: String {
     case edit = "Editar"
-    case save = "Salvar"
+    case save = "Inserir"
 }
 
 extension ButtonType {

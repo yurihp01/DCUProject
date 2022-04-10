@@ -9,10 +9,9 @@ import Firebase
 
 protocol InsertAvaliationProtocol {
     var avaliation: Avaliation? { get set }
-    func addAvaliation(completion: @escaping (String) -> ())
 }
 
-class InsertAvaliationViewModel {
+class InsertAvaliationViewModel: InsertAvaliationProtocol {
     var avaliation: Avaliation?
     var firebase: FirebaseServiceProtocol
     
@@ -20,12 +19,4 @@ class InsertAvaliationViewModel {
         self.avaliation = avaliation
         firebase = FirebaseService()
     }
-}
-
-extension InsertAvaliationViewModel: InsertAvaliationProtocol {
-    func addAvaliation(completion: @escaping (String) -> ()) {
-//        add avaliation to firebase
-        completion("")
-    }
-    
 }

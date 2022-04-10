@@ -1,5 +1,5 @@
 //
-//  AvaliationCoordinator.swift
+//  InsertAvaliationSecondCoordinator.swift
 //  DCUProject
 //
 //  Created by PRO on 05/03/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InsertAvaliationCoordinator: Coordinator {
+class InsertAvaliationSecondCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     var childCoordinators: [Coordinator] = []
@@ -15,7 +15,7 @@ class InsertAvaliationCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     
     let avaliation: Avaliation?
-    let controller = InsertAvaliationViewController.instantiate(storyboardName: .main)
+    let controller = InsertAvaliationSecondViewController.instantiate(storyboardName: .main)
     
     init (navigationController: UINavigationController, avaliation: Avaliation?) {
         self.navigationController = navigationController
@@ -23,7 +23,7 @@ class InsertAvaliationCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = InsertAvaliationViewModel(avaliation: avaliation)
+        let viewModel = InsertAvaliationSecondViewModel(avaliation: avaliation)
         controller.coordinator = self
         controller.viewModel = viewModel
         navigationController.pushViewController(controller, animated: true)

@@ -66,9 +66,12 @@
 		DAE1094727F4FC00004D1079 /* PreAvaliationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1094627F4FC00004D1079 /* PreAvaliationViewController.swift */; };
 		DAE1094927F4FC25004D1079 /* PreAvaliationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1094827F4FC25004D1079 /* PreAvaliationCoordinator.swift */; };
 		DAE1094B27F4FCF9004D1079 /* PreAvaliationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1094A27F4FCF9004D1079 /* PreAvaliationViewModel.swift */; };
-		DAE1095927F6651E004D1079 /* InsertAvaliationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1095427F6651E004D1079 /* InsertAvaliationViewModel.swift */; };
-		DAE1095A27F6651E004D1079 /* InsertAvaliationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1095627F6651E004D1079 /* InsertAvaliationCoordinator.swift */; };
-		DAE1095B27F6651E004D1079 /* InsertAvaliationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE1095827F6651E004D1079 /* InsertAvaliationViewController.swift */; };
+		DAE96704280206C900B4FA43 /* InsertAvaliationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE966F8280206C900B4FA43 /* InsertAvaliationViewModel.swift */; };
+		DAE96705280206C900B4FA43 /* InsertAvaliationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE966FA280206C900B4FA43 /* InsertAvaliationCoordinator.swift */; };
+		DAE96706280206C900B4FA43 /* InsertAvaliationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE966FC280206C900B4FA43 /* InsertAvaliationViewController.swift */; };
+		DAE9671B2802149A00B4FA43 /* InsertAvaliationSecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE967162802149900B4FA43 /* InsertAvaliationSecondViewModel.swift */; };
+		DAE9671C2802149A00B4FA43 /* InsertAvaliationSecondCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE967182802149900B4FA43 /* InsertAvaliationSecondCoordinator.swift */; };
+		DAE9671D2802149A00B4FA43 /* InsertAvaliationSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9671A2802149900B4FA43 /* InsertAvaliationSecondViewController.swift */; };
 		EA5588F5114228ACB11FF24F /* Pods_DCUProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,9 +159,12 @@
 		DAE1094627F4FC00004D1079 /* PreAvaliationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreAvaliationViewController.swift; sourceTree = "<group>"; };
 		DAE1094827F4FC25004D1079 /* PreAvaliationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreAvaliationCoordinator.swift; sourceTree = "<group>"; };
 		DAE1094A27F4FCF9004D1079 /* PreAvaliationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreAvaliationViewModel.swift; sourceTree = "<group>"; };
-		DAE1095427F6651E004D1079 /* InsertAvaliationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationViewModel.swift; sourceTree = "<group>"; };
-		DAE1095627F6651E004D1079 /* InsertAvaliationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationCoordinator.swift; sourceTree = "<group>"; };
-		DAE1095827F6651E004D1079 /* InsertAvaliationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationViewController.swift; sourceTree = "<group>"; };
+		DAE966F8280206C900B4FA43 /* InsertAvaliationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationViewModel.swift; sourceTree = "<group>"; };
+		DAE966FA280206C900B4FA43 /* InsertAvaliationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationCoordinator.swift; sourceTree = "<group>"; };
+		DAE966FC280206C900B4FA43 /* InsertAvaliationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationViewController.swift; sourceTree = "<group>"; };
+		DAE967162802149900B4FA43 /* InsertAvaliationSecondViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondViewModel.swift; sourceTree = "<group>"; };
+		DAE967182802149900B4FA43 /* InsertAvaliationSecondCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondCoordinator.swift; sourceTree = "<group>"; };
+		DAE9671A2802149900B4FA43 /* InsertAvaliationSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondViewController.swift; sourceTree = "<group>"; };
 		DC232315D004582931B64374 /* Pods_DCUProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC573371D7C8716462B399D2 /* Pods-DCUProject-DCUProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -483,7 +489,8 @@
 		15CEE3D927CE9C9D0098CA0B /* Avaliations */ = {
 			isa = PBXGroup;
 			children = (
-				DAE1095227F6651E004D1079 /* Insert */,
+				DAE967142802149900B4FA43 /* InsertSecond */,
+				DAE966F6280206C900B4FA43 /* InsertFirst */,
 				DAE1094C27F6645B004D1079 /* List */,
 			);
 			path = Avaliations;
@@ -801,36 +808,70 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		DAE1095227F6651E004D1079 /* Insert */ = {
+		DAE966F6280206C900B4FA43 /* InsertFirst */ = {
 			isa = PBXGroup;
 			children = (
-				DAE1095327F6651E004D1079 /* ViewModel */,
-				DAE1095527F6651E004D1079 /* Coordinator */,
-				DAE1095727F6651E004D1079 /* Controller */,
+				DAE966F7280206C900B4FA43 /* ViewModel */,
+				DAE966F9280206C900B4FA43 /* Coordinator */,
+				DAE966FB280206C900B4FA43 /* Controller */,
 			);
-			path = Insert;
+			path = InsertFirst;
 			sourceTree = "<group>";
 		};
-		DAE1095327F6651E004D1079 /* ViewModel */ = {
+		DAE966F7280206C900B4FA43 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				DAE1095427F6651E004D1079 /* InsertAvaliationViewModel.swift */,
+				DAE966F8280206C900B4FA43 /* InsertAvaliationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		DAE1095527F6651E004D1079 /* Coordinator */ = {
+		DAE966F9280206C900B4FA43 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				DAE1095627F6651E004D1079 /* InsertAvaliationCoordinator.swift */,
+				DAE966FA280206C900B4FA43 /* InsertAvaliationCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		DAE1095727F6651E004D1079 /* Controller */ = {
+		DAE966FB280206C900B4FA43 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DAE1095827F6651E004D1079 /* InsertAvaliationViewController.swift */,
+				DAE966FC280206C900B4FA43 /* InsertAvaliationViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DAE967142802149900B4FA43 /* InsertSecond */ = {
+			isa = PBXGroup;
+			children = (
+				DAE967152802149900B4FA43 /* ViewModel */,
+				DAE967172802149900B4FA43 /* Coordinator */,
+				DAE967192802149900B4FA43 /* Controller */,
+			);
+			path = InsertSecond;
+			sourceTree = "<group>";
+		};
+		DAE967152802149900B4FA43 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAE967162802149900B4FA43 /* InsertAvaliationSecondViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DAE967172802149900B4FA43 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DAE967182802149900B4FA43 /* InsertAvaliationSecondCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DAE967192802149900B4FA43 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DAE9671A2802149900B4FA43 /* InsertAvaliationSecondViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1093,17 +1134,19 @@
 				15CEE41727CEDE2B0098CA0B /* InsertProjectCoordinator.swift in Sources */,
 				15CEE3E127CE9C9D0098CA0B /* HomeViewModel.swift in Sources */,
 				15A3126227C1260E00B2177C /* Constants.swift in Sources */,
+				DAE96706280206C900B4FA43 /* InsertAvaliationViewController.swift in Sources */,
 				15667CA127BD7C0A0096D85E /* AppCoordinator.swift in Sources */,
 				DAE1094B27F4FCF9004D1079 /* PreAvaliationViewModel.swift in Sources */,
 				15CEE41427CEDBC40098CA0B /* InsertProjectViewController.swift in Sources */,
 				15A3126027C125D200B2177C /* UIAlertController+Extensions.swift in Sources */,
 				DAE1094927F4FC25004D1079 /* PreAvaliationCoordinator.swift in Sources */,
 				15CEE3E227CE9C9D0098CA0B /* HomeCoordinator.swift in Sources */,
-				DAE1095927F6651E004D1079 /* InsertAvaliationViewModel.swift in Sources */,
 				15EA486527D4DB3F00D3A3B4 /* AvaliationCoordinator.swift in Sources */,
 				1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */,
+				DAE96704280206C900B4FA43 /* InsertAvaliationViewModel.swift in Sources */,
 				15CEE3EA27CE9C9D0098CA0B /* LoginViewModel.swift in Sources */,
 				15CEE3EB27CE9C9D0098CA0B /* LoginCoordinator.swift in Sources */,
+				DAE9671C2802149A00B4FA43 /* InsertAvaliationSecondCoordinator.swift in Sources */,
 				15CEE40227CE9D880098CA0B /* AnalysisViewController.swift in Sources */,
 				15EA485C27D3B3CF00D3A3B4 /* DetailsViewController.swift in Sources */,
 				15CEE3EC27CE9C9D0098CA0B /* LoginViewController.swift in Sources */,
@@ -1117,7 +1160,6 @@
 				15A3127E27C30C5A00B2177C /* Project.swift in Sources */,
 				15A3126427C1268200B2177C /* BaseViewController.swift in Sources */,
 				15CEE3E427CE9C9D0098CA0B /* RegisterViewModel.swift in Sources */,
-				DAE1095A27F6651E004D1079 /* InsertAvaliationCoordinator.swift in Sources */,
 				15CEE40827CE9EB60098CA0B /* DefinitionViewController.swift in Sources */,
 				1591976327BDC93F00B3CC6B /* User.swift in Sources */,
 				15CEE3E627CE9C9D0098CA0B /* RegisterViewController.swift in Sources */,
@@ -1125,7 +1167,6 @@
 				DAE1094727F4FC00004D1079 /* PreAvaliationViewController.swift in Sources */,
 				15CEE3E327CE9C9D0098CA0B /* HomeViewController.swift in Sources */,
 				DAA26E9627E1709100D85059 /* ImagePicker.swift in Sources */,
-				DAE1095B27F6651E004D1079 /* InsertAvaliationViewController.swift in Sources */,
 				15CEE40B27CE9EF30098CA0B /* DefinitionCoordinator.swift in Sources */,
 				15CEE3FD27CE9D880098CA0B /* AnalyseViewModel.swift in Sources */,
 				15CEE40027CE9D880098CA0B /* AnalysisViewModel.swift in Sources */,
@@ -1137,8 +1178,11 @@
 				DAA26E9E27E173BA00D85059 /* DesignViewModel.swift in Sources */,
 				DAA26EA027E173BA00D85059 /* DesignViewController.swift in Sources */,
 				15EA485F27D4DAB800D3A3B4 /* AvaliationViewModel.swift in Sources */,
+				DAE96705280206C900B4FA43 /* InsertAvaliationCoordinator.swift in Sources */,
+				DAE9671B2802149A00B4FA43 /* InsertAvaliationSecondViewModel.swift in Sources */,
 				15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */,
 				15EA486B27DA9B4400D3A3B4 /* Analyse.swift in Sources */,
+				DAE9671D2802149A00B4FA43 /* InsertAvaliationSecondViewController.swift in Sources */,
 				15CEE3E527CE9C9D0098CA0B /* RegisterCoordinator.swift in Sources */,
 				15EA485827D39CB000D3A3B4 /* DetailsViewModel.swift in Sources */,
 			);
