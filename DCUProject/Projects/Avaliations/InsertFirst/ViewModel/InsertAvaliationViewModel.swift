@@ -8,14 +8,17 @@
 import Firebase
 
 protocol InsertAvaliationProtocol {
+    var project: Project { get set }
     var avaliation: Avaliation? { get set }
 }
 
 class InsertAvaliationViewModel: InsertAvaliationProtocol {
+    var project: Project
     var avaliation: Avaliation?
     var firebase: FirebaseServiceProtocol
     
-    init(avaliation: Avaliation?) {
+    init(project: Project, avaliation: Avaliation?) {
+        self.project = project
         self.avaliation = avaliation
         firebase = FirebaseService()
     }

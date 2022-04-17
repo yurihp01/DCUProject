@@ -20,7 +20,8 @@ protocol FirebaseServiceProtocol: AnyObject {
     func getProjects() async -> [Project]
     func addAnalyse(analyse: Analyse, onCompletion: @escaping (String) -> ())
     func addPreAvaliation(preAvaliation: PreAvaliation, onCompletion: @escaping (String) -> ())
-    func addProject(project: Project)
+    func addAvaliation(avaliation: Avaliation, onCompletion: @escaping (String) -> ())
+    func addProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ())
     func addUser(email: String)
 }
 
@@ -77,13 +78,16 @@ class FirebaseService: FirebaseServiceProtocol {
         return []
     }
     
-    func addProject(project: Project) {
+    func addProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
         self.project = project
         self.projectRef.childByAutoId().setValue(project.toDict()) { [weak self] error, database in
             if error == nil {
                 self?.project?.id = database.key
                 self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
+                onCompletion(.success("sucesso"))
+                return
             }
+            onCompletion(.failure(.notFound))
         }
     }
     
@@ -91,8 +95,8 @@ class FirebaseService: FirebaseServiceProtocol {
         self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
             if error == nil {
                 self?.project?.id = database.key
-                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
                 self?.project?.analysis.append(analyse)
+                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
                 onCompletion("Análise adicionada com sucesso!")
             } else {
                 onCompletion(error?.localizedDescription ?? "")
@@ -104,9 +108,22 @@ class FirebaseService: FirebaseServiceProtocol {
         self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
             if error == nil {
                 self?.project?.id = database.key
-                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
                 self?.project?.preAvaliation = preAvaliation
+                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
                 onCompletion("Pré-Avaliação adicionada com sucesso!")
+            } else {
+                onCompletion(error?.localizedDescription ?? "")
+            }
+        }
+    }
+    
+    func addAvaliation(avaliation: Avaliation, onCompletion: @escaping (String) -> ()) {
+        self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
+            if error == nil {
+                self?.project?.id = database.key
+                self?.project?.avaliations.append(avaliation)
+                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
+                onCompletion("Avaliação adicionada com sucesso!")
             } else {
                 onCompletion(error?.localizedDescription ?? "")
             }

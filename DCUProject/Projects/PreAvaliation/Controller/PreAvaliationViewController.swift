@@ -42,17 +42,29 @@ class PreAvaliationViewController: BaseViewController {
             var list = viewModel?.getHeuristics() ?? []
             alertWithTextField(title: "Adicionar Heurística", message: "Digite a nova heurística", placeholder: "Heurística") { text in
                 list.append(text)
-                self.viewModel?.setHeuristics(heuristics: list, { [weak self] message in
-                    message.contains("sucesso") ? self?.showMessage(message: "Heurística adicionada com sucesso!") : self?.showAlert(message: "Erro ao salvar heurística. Tente novamente!")
-                })
+                self.viewModel?.preAvaliation?.heuristics = list
+                self.viewModel?.setHeuristics { [weak self] result in
+                    switch result {
+                    case .success(let message):
+                        self?.showMessage(message: message)
+                    case .failure(let error):
+                        self?.showAlert(message: error.errorDescription)
+                    }
+                }
             }
         } else {
             var list = viewModel?.getScreens() ?? []
             alertWithTextField(title: "Adicionar Tela", message: "Digite a nova tela", placeholder: "Tela") { text in
                 list.append(text)
-                self.viewModel?.setScreens(screens: list, { [weak self] message in
-                    message.contains("sucesso") ? self?.showMessage(message: "Tela adicionada com sucesso!") : self?.showAlert(message: "Erro ao salvar tela. Tente novamente!")
-                })
+                self.viewModel?.preAvaliation?.screens = list
+                self.viewModel?.setScreens { [weak self] result in
+                    switch result {
+                    case .success(let message):
+                        self?.showMessage(message: message)
+                    case .failure(let error):
+                        self?.showAlert(message: error.errorDescription)
+                    }
+                }
             }
         }
     }
@@ -94,19 +106,31 @@ extension PreAvaliationViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if segmentedType == .heuristic {
             var list = viewModel?.getHeuristics() ?? []
+//          remover depois
+            self.viewModel?.preAvaliation?.heuristics = list
             alertWithTextField(title: "Alterar Heurística", message: "Digite a nova heurística", placeholder: "Heurística") { text in
-                list[indexPath.row] = text
-                self.viewModel?.setHeuristics(heuristics: list, { [weak self] message in
-                    message.contains("sucesso") ? self?.showMessage(message: "Heurística alterada com sucesso!") : self?.showAlert(message: "Erro ao salvar heurística. Tente novamente!")
-                })
+                self.viewModel?.preAvaliation?.heuristics[indexPath.row] = text
+                self.viewModel?.setHeuristics { [weak self] result in
+                    switch result {
+                    case .success(let message):
+                        self?.showMessage(message: message)
+                    case .failure(let error):
+                        self?.showAlert(message: error.errorDescription)
+                    }
+                }
             }
         } else {
             var list = viewModel?.getScreens() ?? []
             alertWithTextField(title: "Alterar Tela", message: "Digite a nova tela", placeholder: "Tela") { text in
-                list[indexPath.row] = text
-                self.viewModel?.setScreens(screens: list, { [weak self] message in
-                    message.contains("sucesso") ? self?.showMessage(message: "Tela alterada com sucesso!") : self?.showAlert(message: "Erro ao salvar tela. Tente novamente!")
-                })
+                self.viewModel?.preAvaliation?.screens[indexPath.row] = text
+                self.viewModel?.setScreens { [weak self] result in
+                    switch result {
+                    case .success(let message):
+                        self?.showMessage(message: message)
+                    case .failure(let error):
+                        self?.showAlert(message: error.errorDescription)
+                    }
+                }
             }
         }
     }

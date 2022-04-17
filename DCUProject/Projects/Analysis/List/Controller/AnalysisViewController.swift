@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol AnalysisDelegate: AnyObject {
-    func getAnalyse(with analyse: Analyse)
-}
-
 class AnalysisViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -33,7 +29,7 @@ class AnalysisViewController: BaseViewController {
     }
     
     @objc func goToInsertAnalyse() {
-        coordinator?.goToAnalyseFlow(flow: .insert, delegate: self)
+        coordinator?.goToAnalyseFlow(flow: .insert)
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -82,7 +78,7 @@ extension AnalysisViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let analyse = viewModel?.getAnalysis(by: searchBar.text, and: type)[indexPath.row] else { return }
-        coordinator?.goToAnalyseFlow(flow: .edit, delegate: self, analyse: analyse)
+        coordinator?.goToAnalyseFlow(flow: .edit, analyse: analyse)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,11 +89,5 @@ extension AnalysisViewController: UITableViewDelegate, UITableViewDataSource {
 extension AnalysisViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tableView.reloadData()
-    }
-}
-
-extension AnalysisViewController: AnalysisDelegate {
-    func getAnalyse(with analyse: Analyse) {
-        viewModel?.project.analysis.append(analyse)
     }
 }

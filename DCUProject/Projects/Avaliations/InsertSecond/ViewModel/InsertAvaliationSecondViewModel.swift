@@ -8,24 +8,32 @@
 import Firebase
 
 protocol InsertAvaliationSecondProtocol {
-    var avaliation: Avaliation? { get set }
-    func addAvaliation(completion: @escaping (String) -> ())
+    var avaliation: Avaliation { get set }
+    var project: Project { get set }
+    var title: String { get }
+    func addAvaliation(completion: @escaping (Result<String, FirebaseError>) -> ())
 }
 
 class InsertAvaliationSecondViewModel {
-    var avaliation: Avaliation?
+    var avaliation: Avaliation
+    var project: Project
+    var title: String
     var firebase: FirebaseServiceProtocol
     
-    init(avaliation: Avaliation?) {
+    init(avaliation: Avaliation, project: Project, title: String) {
+        self.title = title
+        self.project = project
         self.avaliation = avaliation
         firebase = FirebaseService()
     }
 }
 
-extension InsertAvaliationSecondViewModel: InsertAvaliationProtocol {
-    func addAvaliation(completion: @escaping (String) -> ()) {
-//        add avaliation to firebase
-        completion("")
+extension InsertAvaliationSecondViewModel: InsertAvaliationSecondProtocol {
+    func addAvaliation(completion: @escaping (Result<String, FirebaseError>) -> ()) {
+        project.avaliations.append(avaliation)
+        
+        firebase.addProject(project: project) { [weak self] result in
+            completion(result)
+        }
     }
-    
 }

@@ -25,17 +25,20 @@ class InsertAvaliationSecondViewController: BaseViewController {
     }
 
     @IBAction func buttonTouched(_ sender: UIButton) {
-        if let comments = comments.text, !comments.isEmpty {
-            viewModel?.avaliation?.date = datePicker.date
-            viewModel?.avaliation?.comments = comments
-        } else {
-               showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
-               return
-        }
+        guard let comments = comments.text,
+              let viewModel = viewModel else { return }
+        viewModel.avaliation.date = datePicker.date
+        viewModel.avaliation.comments = comments
          
-        viewModel?.addAvaliation(completion: { [self] message in
-            message.contains("sucesso") ? showMessage(message: "Projeto salvo com sucesso!", handler: nil)
-            : showAlert(message: message)
+        viewModel.addAvaliation(completion: { [weak self] result in
+            switch result {
+            case .success(let message):
+                self?.showMessage(message: message, handler: { _ in
+                    self?.navigationController?.popToViewController(ofClass: AvaliationViewController.self)
+                })
+            case .failure(let error):
+                self?.showAlert(message: error.errorDescription)
+            }
         })
     }
 }
@@ -43,18 +46,22 @@ class InsertAvaliationSecondViewController: BaseViewController {
 private extension InsertAvaliationSecondViewController {
 
     func setFields() {
-        if let avaliation = viewModel?.avaliation,
-           !avaliation.comments.isEmpty {
-            buttonType = .edit
-            comments.text = avaliation.comments
-            datePicker.date = avaliation.date
-        }
-        
-        button.setTitle(buttonType.rawValue, for: .normal)
-        title = buttonType.rawValue
+        guard let viewModel = viewModel else { return }
+        comments.text = viewModel.avaliation.comments
+        datePicker.date = viewModel.avaliation.date
+        button.setTitle(viewModel.title, for: .normal)
+        title = viewModel.title
     }
     
     func setDatePicker() {
         datePicker.maximumDate = Date()
     }
+}
+
+extension UINavigationController {
+  func popToViewController(ofClass: AnyClass, animated: Bool = true) {
+    if let vc = viewControllers.last(where: { $0.isKind(of: ofClass) }) {
+      popToViewController(vc, animated: animated)
+    }
+  }
 }

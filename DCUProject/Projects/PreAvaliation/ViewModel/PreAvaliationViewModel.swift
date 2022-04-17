@@ -8,19 +8,22 @@
 import Firebase
 
 protocol PreAvaliationViewModelProtocol {
+    var preAvaliation: PreAvaliation? { get set }
     func getHeuristics() -> [String]
     func getScreens() -> [String]
-    func setHeuristics(heuristics: [String], _ completion: @escaping (String) -> ())
-    func setScreens(screens: [String], _ completion: @escaping (String) -> ())
+    func setHeuristics(_ completion: @escaping (Result<String, FirebaseError>) -> ())
+    func setScreens(_ completion: @escaping (Result<String, FirebaseError>) -> ())
     var project: Project { get set }
 }
 
 class PreAvaliationViewModel {
     var project: Project
     let firebase: FirebaseServiceProtocol
+    var preAvaliation: PreAvaliation?
     
     init(project: Project) {
         self.project = project
+        preAvaliation = project.preAvaliation ?? PreAvaliation(screens: [], heuristics: [])
         firebase = FirebaseService()
         print("INIT - PreAvaliationViewModel ")
     }
@@ -31,20 +34,17 @@ class PreAvaliationViewModel {
 }
 
 extension PreAvaliationViewModel: PreAvaliationViewModelProtocol {
-    func setHeuristics(heuristics: [String], _ completion: @escaping (String) -> ()) {
-        project.preAvaliation?.heuristics = heuristics
-        guard let preAvaliation = project.preAvaliation else { return }
-        
-        firebase.addPreAvaliation(preAvaliation: preAvaliation) { message in
-            completion(message)
+    func setHeuristics(_ completion: @escaping (Result<String, FirebaseError>) -> ()) {
+        project.preAvaliation = preAvaliation
+        firebase.addProject(project: project) { result in
+            completion(result)
         }
     }
     
-    func setScreens(screens: [String], _ completion: @escaping (String) -> ()) {
-        project.preAvaliation?.screens = screens
-        guard let preAvaliation = project.preAvaliation else { return }
-        firebase.addPreAvaliation(preAvaliation: preAvaliation) { message in
-            completion(message)
+    func setScreens(_ completion: @escaping (Result<String, FirebaseError>) -> ()) {
+        project.preAvaliation = preAvaliation
+        firebase.addProject(project: project) { result in
+            completion(result)
         }
     }
     

@@ -37,10 +37,10 @@ struct Project: Codable {
             "description":NSString(string: description!),
             "owner":NSString(string: owner!),
             "id":NSString(string: id ?? ""),
-            "preAvaliation":preAvaliation ?? PreAvaliation(screens: [], heuristics: []),
-            "avaliations":avaliations,
+            "preAvaliation": preAvaliation?.toDict() ?? [:],
+            "avaliations":NSArray(array: avaliations.map { $0.toDict() }),
             "users":NSArray(array: users),
-            "analysis":NSArray(array: analysis)
+            "analysis":NSArray(array: analysis.map { $0.toDict() })
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
     }

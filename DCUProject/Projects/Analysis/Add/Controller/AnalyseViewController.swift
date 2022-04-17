@@ -14,7 +14,6 @@ class AnalyseViewController: BaseViewController {
     @IBOutlet weak var detail: UITextView!
     
     weak var coordinator: AnalyseCoordinator?
-    weak var delegate: AnalysisDelegate?
     
     var viewModel: AnalyseProtocol?
     var segmentedType = AnalyseType.persona
@@ -25,42 +24,6 @@ class AnalyseViewController: BaseViewController {
         setViews()
         setTextView()
         setNavigationBar()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    @objc func continueButtonPressed() {
-        guard let delegate = delegate,
-              let coordinator = coordinator else { return }
-                
-        switch viewModel?.type {
-        case .insert:
-            saveAnalyse {
-                guard let analyse = self.viewModel?.analyse else { return }
-                self.showMessage(message: "Análise salva com sucesso!") { _ in
-                    delegate.getAnalyse(with: analyse)
-                    coordinator.stop()
-                }
-            }
-        case .edit:
-            if viewModel?.buttonType == .save {
-                saveAnalyse {
-                    guard let analyse = self.viewModel?.analyse else { return }
-                    self.showMessage(message: "Análise salva com sucesso!") { _ in
-                        delegate.getAnalyse(with: analyse)
-                        coordinator.stop()
-                    }
-                }
-            }
-            viewModel?.buttonType.toggle()
-            navigationItem.rightBarButtonItem?.title = viewModel?.buttonType.rawValue
-            setViewsVisibility()
-        case .none:
-            print("Error")
-        }
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -98,7 +61,7 @@ private extension AnalyseViewController {
     }
     
     func saveAnalyse(complete: @escaping () -> ()) {
-        guard let viewModel = viewModel,
+        guard var viewModel = viewModel,
               let name = name.text, !name.isEmpty,
               let detail = detail.text, !detail.isEmpty,
               !detail.contains(viewModel.placeholder) else {
@@ -108,9 +71,41 @@ private extension AnalyseViewController {
         indicator.startAnimating()
 
         let analyse = Analyse(detail: detail, type: segmentedType, name: name)
-        viewModel.addAnalyse(analyse) { message in
-            self.indicator.stopAnimating()
-            message != nil ? self.showAlert(message: message) : complete()
+        viewModel.project.analysis.append(analyse)
+        viewModel.addAnalyse { [weak self] result in
+            self?.indicator.stopAnimating()
+            switch result {
+            case .success:
+                complete()
+            case .failure(let error):
+                self?.showAlert(message: error.errorDescription)
+            }
+        }
+    }
+    
+    @objc func continueButtonPressed() {
+        guard let coordinator = coordinator else { return }
+                
+        switch viewModel?.type {
+        case .insert:
+            saveAnalyse {
+                self.showMessage(message: "Projeto salvo com sucesso!") { _ in
+                    coordinator.stop()
+                }
+            }
+        case .edit:
+            if viewModel?.buttonType == .save {
+                saveAnalyse {
+                    self.showMessage(message: "Projeto alterado com sucesso!") { _ in
+                        coordinator.stop()
+                    }
+                }
+            }
+            viewModel?.buttonType.toggle()
+            navigationItem.rightBarButtonItem?.title = viewModel?.buttonType.rawValue
+            setViewsVisibility()
+        case .none:
+            print("Error")
         }
     }
     

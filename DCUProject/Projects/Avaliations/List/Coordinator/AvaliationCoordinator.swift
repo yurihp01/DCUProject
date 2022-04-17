@@ -31,7 +31,7 @@ class AvaliationCoordinator: Coordinator {
     }
     
     func goToInsertAvaliation(avaliation: Avaliation?) {
-        let coordinator = InsertAvaliationCoordinator(navigationController: navigationController, avaliation: avaliation)
+        let coordinator = InsertAvaliationCoordinator(navigationController: navigationController, project: project, avaliation: avaliation)
         add(coordinator)
         coordinator.parentCoordinator = self
         coordinator.start()

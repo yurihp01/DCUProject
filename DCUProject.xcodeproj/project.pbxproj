@@ -72,6 +72,7 @@
 		DAE9671B2802149A00B4FA43 /* InsertAvaliationSecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE967162802149900B4FA43 /* InsertAvaliationSecondViewModel.swift */; };
 		DAE9671C2802149A00B4FA43 /* InsertAvaliationSecondCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE967182802149900B4FA43 /* InsertAvaliationSecondCoordinator.swift */; };
 		DAE9671D2802149A00B4FA43 /* InsertAvaliationSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9671A2802149900B4FA43 /* InsertAvaliationSecondViewController.swift */; };
+		DAFB371E2809B0B000C63FB4 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB371D2809B0B000C63FB4 /* FirebaseError.swift */; };
 		EA5588F5114228ACB11FF24F /* Pods_DCUProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +166,7 @@
 		DAE967162802149900B4FA43 /* InsertAvaliationSecondViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondViewModel.swift; sourceTree = "<group>"; };
 		DAE967182802149900B4FA43 /* InsertAvaliationSecondCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondCoordinator.swift; sourceTree = "<group>"; };
 		DAE9671A2802149900B4FA43 /* InsertAvaliationSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondViewController.swift; sourceTree = "<group>"; };
+		DAFB371D2809B0B000C63FB4 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		DC232315D004582931B64374 /* Pods_DCUProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC573371D7C8716462B399D2 /* Pods-DCUProject-DCUProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F4E6D9016DE74F7E4C2EB3D0 /* Pods_DCUProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				1591975E27BDC3C600B3CC6B /* FirebaseService.swift */,
+				DAFB371D2809B0B000C63FB4 /* FirebaseError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1171,6 +1174,7 @@
 				15CEE3FD27CE9D880098CA0B /* AnalyseViewModel.swift in Sources */,
 				15CEE40027CE9D880098CA0B /* AnalysisViewModel.swift in Sources */,
 				15EA486327D4DB0B00D3A3B4 /* AvaliationViewController.swift in Sources */,
+				DAFB371E2809B0B000C63FB4 /* FirebaseError.swift in Sources */,
 				DAA26E9F27E173BA00D85059 /* DesignCoordinator.swift in Sources */,
 				15CEE40127CE9D880098CA0B /* AnalysisCoordinator.swift in Sources */,
 				15CEE3FF27CE9D880098CA0B /* AnalyseViewController.swift in Sources */,

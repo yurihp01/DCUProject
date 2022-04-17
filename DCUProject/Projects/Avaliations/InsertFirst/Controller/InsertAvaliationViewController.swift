@@ -29,19 +29,23 @@ class InsertAvaliationViewController: BaseViewController {
         
     @IBAction func buttonTouched(_ sender: UIButton) {
         if let screen = screen.text, !screen.isEmpty,
-                let heuristic = heuristic.text, !heuristic.isEmpty,
-                let avaliator = avaliator.text, !avaliator.isEmpty,
-                  let status = status.text, !status.isEmpty {
+           let heuristic = heuristic.text, !heuristic.isEmpty,
+           let avaliator = avaliator.text, !avaliator.isEmpty,
+           let status = status.text, !status.isEmpty,
+           let title = title,
+           let viewModel = viewModel {
+            
             if !severity.isEnabled {
-                viewModel?.avaliation = Avaliation(screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: status, date: Date())
+                let avaliation = Avaliation(screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: status, date: Date())
+                coordinator?.goToInsertSecondPart(project: viewModel.project, avaliation: avaliation, title: title)
             } else if let severity = severity.text {
-                viewModel?.avaliation = Avaliation(screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: severity, date: Date())
+                let avaliation = Avaliation(screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: severity, date: Date())
+                coordinator?.goToInsertSecondPart(project: viewModel.project, avaliation: avaliation, title: title)
             }
         } else {
                showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
                return
         }
-        coordinator?.goToInsertSecondPart(avaliation: viewModel?.avaliation)
     }
 }
 
@@ -53,7 +57,7 @@ private extension InsertAvaliationViewController {
         heuristic.optionArray = project?.preAvaliation?.heuristics ?? []
         status.optionArray = ["Sucesso", "Defeito"]
         severity.optionArray = [Severity.cosmetic.rawValue, Severity.lower.rawValue, Severity.serious.rawValue, Severity.disaster.rawValue]
-        severity.isEnabled = false
+        severity.isEnabled = status.text == "Defeito"
         setDropdownSelections()
     }
     

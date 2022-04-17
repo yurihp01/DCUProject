@@ -15,28 +15,30 @@ class AnalyseCoordinator: Coordinator {
     
     var parentCoordinator: Coordinator?
     
-    var delegate: AnalysisDelegate
+    var project: Project
+    
+    var analyse: Analyse?
     
     var analyseFlow: AnalyseFlow
     
-    init(navigationController: UINavigationController, analyseFlow: AnalyseFlow, delegate: AnalysisDelegate, analyse: Analyse? = nil) {
+    init(navigationController: UINavigationController, analyseFlow: AnalyseFlow, project: Project, analyse: Analyse? = nil) {
+        self.project = project
         self.navigationController = navigationController
         self.analyseFlow = analyseFlow
-        self.delegate = delegate
+        self.analyse = analyse
     }
     
     func start() { }
     
     func start(analyse: Analyse? = nil) {
         let viewController = AnalyseViewController.instantiate(storyboardName: .main)
-        viewController.viewModel = AnalyseViewModel(type: analyseFlow, analyse: analyse)
+        viewController.viewModel = AnalyseViewModel(type: analyseFlow, project: project, analyse: analyse)
         viewController.coordinator = self
-        viewController.delegate = delegate
         navigationController.pushViewController(viewController, animated: true)
         navigationController.isNavigationBarHidden = false
     }
     
-//    func stop() {
-//        navigationController.popViewController(animated: true)
-//    }
+    func stop() {
+        navigationController.popViewController(animated: true)
+    }
 }

@@ -45,14 +45,22 @@ struct Analyse {
 
 extension Analyse: Codable {
     enum CodingKeys: String, CodingKey {
-        case detail, type, name, analyseType
+        case detail, name, analyseType
+    }
+    
+    func toDict() -> NSDictionary {
+        let dict = [
+            "detail":NSString(string: detail),
+            "name":NSString(string: name),
+            "analyseType":NSString(string: analyseType.rawValue),
+        ] as [String : Any]
+        return NSDictionary(dictionary: dict)
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)
         detail = try values.decode(String.self, forKey: .detail)
-        type = try values.decode(String.self, forKey: .type)
         analyseType = AnalyseType(rawValue: type)!
     }
     
@@ -60,7 +68,7 @@ extension Analyse: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(detail, forKey: .detail)
-        try container.encode(type, forKey: .type)
+        try container.encode(analyseType.rawValue, forKey: .analyseType)
     }
     
     static let mockedAnalyse = Analyse(detail: "O detalhe é legal ", type: .interview, name: "Análise 1")

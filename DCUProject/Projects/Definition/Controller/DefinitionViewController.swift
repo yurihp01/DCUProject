@@ -28,10 +28,17 @@ class DefinitionViewController: BaseViewController {
             return
         }
         
-        viewModel.setDefinition(text)
-        showMessage(message: "Projeto salvo com sucesso!") { _ in
-            self.coordinator?.goToHome(project: viewModel.project)
+        viewModel.setDefinition(text) { [weak self] result in
+            switch result {
+            case .success(let message):
+                self?.showMessage(message: message) { _ in
+                    self?.coordinator?.goToHome(project: viewModel.project)
+                }
+            case .failure(let error):
+                self?.showAlert(message: error.errorDescription)
+            }
         }
+        
     }
 }
 
