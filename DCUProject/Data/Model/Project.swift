@@ -14,6 +14,7 @@ struct Project: Codable {
     var users: [String] = []
     var preAvaliation: PreAvaliation?
     var avaliations: [Avaliation] = []
+    var design: String = ""
     
     init(name: String?, team: String?, category: String?, owner: String?, date: Date?, description: String? = nil) {
         self.name = name
@@ -25,7 +26,7 @@ struct Project: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case name, description, team, category, date, analysis, users, owner, id, preAvaliation, avaliations
+        case name, description, team, category, date, analysis, users, owner, id, preAvaliation, avaliations, design
     }
     
     func toDict() -> NSDictionary {
@@ -40,7 +41,8 @@ struct Project: Codable {
             "preAvaliation": preAvaliation?.toDict() ?? [:],
             "avaliations":NSArray(array: avaliations.map { $0.toDict() }),
             "users":NSArray(array: users),
-            "analysis":NSArray(array: analysis.map { $0.toDict() })
+            "analysis":NSArray(array: analysis.map { $0.toDict() }),
+            "design":NSString(string: design)
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
     }
@@ -58,6 +60,7 @@ struct Project: Codable {
         id = try values.decode(String.self, forKey: .id)
         preAvaliation = try values.decode(PreAvaliation.self, forKey: .preAvaliation)
         avaliations = try values.decode([Avaliation].self, forKey: .avaliations)
+        design = try values.decode(String.self, forKey: .design)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -73,6 +76,7 @@ struct Project: Codable {
         try container.encode(id, forKey: .id)
         try container.encode(preAvaliation, forKey: .preAvaliation)
         try container.encode(avaliations, forKey: .avaliations)
+        try container.encode(design, forKey: .design)
     }
     
     static var mockedPreAvaliation: PreAvaliation {
@@ -87,11 +91,16 @@ struct Project: Codable {
         return avaliations
     }
     
+    static var mockedDesign: String {
+        "url.first.pt"
+    }
+    
     static var mockedProject: Project {
         var project = Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "sarahcampinho@hotmail.com", date: Date())
         project.analysis = Analyse.mockedAnalyses
         project.preAvaliation = mockedPreAvaliation
         project.avaliations = mockedAvaliation
+        project.design = mockedDesign
         project.description = "The best project in the world!"
         return project
     }

@@ -33,9 +33,15 @@ class DesignViewController: BaseViewController {
     @IBAction func addButtonTouched(_ sender: UIButton) {
         guard let image = selectedImage.image else { return }
         indicator.startAnimating()
-        viewModel?.saveImage(image: image)
+        viewModel?.uploadMedia(image: image, completion: { [weak self] result in
+            switch result {
+            case .success(let message):
+                self?.showMessage(message: message)
+            case .failure(let error):
+                self?.showAlert(message: error.errorDescription)
+            }
+        })
         addButton.isEnabled = false
-
     }
 }
 

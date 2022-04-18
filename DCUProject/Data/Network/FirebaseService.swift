@@ -7,6 +7,7 @@
 
 import Firebase
 import FirebaseDatabase
+import FirebaseStorage
 
 typealias Handle = AuthStateDidChangeListenerHandle
 
@@ -23,6 +24,7 @@ protocol FirebaseServiceProtocol: AnyObject {
     func addAvaliation(avaliation: Avaliation, onCompletion: @escaping (String) -> ())
     func addProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ())
     func addUser(email: String)
+    func addImage(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ())
 }
 
 class FirebaseService: FirebaseServiceProtocol {
@@ -126,6 +128,19 @@ class FirebaseService: FirebaseServiceProtocol {
                 onCompletion("Avaliação adicionada com sucesso!")
             } else {
                 onCompletion(error?.localizedDescription ?? "")
+            }
+        }
+    }
+    
+    func addImage(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ()) {
+        let storageRef = Storage.storage().reference().child(name)
+        if let uploadData = image.pngData() {
+            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    completion(.failure(.notFound))
+                } else if let photoUrl = metadata?.path {
+                    completion(.success(photoUrl))
+                }
             }
         }
     }
