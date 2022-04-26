@@ -89,7 +89,7 @@ extension Avaliation: Codable {
             "avaliator":NSString(string: avaliator),
             "comments":NSString(string: comments),
             "status":NSString(string: status),
-            "date":NSString(string: date.formatted())
+            "date":NSString(string: DateFormatter().string(from: date))
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
     }

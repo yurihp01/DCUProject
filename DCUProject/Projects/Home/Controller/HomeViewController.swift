@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HomeViewDelegate: AnyObject {
+    func showMoreOption(items: [UIBarButtonItem])
+}
+
 class HomeViewController: UITabBarController, Storyboarded {
 
     var viewModel: HomeViewModel?
@@ -20,11 +24,10 @@ class HomeViewController: UITabBarController, Storyboarded {
     private func addTabBar() {
         guard let coordinator = coordinator else { return }
         self.delegate = self
-        viewControllers = [coordinator.changeToDetails(),coordinator.changeToAnalyse(), coordinator.changeToPreAvaliation(), coordinator.changeToAvaliation()]
+        viewControllers = [coordinator.changeToDetails(),coordinator.changeToAnalyse(delegate: self), coordinator.changeToPreAvaliation(), coordinator.changeToAvaliation()]
         setViewControllers(viewControllers, animated: true)
         tabBarController?.selectedViewController = viewControllers?.first
         navigationItem.title = viewControllers?.first?.title
-        
     }
 }
 
@@ -32,5 +35,13 @@ extension HomeViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         tabBarController.selectedViewController = viewController
         navigationItem.title = viewController.title
+        self.tabBarController?.navigationItem.rightBarButtonItems = []
+    }
+}
+
+extension HomeViewController: HomeViewDelegate {
+    func showMoreOption(items: [UIBarButtonItem]) {
+        self.tabBarController?.navigationItem.rightBarButtonItems = items
+        
     }
 }

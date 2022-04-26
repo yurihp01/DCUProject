@@ -32,7 +32,7 @@ extension InsertAvaliationSecondViewModel: InsertAvaliationSecondProtocol {
     func addAvaliation(completion: @escaping (Result<String, FirebaseError>) -> ()) {
         project.avaliations.append(avaliation)
         
-        firebase.addProject(project: project) { [weak self] result in
+        firebase.addProject(project: project) { result in
             completion(result)
         }
     }

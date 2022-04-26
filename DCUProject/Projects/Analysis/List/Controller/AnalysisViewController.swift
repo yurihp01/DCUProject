@@ -14,13 +14,13 @@ class AnalysisViewController: BaseViewController {
     
     weak var coordinator: AnalysisCoordinator?
     var viewModel: AnalysisViewModelProtocol?
+    var homeDelegate: HomeViewDelegate?
     var type: String = AnalyseType.persona.rawValue
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegation()
-        setNavigationController()
-        // Do any additional setup after loading the view.
+//        setNavigationController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +51,9 @@ class AnalysisViewController: BaseViewController {
         coordinator?.goToDesign(project: project)
     }
     
+    @IBAction func addButton(_ sender: UIButton) {
+        coordinator?.goToAnalyseFlow(flow: .insert)
+    }
 }
 
 private extension AnalysisViewController {
@@ -61,10 +64,11 @@ private extension AnalysisViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
-    func setNavigationController() {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToInsertAnalyse))
-        navigationItem.rightBarButtonItem = button
-    }
+    
+//    func setNavigationController() {
+//        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToInsertAnalyse))
+//        homeDelegate?.showMoreOption(items: [button])
+//    }
 }
 
 extension AnalysisViewController: UITableViewDelegate, UITableViewDataSource {

@@ -21,7 +21,6 @@ extension AnalyseFlow {
 protocol AnalyseProtocol {
     var analyse: Analyse? { get set }
     var project: Project { get set }
-    var placeholder: String { get }
     var type: AnalyseFlow { get }
     var buttonType: ButtonType { get set }
     
@@ -33,10 +32,6 @@ class AnalyseViewModel {
     var analyse: Analyse?
     var type: AnalyseFlow
     var buttonType: ButtonType
-    
-    var placeholder: String {
-        return Constants.analysePlaceholder
-    }
     
     let firebase: FirebaseServiceProtocol
     

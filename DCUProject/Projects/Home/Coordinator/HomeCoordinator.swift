@@ -38,8 +38,8 @@ class HomeCoordinator: Coordinator {
         return coordinator.getViewController()
     }
     
-    func changeToAnalyse() -> AnalysisViewController {
-        let coordinator = AnalysisCoordinator(navigationController: navigationController, project: project)
+    func changeToAnalyse(delegate: HomeViewDelegate) -> AnalysisViewController {
+        let coordinator = AnalysisCoordinator(navigationController: navigationController, project: project, delegate: delegate)
         coordinator.parentCoordinator = self
         add(coordinator)
         return coordinator.getViewController()

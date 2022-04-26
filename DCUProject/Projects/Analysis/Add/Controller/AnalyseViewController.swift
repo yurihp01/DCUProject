@@ -11,7 +11,7 @@ class AnalyseViewController: BaseViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var detail: UITextView!
+    @IBOutlet weak var detail: UITextField!
     
     weak var coordinator: AnalyseCoordinator?
     
@@ -22,7 +22,6 @@ class AnalyseViewController: BaseViewController {
         super.viewDidLoad()
         setViewsVisibility()
         setViews()
-        setTextView()
         setNavigationBar()
     }
     
@@ -49,22 +48,15 @@ private extension AnalyseViewController {
     }
     
     func setViewsVisibility() {
-        detail.isEditable = viewModel?.buttonType == .edit ? false : true
-        name.isEnabled = detail.isEditable
-        segmentedControl.isEnabled = detail.isEditable
-    }
-    
-    func setTextView() {
-        guard let placeholder = viewModel?.placeholder else { return }
-        detail.textColor = detail.text.contains(placeholder) ? .lightGray : .black
-        detail.delegate = self
+        detail.isEnabled = viewModel?.buttonType == .edit ? false : true
+        name.isEnabled = detail.isEnabled
+        segmentedControl.isEnabled = detail.isEnabled
     }
     
     func saveAnalyse(complete: @escaping () -> ()) {
         guard var viewModel = viewModel,
               let name = name.text, !name.isEmpty,
-              let detail = detail.text, !detail.isEmpty,
-              !detail.contains(viewModel.placeholder) else {
+              let detail = detail.text, !detail.isEmpty else {
             showAlert(message: "O campo definição está vazio. Preencha e tente novamente!")
             return
         }
@@ -114,13 +106,3 @@ private extension AnalyseViewController {
         navigationItem.rightBarButtonItem?.title = viewModel?.buttonType.rawValue
     }
 }
-
-extension AnalyseViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.textColor = UIColor.black
-            textView.text = ""
-        }
-    }
-}
-

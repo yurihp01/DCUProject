@@ -13,16 +13,19 @@ class AnalysisCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
     
     let project: Project
+    let delegate: HomeViewDelegate
     let viewController = AnalysisViewController.instantiate(storyboardName: .main)
     
-    init (navigationController: UINavigationController, project: Project) {
+    init (navigationController: UINavigationController, project: Project, delegate: HomeViewDelegate) {
         self.navigationController = navigationController
         self.project = project
+        self.delegate = delegate
     }
     
     func start() {
         viewController.viewModel = AnalysisViewModel(project: project)
         viewController.coordinator = self
+        viewController.homeDelegate = delegate
     }
     
     func getViewController() -> AnalysisViewController {
