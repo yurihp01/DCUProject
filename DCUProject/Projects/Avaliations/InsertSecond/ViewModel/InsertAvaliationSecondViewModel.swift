@@ -30,9 +30,17 @@ class InsertAvaliationSecondViewModel {
 
 extension InsertAvaliationSecondViewModel: InsertAvaliationSecondProtocol {
     func addAvaliation(completion: @escaping (Result<String, FirebaseError>) -> ()) {
-        project.avaliations.append(avaliation)
         
-        firebase.addProject(project: project) { result in
+        if !title.contains("Editar") {
+            project.avaliations.append(avaliation)
+        } else if let index = project.avaliations.firstIndex(where: {
+            $0.id == avaliation.id
+        }) {
+            project.avaliations[index] = avaliation
+//            usar logica para pegar index e substituir o campo
+        }
+        
+        firebase.updateProject(project: project) { result in
             completion(result)
         }
     }

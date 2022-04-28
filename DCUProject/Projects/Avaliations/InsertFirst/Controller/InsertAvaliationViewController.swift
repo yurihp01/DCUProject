@@ -12,10 +12,12 @@ class InsertAvaliationViewController: BaseViewController {
     
     @IBOutlet weak var screen: DropDown!
     @IBOutlet weak var heuristic: DropDown!
-    @IBOutlet weak var avaliator: UITextField!
+    
     @IBOutlet weak var status: DropDown!
     @IBOutlet weak var severity: DropDown!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var avaliator: UITextField!
+    @IBOutlet weak var titleField: UITextField!
     
     weak var coordinator: InsertAvaliationCoordinator?
     var viewModel: InsertAvaliationViewModel?
@@ -32,16 +34,19 @@ class InsertAvaliationViewController: BaseViewController {
            let heuristic = heuristic.text, !heuristic.isEmpty,
            let avaliator = avaliator.text, !avaliator.isEmpty,
            let status = status.text, !status.isEmpty,
+           let titleField = titleField.text,
            let title = title,
            let viewModel = viewModel {
+            var avaliation = Avaliation(title: titleField, date: Date().description, screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: status)
+            avaliation.id = viewModel.avaliation?.id ?? UUID().uuidString
             
             if !severity.isEnabled {
-                let avaliation = Avaliation(screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: status, date: Date())
-                coordinator?.goToInsertSecondPart(project: viewModel.project, avaliation: avaliation, title: title)
+                avaliation.status = status
             } else if let severity = severity.text {
-                let avaliation = Avaliation(screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: severity, date: Date())
-                coordinator?.goToInsertSecondPart(project: viewModel.project, avaliation: avaliation, title: title)
+                avaliation.status = severity
             }
+            
+            coordinator?.goToInsertSecondPart(project: viewModel.project, avaliation: avaliation, title: title)
         } else {
                showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
                return
@@ -51,10 +56,9 @@ class InsertAvaliationViewController: BaseViewController {
 
 private extension InsertAvaliationViewController {
     func setDropdowns() {
-        guard let viewModel = viewModel else { return }
-            let project = viewModel.firebase.project
-        screen.optionArray = project?.preAvaliation?.screens ?? []
-        heuristic.optionArray = project?.preAvaliation?.heuristics ?? []
+        guard let project = viewModel?.project else { return }
+        screen.optionArray = project.preAvaliation.screens
+        heuristic.optionArray = project.preAvaliation.heuristics
         status.optionArray = ["Sucesso", "Defeito"]
         severity.optionArray = [Severity.cosmetic.rawValue, Severity.lower.rawValue, Severity.serious.rawValue, Severity.disaster.rawValue]
         severity.isEnabled = status.text == "Defeito"
@@ -70,6 +74,7 @@ private extension InsertAvaliationViewController {
     func setFields() {
         if let avaliation = viewModel?.avaliation {
             buttonType = .edit
+            titleField.text = avaliation.title
             screen.text = avaliation.screen
             heuristic.text = avaliation.heuristic
             avaliator.text = avaliation.avaliator

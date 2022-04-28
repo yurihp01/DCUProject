@@ -45,7 +45,7 @@ extension DesignViewModel: DesignViewModelProtocol {
     }
     
     func addProject(completion: @escaping (Result<String, FirebaseError>) -> ()) {
-        firebase.addProject(project: project) { result in
+        firebase.updateProject(project: project) { result in
             completion(result)
         }
     }

@@ -38,32 +38,22 @@ class PreAvaliationViewController: BaseViewController {
     }
     
     @IBAction func goToInsertPreAvaliation(_ sender: UIButton) {
-        if segmentedType == .heuristic {
-            var list = viewModel?.getHeuristics() ?? []
-            alertWithTextField(title: "Adicionar Heurística", message: "Digite a nova heurística", placeholder: "Heurística") { text in
-                list.append(text)
-                self.viewModel?.preAvaliation?.heuristics = list
-                self.viewModel?.setHeuristics { [weak self] result in
-                    switch result {
-                    case .success(let message):
-                        self?.showMessage(message: message)
-                    case .failure(let error):
-                        self?.showAlert(message: error.errorDescription)
-                    }
-                }
+        let segment = segmentedType.rawValue.dropLast().description
+        alertWithTextField(title: "Adicionar \(segment)", message: "Digite a nova \(segment)", placeholder: segment) { text in
+            
+            switch self.segmentedType {
+            case .heuristic:
+                self.viewModel?.project.preAvaliation.heuristics.append(text)
+            case .screen:
+                self.viewModel?.project.preAvaliation.screens.append(text)
             }
-        } else {
-            var list = viewModel?.getScreens() ?? []
-            alertWithTextField(title: "Adicionar Tela", message: "Digite a nova tela", placeholder: "Tela") { text in
-                list.append(text)
-                self.viewModel?.preAvaliation?.screens = list
-                self.viewModel?.setScreens { [weak self] result in
-                    switch result {
-                    case .success(let message):
-                        self?.showMessage(message: message)
-                    case .failure(let error):
-                        self?.showAlert(message: error.errorDescription)
-                    }
+            
+            self.viewModel?.setPreAvaliation { [weak self] result in
+                switch result {
+                case .success(let message):
+                    self?.showMessage(message: message)
+                case .failure(let error):
+                    self?.showAlert(message: error.errorDescription)
                 }
             }
         }
@@ -95,7 +85,7 @@ private extension PreAvaliationViewController {
 
 extension PreAvaliationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let list = segmentedType == .heuristic ? viewModel?.getHeuristics() : viewModel?.getScreens(),
+        guard let list = segmentedType == .heuristic ? viewModel?.project.preAvaliation.heuristics : viewModel?.project.preAvaliation.screens,
               list.count > 0 else { return UITableViewCell() }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -104,39 +94,29 @@ extension PreAvaliationViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if segmentedType == .heuristic {
-            var list = viewModel?.getHeuristics() ?? []
-//          remover depois
-            self.viewModel?.preAvaliation?.heuristics = list
-            alertWithTextField(title: "Alterar Heurística", message: "Digite a nova heurística", placeholder: "Heurística") { text in
-                self.viewModel?.preAvaliation?.heuristics[indexPath.row] = text
-                self.viewModel?.setHeuristics { [weak self] result in
-                    switch result {
-                    case .success(let message):
-                        self?.showMessage(message: message)
-                    case .failure(let error):
-                        self?.showAlert(message: error.errorDescription)
-                    }
-                }
+        let segment = segmentedType.rawValue.dropLast().description
+        alertWithTextField(title: "Alterar \(segment)", message: "Digite a nova \(segment)", placeholder: segment) { text in
+            
+            switch self.segmentedType {
+            case .heuristic:
+                self.viewModel?.project.preAvaliation.heuristics[indexPath.row] = text
+            case .screen:
+                self.viewModel?.project.preAvaliation.screens[indexPath.row] = text
             }
-        } else {
-            var list = viewModel?.getScreens() ?? []
-            alertWithTextField(title: "Alterar Tela", message: "Digite a nova tela", placeholder: "Tela") { text in
-                self.viewModel?.preAvaliation?.screens[indexPath.row] = text
-                self.viewModel?.setScreens { [weak self] result in
-                    switch result {
-                    case .success(let message):
-                        self?.showMessage(message: message)
-                    case .failure(let error):
-                        self?.showAlert(message: error.errorDescription)
-                    }
+            
+            self.viewModel?.setPreAvaliation { [weak self] result in
+                switch result {
+                case .success(let message):
+                    self?.showMessage(message: message)
+                case .failure(let error):
+                    self?.showAlert(message: error.errorDescription)
                 }
             }
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let viewModel = viewModel else { return 0 }
-        return segmentedType == .heuristic ? viewModel.getHeuristics().count : viewModel.getScreens().count
+        guard let preAvaliation = viewModel?.project.preAvaliation else { return 0 }
+        return segmentedType == .heuristic ? preAvaliation.heuristics.count : preAvaliation.screens.count
     }
 }

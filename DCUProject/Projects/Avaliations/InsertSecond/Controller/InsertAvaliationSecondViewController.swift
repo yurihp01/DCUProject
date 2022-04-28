@@ -27,14 +27,14 @@ class InsertAvaliationSecondViewController: BaseViewController {
     @IBAction func buttonTouched(_ sender: UIButton) {
         guard let comments = comments.text,
               let viewModel = viewModel else { return }
-        viewModel.avaliation.date = datePicker.date
+        viewModel.avaliation.date = datePicker.date.description
         viewModel.avaliation.comments = comments
          
         viewModel.addAvaliation(completion: { [weak self] result in
             switch result {
             case .success(let message):
                 self?.showMessage(message: message, handler: { _ in
-                    self?.navigationController?.popToViewController(ofClass: AvaliationViewController.self)
+                    self?.navigationController?.popToViewController(ofClass: HomeViewController.self)
                 })
             case .failure(let error):
                 self?.showAlert(message: error.errorDescription)
@@ -44,11 +44,10 @@ class InsertAvaliationSecondViewController: BaseViewController {
 }
 
 private extension InsertAvaliationSecondViewController {
-
     func setFields() {
         guard let viewModel = viewModel else { return }
         comments.text = viewModel.avaliation.comments
-        datePicker.date = viewModel.avaliation.date
+        datePicker.date = DateFormatter().date(from: viewModel.avaliation.date) ?? Date()
         button.setTitle(viewModel.title, for: .normal)
         title = viewModel.title
     }

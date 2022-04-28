@@ -27,6 +27,7 @@ extension AnalyseType {
 }
 
 struct Analyse {
+    var id: String = UUID().uuidString
     var name: String
     var detail: String
     var type: String = ""
@@ -45,11 +46,12 @@ struct Analyse {
 
 extension Analyse: Codable {
     enum CodingKeys: String, CodingKey {
-        case detail, name, analyseType
+        case detail, name, analyseType, id
     }
     
     func toDict() -> NSDictionary {
         let dict = [
+            "id":NSString(string: id),
             "detail":NSString(string: detail),
             "name":NSString(string: name),
             "analyseType":NSString(string: analyseType.rawValue),
@@ -59,13 +61,16 @@ extension Analyse: Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decode(String.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)
         detail = try values.decode(String.self, forKey: .detail)
+        type = try values.decode(String.self, forKey: .analyseType)
         analyseType = AnalyseType(rawValue: type)!
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(detail, forKey: .detail)
         try container.encode(analyseType.rawValue, forKey: .analyseType)

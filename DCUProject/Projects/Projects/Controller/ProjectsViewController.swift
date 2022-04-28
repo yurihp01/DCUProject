@@ -23,6 +23,15 @@ class ProjectsViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showLoading(view: view)
+        viewModel?.getProjects {
+            self.stopLoading()
+            self.tableView.reloadData()
+        }
+    }
+    
     func setNavigationController() {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToInsertProject))
         navigationItem.rightBarButtonItem = button

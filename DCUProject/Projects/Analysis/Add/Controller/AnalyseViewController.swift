@@ -60,12 +60,18 @@ private extension AnalyseViewController {
             showAlert(message: "O campo definição está vazio. Preencha e tente novamente!")
             return
         }
-        indicator.startAnimating()
+        showLoading(view: view)
 
         let analyse = Analyse(detail: detail, type: segmentedType, name: name)
-        viewModel.project.analysis.append(analyse)
+        
+        if viewModel.type == .insert {
+            viewModel.project.analysis.append(analyse)
+        } else if let row = viewModel.project.analysis.firstIndex(where: { $0.id == viewModel.analyse?.id }) {
+            viewModel.project.analysis[row] = analyse
+        }
+        
         viewModel.addAnalyse { [weak self] result in
-            self?.indicator.stopAnimating()
+            self?.stopLoading()
             switch result {
             case .success:
                 complete()

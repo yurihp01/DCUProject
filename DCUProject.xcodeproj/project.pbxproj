@@ -12,7 +12,6 @@
 		15667CB727BDB6DF0096D85E /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15667CB627BDB6DF0096D85E /* Storyboarded.swift */; };
 		15667CBC27BDBC2F0096D85E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15667CBB27BDBC2F0096D85E /* GoogleService-Info.plist */; };
 		1591975F27BDC3C600B3CC6B /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591975E27BDC3C600B3CC6B /* FirebaseService.swift */; };
-		1591976327BDC93F00B3CC6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1591976227BDC93F00B3CC6B /* User.swift */; };
 		15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A0DA6627B880C1001FF469 /* AppDelegate.swift */; };
 		15A0DA6E27B880C1001FF469 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A0DA6C27B880C1001FF469 /* Main.storyboard */; };
 		15A0DA7027B880C3001FF469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A0DA6F27B880C3001FF469 /* Assets.xcassets */; };
@@ -97,7 +96,6 @@
 		15667CB627BDB6DF0096D85E /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		15667CBB27BDBC2F0096D85E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1591975E27BDC3C600B3CC6B /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
-		1591976227BDC93F00B3CC6B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		15A0DA6327B880C1001FF469 /* DCUProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCUProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A0DA6627B880C1001FF469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A0DA6D27B880C1001FF469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 		1591976127BDC93500B3CC6B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1591976227BDC93F00B3CC6B /* User.swift */,
 				15A3127D27C30C5A00B2177C /* Project.swift */,
 				15EA486A27DA9B4400D3A3B4 /* Analyse.swift */,
 				DAB41A2627F3BD850035199F /* Avaliation.swift */,
@@ -338,16 +335,16 @@
 		15CEE3BD27CE9C9D0098CA0B /* Projects */ = {
 			isa = PBXGroup;
 			children = (
-				DAE1094127F4FBA0004D1079 /* PreAvaliation */,
+				15CEE3EE27CE9D880098CA0B /* Analysis */,
 				DAA26E9727E173B900D85059 /* Design */,
 				15CEE3BE27CE9C9D0098CA0B /* Home */,
 				15CEE3C627CE9C9D0098CA0B /* Insert */,
-				15CEE3EE27CE9D880098CA0B /* Analysis */,
 				15CEE3C827CE9C9D0098CA0B /* Definition */,
 				15CEE3C927CE9C9D0098CA0B /* Details */,
 				15CEE3CA27CE9C9D0098CA0B /* Register */,
 				15CEE3D227CE9C9D0098CA0B /* Projects */,
 				15CEE3D927CE9C9D0098CA0B /* Avaliations */,
+				DAE1094127F4FBA0004D1079 /* PreAvaliation */,
 				15CEE3DA27CE9C9D0098CA0B /* Login */,
 			);
 			path = Projects;
@@ -1160,7 +1157,6 @@
 				15A3126427C1268200B2177C /* BaseViewController.swift in Sources */,
 				15CEE3E427CE9C9D0098CA0B /* RegisterViewModel.swift in Sources */,
 				15CEE40827CE9EB60098CA0B /* DefinitionViewController.swift in Sources */,
-				1591976327BDC93F00B3CC6B /* User.swift in Sources */,
 				15CEE3E627CE9C9D0098CA0B /* RegisterViewController.swift in Sources */,
 				15A0DA6727B880C1001FF469 /* AppDelegate.swift in Sources */,
 				DAE1094727F4FC00004D1079 /* PreAvaliationViewController.swift in Sources */,

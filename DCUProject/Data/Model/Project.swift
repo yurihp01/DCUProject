@@ -8,11 +8,10 @@
 import UIKit
 
 struct Project: Codable {
-    var name, description, team, category, owner, id: String?
-    var date: Date?
+    var name, date, description, team, category, owner, id: String?
     var analysis: [Analyse] = []
     var users: [String] = []
-    var preAvaliation: PreAvaliation?
+    var preAvaliation: PreAvaliation = PreAvaliation(screens: [], heuristics: [])
     var avaliations: [Avaliation] = []
     var design: String = ""
     
@@ -20,7 +19,7 @@ struct Project: Codable {
         self.name = name
         self.team = team
         self.category = category
-        self.date = date
+        self.date = date?.description
         self.description = description
         self.owner = owner
     }
@@ -31,14 +30,14 @@ struct Project: Codable {
     
     func toDict() -> NSDictionary {
         let dict = [
-            "name":NSString(string: name!),
-            "team":NSString(string: team!),
-            "category":NSString(string: category!),
-            "date":NSString(string: date!.formatted()),
-            "description":NSString(string: description!),
-            "owner":NSString(string: owner!),
+            "name":NSString(string: name ?? ""),
+            "team":NSString(string: team ?? ""),
+            "category":NSString(string: category ?? ""),
+            "date":NSString(string: date ?? ""),
+            "description":NSString(string: description ?? ""),
+            "owner":NSString(string: owner ?? ""),
             "id":NSString(string: id ?? ""),
-            "preAvaliation": preAvaliation?.toDict() ?? [:],
+            "preAvaliation": preAvaliation.toDict(),
             "avaliations":NSArray(array: avaliations.map { $0.toDict() }),
             "users":NSArray(array: users),
             "analysis":NSArray(array: analysis.map { $0.toDict() }),
@@ -47,19 +46,23 @@ struct Project: Codable {
         return NSDictionary(dictionary: dict)
     }
     
+    public init(dictionary: Dictionary<String, Any>) throws {
+        self = try parseDictionary(with: dictionary, to: Project.self)
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decode(String.self, forKey: .name)
         description = try values.decode(String.self, forKey: .description)
         team = try values.decode(String.self, forKey: .team)
         category = try values.decode(String.self, forKey: .category)
-        date = try values.decode(Date.self, forKey: .date)
-        analysis = try values.decode([Analyse].self, forKey: .analysis)
-        users = try values.decode([String].self, forKey: .users)
+        date = try values.decode(String.self, forKey: .date)
+        analysis = try values.decodeIfPresent([Analyse].self, forKey: .analysis) ?? []
+        users = try values.decodeIfPresent([String].self, forKey: .users) ?? []
         owner = try values.decode(String.self, forKey: .owner)
         id = try values.decode(String.self, forKey: .id)
-        preAvaliation = try values.decode(PreAvaliation.self, forKey: .preAvaliation)
-        avaliations = try values.decode([Avaliation].self, forKey: .avaliations)
+        preAvaliation = try values.decodeIfPresent(PreAvaliation.self, forKey: .preAvaliation) ?? PreAvaliation(screens: [], heuristics: [])
+        avaliations = try values.decodeIfPresent([Avaliation].self, forKey: .avaliations) ?? []
         design = try values.decode(String.self, forKey: .design)
     }
     
@@ -85,9 +88,9 @@ struct Project: Codable {
     }
     
     static var mockedAvaliation: [Avaliation] {
-        let avaliations = [Avaliation(screen: "Tela 1", heuristic: "Heurística 1", avaliator: "Yuri", comments: "A tela estava meio ruim", status: Severity.serious.rawValue, date: Date()),
-                          Avaliation(screen: "Tela 2", heuristic: "Heurística 2", avaliator: "Sarah", comments: "A tela estava boa", status: Status.success.description, date: Date()),
-                          Avaliation(screen: "Tela 3", heuristic: "Heurística 3", avaliator: "Sergio", comments: "A tela estava péssima", status: Severity.disaster.rawValue, date: Date())]
+        let avaliations = [Avaliation(title: "Avaliacao 1", date: Date().description, screen: "Tela 1", heuristic: "Heurística 1", avaliator: "Yuri", comments: "A tela estava meio ruim", status: Severity.serious.rawValue),
+                           Avaliation(title: "Avaliacao 2", date: Date().description, screen: "Tela 2", heuristic: "Heurística 2", avaliator: "Sarah", comments: "A tela estava boa", status: Status.success.description),
+                           Avaliation(title: "Avaliacao 3", date: Date().description, screen: "Tela 3", heuristic: "Heurística 3", avaliator: "Sergio", comments: "A tela estava péssima", status: Severity.disaster.rawValue)]
         return avaliations
     }
     
@@ -111,11 +114,4 @@ struct Project: Codable {
         Project(name: "Project 3", team: "Team 3", category: "Category 3", owner: "a@a.com", date: Date(), description: "Project 3 legal"),
         Project(name: "Project 4", team: "Team 4", category: "Category 4", owner: "a@a.com", date: Date(), description: "Project 4 legal")
     ]
-}
-
-struct DictionaryEncoder {
-    static func encode<T>(_ value: T) throws -> [String: Any] where T: Encodable {
-        let jsonData = try JSONEncoder().encode(value)
-        return try JSONSerialization.jsonObject(with: jsonData) as? [String: Any] ?? [:]
-    }
 }

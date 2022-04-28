@@ -68,14 +68,25 @@ private extension DetailsViewController {
         team.text = viewModel?.project.team
         category.text = viewModel?.project.category
         definition.text = viewModel?.project.description
-        datePicker.date = viewModel?.project.date ?? Date()
+        datePicker.date = DateFormatter().date(from: viewModel?.project.date ?? "") ?? Date()
     }
     
     func addFields() {
         if buttonType == .save {
-            let project = Project(name: name.text, team: team.text, category: category.text, owner: viewModel?.getCurrentUser()?.email, date: datePicker.date, description: definition.text)
-            viewModel?.project = project
-            showMessage(message: "Projeto alterado com sucesso!", handler: nil)
+            viewModel?.project.name = name.text
+            viewModel?.project.team = team.text
+            viewModel?.project.category = category.text
+            viewModel?.project.date = datePicker.date.description
+            viewModel?.project.description = definition.text
+            
+            viewModel?.updateProject(completion: { [weak self] result in
+                switch result {
+                case .success(let message):
+                    self?.showMessage(message: message, handler: nil)
+                case .failure(let error):
+                    self?.showAlert(message: error.errorDescription)
+                }
+            })
         }
     }
     

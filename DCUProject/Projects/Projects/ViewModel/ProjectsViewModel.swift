@@ -9,18 +9,16 @@ import Foundation
 
 protocol ProjectsViewModelProtocol {
     var projects: [Project] { get set }
-    func getProjectsCount() -> Int
     func getProjects(by name: String?) -> [Project]
+    func getProjects(_ onCompletion: @escaping () -> ())
 }
 
 class ProjectsViewModel {
     var projects: [Project] = []
+    let firebase: FirebaseServiceProtocol
     
     init() {
-        Task.init {
-            projects = await getProjects()
-        }
-        
+        firebase = FirebaseService()
         print("INIT - ProjectsViewModel ")
     }
     
@@ -30,17 +28,16 @@ class ProjectsViewModel {
 }
 
 extension ProjectsViewModel: ProjectsViewModelProtocol {
-    func getProjects() async -> [Project] {
-//        FirebaseService
-        return Project.mockedProjects
+    func getProjects(_ onCompletion: @escaping () -> ()) {
+        firebase.getProjects { [weak self] projects in
+            guard let self = self else { return }
+            self.projects = projects
+            onCompletion()
+        }
     }
     
     func getProjects(by name: String?) -> [Project] {
         guard let name = name, !name.isEmpty else { return projects }
         return projects.filter({ $0.name!.lowercased().contains(name.lowercased())})
-    }
-    
-    func getProjectsCount() -> Int {
-        return projects.count
     }
 }

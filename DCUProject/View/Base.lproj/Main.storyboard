@@ -1013,12 +1013,20 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="79j-67-B55">
-                                <rect key="frame" x="16" y="16" width="288" height="248"/>
+                                <rect key="frame" x="16" y="16" width="288" height="314"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Selecione a tela" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RaQ-Ud-vDX" customClass="DropDown" customModule="iOSDropDown">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insira o título" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RaQ-Ud-vDX">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="6lc-NF-7D9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Selecione a tela" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vEV-gG-HK0" customClass="DropDown" customModule="iOSDropDown">
+                                        <rect key="frame" x="0.0" y="66" width="288" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="QnO-KE-Si4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -1027,7 +1035,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Selecione a heurística" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FW2-zc-qZ0" customClass="DropDown" customModule="iOSDropDown">
-                                        <rect key="frame" x="0.0" y="66" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="132" width="288" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="tMz-Mb-Gqj"/>
                                         </constraints>
@@ -1038,7 +1046,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insira o Avaliador" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9s1-ZQ-4gW">
-                                        <rect key="frame" x="0.0" y="132" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="198" width="288" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="6DX-9B-DSi"/>
                                         </constraints>
@@ -1049,9 +1057,9 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hdG-sg-HUX">
-                                        <rect key="frame" x="0.0" y="198" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="264" width="288" height="50"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Selecione o status" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="syY-kU-RJp" customClass="DropDown" customModule="iOSDropDown">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Status" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="syY-kU-RJp" customClass="DropDown" customModule="iOSDropDown">
                                                 <rect key="frame" x="0.0" y="0.0" width="136" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="fJl-rK-0ar"/>
@@ -1107,9 +1115,10 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <outlet property="avaliator" destination="9s1-ZQ-4gW" id="9ja-Md-8wF"/>
                         <outlet property="button" destination="eDa-st-nAF" id="RPv-Jc-bjZ"/>
                         <outlet property="heuristic" destination="FW2-zc-qZ0" id="Pgb-Os-Wue"/>
-                        <outlet property="screen" destination="RaQ-Ud-vDX" id="qaP-ni-MNv"/>
+                        <outlet property="screen" destination="vEV-gG-HK0" id="2t0-YV-Fnn"/>
                         <outlet property="severity" destination="0B5-ly-8k2" id="nn2-6U-Hal"/>
                         <outlet property="status" destination="syY-kU-RJp" id="BiJ-9r-iBe"/>
+                        <outlet property="titleField" destination="RaQ-Ud-vDX" id="n8G-Zy-uH3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pu4-SQ-usm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

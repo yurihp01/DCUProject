@@ -10,21 +10,18 @@ import UIKit
 class BaseViewController: UIViewController, Storyboarded {
     
     // MARK: Variables
-    lazy var indicator: UIActivityIndicatorView = {
-        let percent = view.bounds.height - view.bounds.height * 0.2
-        let indicator = UIActivityIndicatorView(frame: CGRect(x: view.center.x - 24, y: percent, width: 40, height: 40))
-        indicator.accessibilityIdentifier = Constants.indicator
-        indicator.color = .white
-        indicator.style = .large
-        indicator.hidesWhenStopped = true
-        return indicator
-    } ()
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .gray
+        activityIndicator.backgroundColor = .white
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
     
     // MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(indicator)
     }
     
     // MARK: - Functions
@@ -56,5 +53,18 @@ class BaseViewController: UIViewController, Storyboarded {
             { completion("") }
         })
         navigationController?.present(alert, animated: true)
+    }
+    
+    func showLoading(view: UIView) {
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        activityIndicator.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        activityIndicator.startAnimating()
+    }
+
+    func stopLoading() {
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
     }
 }

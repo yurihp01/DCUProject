@@ -41,7 +41,7 @@ extension AvaliationViewController: UITableViewDelegate, UITableViewDataSource {
         guard let avaliations = viewModel?.getAvaliations(by: searchBar.text),
               avaliations.count > 0 else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = avaliations[indexPath.row].screen
+        cell.textLabel?.text = avaliations[indexPath.row].title
         return cell
     }
 

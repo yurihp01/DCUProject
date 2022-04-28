@@ -18,12 +18,9 @@ protocol FirebaseServiceProtocol: AnyObject {
     func removeHandle(handle: Handle)
     func login(email: String, password: String) async -> String
     func register(email: String, password: String) async -> String
-    func getProjects() async -> [Project]
-    func addAnalyse(analyse: Analyse, onCompletion: @escaping (String) -> ())
-    func addPreAvaliation(preAvaliation: PreAvaliation, onCompletion: @escaping (String) -> ())
-    func addAvaliation(avaliation: Avaliation, onCompletion: @escaping (String) -> ())
-    func addProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ())
-    func addUser(email: String)
+    func getProjects(_ onCompletion: @escaping ([Project]) -> ())
+    func addProject(project: Project, onCompletion: @escaping (Result<Project, FirebaseError>) -> ())
+    func updateProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ())
     func addImage(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ())
 }
 
@@ -73,41 +70,54 @@ class FirebaseService: FirebaseServiceProtocol {
         }
     }
     
-    func getProjects() async -> [Project] {
-        do {
-//            try await 
-        }
-        return []
+    func addUser(email: String) {
+        let email = NSString(string: email)
+        userRef.setValue(email)
     }
     
-    func addProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
+    func getProjects(_ onCompletion: @escaping ([Project]) -> ()) {
+            projectRef.observeSingleEvent(of: .value, with: { snapshot in
+                // Get user value
+                
+                let data = snapshot.value as? Dictionary<String, Any> ?? Dictionary()
+                
+                let projects = data.values.compactMap { value -> Project? in
+                    if let dict = value as? Dictionary<String, Any> {
+                        return try? Project(dictionary: dict)
+                    }
+                    return nil
+                }
+                onCompletion(projects)
+            })
+    }
+    
+    func addProject(project: Project, onCompletion: @escaping (Result<Project, FirebaseError>) -> ()) {
         self.project = project
         self.projectRef.childByAutoId().setValue(project.toDict()) { [weak self] error, database in
+            guard let self = self,
+                  var project = self.project else { return }
             if error == nil {
-                self?.project?.id = database.key
-                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
-                onCompletion(.success("sucesso"))
+                project.id = database.key
+                self.projectRef.child(database.key ?? "").setValue(project.toDict())
+                onCompletion(.success(project))
                 return
             }
             onCompletion(.failure(.notFound))
         }
     }
     
-    func addAnalyse(analyse: Analyse, onCompletion: @escaping (String) -> ()) {
-        self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
+    func updateProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
+        self.projectRef.updateChildValues([project.id ?? "":project.toDict()]) { error, _ in
             if error == nil {
-                self?.project?.id = database.key
-                self?.project?.analysis.append(analyse)
-                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
-                onCompletion("Análise adicionada com sucesso!")
-            } else {
-                onCompletion(error?.localizedDescription ?? "")
+                onCompletion(.success("Projeto atualizado com sucesso"))
+                return
             }
+            onCompletion(.failure(.notFound))
         }
     }
     
     func addPreAvaliation(preAvaliation: PreAvaliation, onCompletion: @escaping (String) -> ()) {
-        self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
+        self.projectRef.child(project?.id ?? "").setValue(project?.toDict()) { [weak self] error, database in
             if error == nil {
                 self?.project?.id = database.key
                 self?.project?.preAvaliation = preAvaliation
@@ -120,7 +130,7 @@ class FirebaseService: FirebaseServiceProtocol {
     }
     
     func addAvaliation(avaliation: Avaliation, onCompletion: @escaping (String) -> ()) {
-        self.projectRef.childByAutoId().setValue(project?.toDict()) { [weak self] error, database in
+        self.projectRef.child(project?.id ?? "").setValue(project?.toDict()) { [weak self] error, database in
             if error == nil {
                 self?.project?.id = database.key
                 self?.project?.avaliations.append(avaliation)
@@ -145,14 +155,15 @@ class FirebaseService: FirebaseServiceProtocol {
         }
     }
     
-    func addUser(email: String) {
-        let email = NSString(string: email)
-        userRef.setValue(email)
-    }
+    
 }
 
-private extension FirebaseService {
-//    func getData() async throws -> Any {
-//        return await ref.observeSingleEventAndPreviousSiblingKey(of: .value)
-//    }
+
+extension Decodable {
+    func parseDictionary<T>(with dictionary: Dictionary<String, Any>, to object: T.Type) throws -> T where T : Decodable {
+        let json = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return try decoder.decode(object, from: json)
+    }
 }

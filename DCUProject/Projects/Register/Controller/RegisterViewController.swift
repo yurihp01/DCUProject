@@ -24,18 +24,18 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        indicator.startAnimating()
+        showLoading(view: view)
         Task.init {
-            let user = User(email: userField.text ?? "")
+            let email = userField.text ?? ""
             let password = password.text ?? ""
-            if let message = await viewModel?.registerUser(with: user.email, password: password),
+            if let message = await viewModel?.registerUser(with: email, password: password),
                message.contains("criado") {
-                indicator.stopAnimating()
+                stopLoading()
                 showMessage(message: message) {_ in
                     self.coordinator?.goToProjectsScreen()
                 }
             } else {
-                indicator.stopAnimating()
+                stopLoading()
                 showAlert(message: "Email ou senha incorretos. Verifique os campos e tente novamente!")
             }
         }

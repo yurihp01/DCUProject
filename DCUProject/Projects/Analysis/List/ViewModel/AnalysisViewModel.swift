@@ -29,15 +29,11 @@ class AnalysisViewModel {
 
 extension AnalysisViewModel: AnalysisViewModelProtocol {
     func getAnalysis(by name: String?, and type: String) -> [Analyse] {
-        let analysis = Project.mockedProject.analysis
+        let analysis = project.analysis
         guard let name = name, !name.isEmpty else {
             return  analysis.filter({ $0.analyseType.rawValue.elementsEqual(type) })
         }
         return analysis.filter({ $0.name.lowercased().contains(name.lowercased()) && $0.analyseType.rawValue.elementsEqual(type)
         })
-    }
-    
-    func getProject() -> Project {
-        return firebase.project ?? Project.mockedProject
     }
 }

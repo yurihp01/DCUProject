@@ -30,9 +30,9 @@ class DefinitionViewController: BaseViewController {
         
         viewModel.setDefinition(text) { [weak self] result in
             switch result {
-            case .success(let message):
-                self?.showMessage(message: message) { _ in
-                    self?.coordinator?.goToHome(project: viewModel.project)
+            case .success(let project):
+                self?.showMessage(message: "Projeto salvo com sucesso!") { _ in
+                    self?.coordinator?.goToHome(project: project)
                 }
             case .failure(let error):
                 self?.showAlert(message: error.errorDescription)

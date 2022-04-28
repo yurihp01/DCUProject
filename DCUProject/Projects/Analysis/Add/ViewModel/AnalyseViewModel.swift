@@ -51,7 +51,7 @@ class AnalyseViewModel {
 
 extension AnalyseViewModel: AnalyseProtocol {
     func addAnalyse(onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
-        firebase.addProject(project: project, onCompletion: { result in
+        firebase.updateProject(project: project, onCompletion: { result in
             return onCompletion(result)
         })
     }
