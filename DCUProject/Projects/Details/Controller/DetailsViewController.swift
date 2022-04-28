@@ -9,12 +9,20 @@ import UIKit
 
 enum ButtonType: String {
     case edit = "Editar"
-    case save = "Inserir"
+    case save = "Alterar"
+    case next = "Continuar"
 }
 
 extension ButtonType {
     mutating func toggle() {
-        self = self == .edit ? .save : .edit
+        switch self {
+        case .edit:
+            self = .next
+        case .save:
+            self = .edit
+        case .next:
+            self = .save
+        }
     }
 }
 
@@ -26,6 +34,8 @@ class DetailsViewController: BaseViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var definition: UITextField!
+    @IBOutlet weak var stackViewSecond: UIStackView!
+    @IBOutlet weak var stackViewFirst: UIStackView!
     
     weak var coordinator: DetailsCoordinator?
     var viewModel: DetailsViewModel?
@@ -35,7 +45,6 @@ class DetailsViewController: BaseViewController {
         super.viewDidLoad()
         setFields()
         setDatePicker()
-        checkOwner()
     }
     
     @IBAction func buttonTouched(_ sender: UIButton) {
@@ -49,20 +58,18 @@ class DetailsViewController: BaseViewController {
                return
         }
         
-        addFields()
-        switchViews()
+        buttonType == .edit ? switchViews() : addFields()
+
+    }
+    
+    @IBAction func shareButton(_ sender: UIButton) {
+        alertWithTextField(title: "Convidar", message: "Enviar convite", placeholder: "Digite o e-mail") { message in
+            self.viewModel?.project.users.append(message)
+        }
     }
 }
 
 private extension DetailsViewController {
-    func checkOwner() {
-        if let email = viewModel?.getCurrentUser()?.email,
-           let projectOwner = viewModel?.project.owner,
-           !email.elementsEqual("sarahcampinho@hotmail.com") {
-            button.isEnabled = false
-        }
-    }
-    
     func setFields() {
         name.text = viewModel?.project.name
         team.text = viewModel?.project.team
@@ -75,7 +82,7 @@ private extension DetailsViewController {
     }
     
     func addFields() {
-        if buttonType == .save {
+        if stackViewFirst.isHidden {
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "dd/MM/yyyy"
             viewModel?.project.date = dateFormat.string(from: datePicker.date)
@@ -92,11 +99,20 @@ private extension DetailsViewController {
                     self?.showAlert(message: error.errorDescription)
                 }
             })
+            
+            switchViews()
+            stackViewFirst.isHidden.toggle()
+            stackViewSecond.isHidden.toggle()
+        } else {
+            stackViewFirst.isHidden.toggle()
+            stackViewSecond.isHidden.toggle()
+            buttonType.toggle()
+            button.setTitle(buttonType.rawValue, for: .normal)
         }
     }
     
     func switchViews() {
-        buttonType = buttonType == .edit ? .save : .edit
+        buttonType.toggle()
         coordinator?.navigationController.navigationItem.rightBarButtonItem?.title = buttonType.rawValue
         name.isEnabled.toggle()
         team.isEnabled.toggle()

@@ -21,7 +21,6 @@ class DesignViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addImagePicker()
-        checkOwner()
     }
 
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -47,15 +46,6 @@ class DesignViewController: BaseViewController {
 }
 
 private extension DesignViewController {
-    func checkOwner() {
-        if let email = viewModel?.getCurrentUser()?.email,
-           let projectOwner = viewModel?.project.owner,
-           !email.elementsEqual(projectOwner) {
-            addButton.isEnabled = false
-            prototypeImage.isUserInteractionEnabled = false
-        }
-    }
-    
     func addTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
             prototypeImage.isUserInteractionEnabled = true

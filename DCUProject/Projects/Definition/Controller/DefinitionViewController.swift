@@ -40,17 +40,15 @@ class DefinitionViewController: BaseViewController {
         }
         
     }
+    
+    @IBAction func share(_ sender: UIButton) {
+        alertWithTextField(title: "Convidar", message: "Enviar convite", placeholder: "Digite o e-mail") { message in
+            self.viewModel?.project.users.append(message)
+        }
+    }
 }
 
 private extension DefinitionViewController {
-    func checkOwner() {
-        if let email = viewModel?.getCurrentUser()?.email,
-           let projectOwner = viewModel?.project.owner,
-           !email.elementsEqual(projectOwner) {
-            navigationItem.rightBarButtonItem?.isEnabled = false
-        }
-    }
-    
     func setViews() {
         guard let viewModel = viewModel else { return }
         titleLabel.text = Constants.question
