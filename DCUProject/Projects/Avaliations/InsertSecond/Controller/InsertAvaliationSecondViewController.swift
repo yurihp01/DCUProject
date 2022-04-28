@@ -27,7 +27,9 @@ class InsertAvaliationSecondViewController: BaseViewController {
     @IBAction func buttonTouched(_ sender: UIButton) {
         guard let comments = comments.text,
               let viewModel = viewModel else { return }
-        viewModel.avaliation.date = datePicker.date.description
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "dd/MM/yyyy"
+        viewModel.avaliation.date = dateFormat.string(from: datePicker.date)
         viewModel.avaliation.comments = comments
          
         viewModel.addAvaliation(completion: { [weak self] result in
@@ -47,7 +49,9 @@ private extension InsertAvaliationSecondViewController {
     func setFields() {
         guard let viewModel = viewModel else { return }
         comments.text = viewModel.avaliation.comments
-        datePicker.date = DateFormatter().date(from: viewModel.avaliation.date) ?? Date()
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "dd/MM/yyyy"
+        datePicker.date = dateFormat.date(from: viewModel.avaliation.date) ?? Date()
         button.setTitle(viewModel.title, for: .normal)
         title = viewModel.title
     }

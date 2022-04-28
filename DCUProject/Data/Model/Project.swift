@@ -15,11 +15,11 @@ struct Project: Codable {
     var avaliations: [Avaliation] = []
     var design: String = ""
     
-    init(name: String?, team: String?, category: String?, owner: String?, date: Date?, description: String? = nil) {
+    init(name: String?, team: String?, category: String?, owner: String?, date: String?, description: String? = nil) {
         self.name = name
         self.team = team
         self.category = category
-        self.date = date?.description
+        self.date = date
         self.description = description
         self.owner = owner
     }
@@ -99,7 +99,7 @@ struct Project: Codable {
     }
     
     static var mockedProject: Project {
-        var project = Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "sarahcampinho@hotmail.com", date: Date())
+        var project = Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "sarahcampinho@hotmail.com", date: "28/10/2022")
         project.analysis = Analyse.mockedAnalyses
         project.preAvaliation = mockedPreAvaliation
         project.avaliations = mockedAvaliation
@@ -109,9 +109,9 @@ struct Project: Codable {
     }
     
     static var mockedProjects = [
-        Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "a@a.com", date: Date(), description: "Project 1 legal"),
-        Project(name: "Project 2", team: "Team 2", category: "Category 2", owner: "a@a.com", date: Date(), description: "Project 2 legal"),
-        Project(name: "Project 3", team: "Team 3", category: "Category 3", owner: "a@a.com", date: Date(), description: "Project 3 legal"),
-        Project(name: "Project 4", team: "Team 4", category: "Category 4", owner: "a@a.com", date: Date(), description: "Project 4 legal")
+        Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "a@a.com", date: "28/10/2022", description: "Project 1 legal"),
+        Project(name: "Project 2", team: "Team 2", category: "Category 2", owner: "a@a.com", date: "28/10/2022", description: "Project 2 legal"),
+        Project(name: "Project 3", team: "Team 3", category: "Category 3", owner: "a@a.com", date: "28/10/2022", description: "Project 3 legal"),
+        Project(name: "Project 4", team: "Team 4", category: "Category 4", owner: "a@a.com", date: "28/10/2022", description: "Project 4 legal")
     ]
 }

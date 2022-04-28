@@ -33,7 +33,11 @@ class InsertProjectViewController: BaseViewController {
                showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
                return
            }
-        project = Project(name: name, team: team, category: category, owner: email, date: datePicker.date)
+        
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "dd/MM/yyyy"
+
+        project = Project(name: name, team: team, category: category, owner: email, date: dateFormat.string(from: datePicker.date))
         coordinator?.goToDefinition(from: .insert, project: project!)
     }
     

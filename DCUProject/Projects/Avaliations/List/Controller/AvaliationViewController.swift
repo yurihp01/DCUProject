@@ -24,6 +24,12 @@ class AvaliationViewController: BaseViewController {
         setDelegation()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     func setDelegation() {
         tableView.delegate = self
         tableView.dataSource = self
