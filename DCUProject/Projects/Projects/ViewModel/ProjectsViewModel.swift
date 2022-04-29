@@ -32,12 +32,20 @@ extension ProjectsViewModel: ProjectsViewModelProtocol {
         firebase.getProjects { [weak self] projects in
             guard let self = self else { return }
             self.projects = projects
-            onCompletion()
+            
+            self.firebase.getProjectsAsInvite { [weak self] projects in
+                self?.projects.append(contentsOf: projects)
+                onCompletion()
+            }
         }
+        
     }
     
     func getProjects(by name: String?) -> [Project] {
         guard let name = name, !name.isEmpty else { return projects }
-        return projects.filter({ $0.name!.lowercased().contains(name.lowercased())})
+        return projects.filter({
+            $0.name!.lowercased().contains(name.lowercased()) ||
+            $0.users.contains(where: { $0.lowercased().contains(name.lowercased()) })
+        })
     }
 }

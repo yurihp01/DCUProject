@@ -19,6 +19,7 @@ protocol FirebaseServiceProtocol: AnyObject {
     func login(email: String, password: String) async -> String
     func register(email: String, password: String) async -> String
     func getProjects(_ onCompletion: @escaping ([Project]) -> ())
+    func getProjectsAsInvite(_ onCompletion: @escaping ([Project]) -> ())
     func addProject(project: Project, onCompletion: @escaping (Result<Project, FirebaseError>) -> ())
     func updateProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ())
     func addImage(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ())
@@ -35,12 +36,8 @@ class FirebaseService: FirebaseServiceProtocol {
         return Auth.auth().addStateDidChangeListener { auth, user in }
     }
     
-    var userRef: DatabaseReference {
-        Database.database().reference(withPath: "user")
-    }
-    
     var projectRef: DatabaseReference {
-        userRef.database.reference(withPath: "project")
+        Database.database().reference(withPath: "project")
     }
     
     var analyseRef: DatabaseReference {
@@ -63,20 +60,15 @@ class FirebaseService: FirebaseServiceProtocol {
     func register(email: String, password: String) async -> String {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
-            addUser(email: email)
             return "Usuário criado com sucesso!"
         } catch {
             return error.localizedDescription
         }
     }
     
-    func addUser(email: String) {
-        let email = NSString(string: email)
-        userRef.setValue(email)
-    }
-    
     func getProjects(_ onCompletion: @escaping ([Project]) -> ()) {
-            projectRef.observeSingleEvent(of: .value, with: { snapshot in
+        let ref = projectRef.queryOrdered(byChild: "owner").queryEqual(toValue : currentUser?.email)
+            ref.observeSingleEvent(of: .value, with: { snapshot in
                 // Get user value
                 
                 let data = snapshot.value as? Dictionary<String, Any> ?? Dictionary()
@@ -87,6 +79,23 @@ class FirebaseService: FirebaseServiceProtocol {
                     }
                     return nil
                 }
+                onCompletion(projects)
+            })
+    }
+    
+    func getProjectsAsInvite(_ onCompletion: @escaping ([Project]) -> ()) {
+        let ref = projectRef.queryOrdered(byChild: "users")
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                // Get user value
+                
+                let data = snapshot.value as? Dictionary<String, Any> ?? Dictionary()
+                
+                let projects = data.values.compactMap { value -> Project? in
+                    if let dict = value as? Dictionary<String, Any> {
+                        return try? Project(dictionary: dict)
+                    }
+                    return nil
+                }.filter { $0.users.contains(self.currentUser?.email ?? "") }
                 onCompletion(projects)
             })
     }

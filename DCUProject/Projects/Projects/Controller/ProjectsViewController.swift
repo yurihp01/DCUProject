@@ -34,11 +34,17 @@ class ProjectsViewController: BaseViewController {
     
     func setNavigationController() {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToInsertProject))
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(backToLogin))
+        navigationItem.leftBarButtonItem = logoutButton
         navigationItem.rightBarButtonItem = button
     }
     
     @objc func goToInsertProject() {
         coordinator?.goToInsertProject()
+    }
+    
+    @objc func backToLogin() {
+        navigationController?.popToViewController(ofClass: LoginViewController.self)
     }
 }
 
