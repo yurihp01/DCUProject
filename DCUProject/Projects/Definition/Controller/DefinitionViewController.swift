@@ -42,7 +42,7 @@ class DefinitionViewController: BaseViewController {
     }
     
     @IBAction func share(_ sender: UIButton) {
-        alertWithTextField(title: "Convidar", message: "Enviar convite", placeholder: "Digite o e-mail") { message in
+        alertWithTextField(title: "Convidar usuário", message: "Digite o e-mail", placeholder: "email@gmail.com") { message in
             self.viewModel?.project.users.append(message)
             self.showMessage(message: "Enviado com sucesso", handler: nil)
         }

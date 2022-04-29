@@ -42,7 +42,7 @@ class BaseViewController: UIViewController, Storyboarded {
         alert.addTextField() { newTextField in
             newTextField.placeholder = placeholder
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in completion("") })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in return })
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
             if
                 let textFields = alert.textFields,
