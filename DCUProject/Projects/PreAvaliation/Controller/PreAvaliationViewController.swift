@@ -20,6 +20,7 @@ class PreAvaliationViewController: BaseViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var button: BorderedButton!
     
     weak var coordinator: PreAvaliationCoordinator?
     
@@ -29,6 +30,7 @@ class PreAvaliationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegation()
+        button.style = .blue
         // Do any additional setup after loading the view.
     }
     

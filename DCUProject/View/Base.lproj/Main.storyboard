@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,42 +28,69 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMD-wD-Wgo">
-                                <rect key="frame" x="16" y="108" width="288" height="40"/>
+                                <rect key="frame" x="16" y="92" width="288" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="M4O-UE-8Yr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJf-0J-laM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJf-0J-laM" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
                                 <rect key="frame" x="16" y="502" width="288" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ROe-3r-M9X"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Cadastrar"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Cadastrar"/>
                                 <connections>
                                     <action selector="registerButtonPressed:" destination="KcM-ag-dap" eventType="touchUpInside" id="n6d-Hb-8s0"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vt9-o6-lrH">
+                                <rect key="frame" x="16" y="148" width="288" height="132.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BW0-HE-Qwu">
+                                        <rect key="frame" x="16" y="16" width="162.5" height="100.5"/>
+                                        <string key="text">Regras de senha:  - 1 letra maiúscula
+- 1 número
+- 1 letra minúscula
+- 1 caractere especial
+- Mínimo de 8 caracteres</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="BW0-HE-Qwu" firstAttribute="top" secondItem="Vt9-o6-lrH" secondAttribute="top" constant="16" id="8Q2-Vo-mv1"/>
+                                    <constraint firstItem="BW0-HE-Qwu" firstAttribute="leading" secondItem="Vt9-o6-lrH" secondAttribute="leading" constant="16" id="Rca-RR-0Ps"/>
+                                    <constraint firstAttribute="bottom" secondItem="BW0-HE-Qwu" secondAttribute="bottom" constant="16" id="WtO-DO-ss4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u0E-Xv-c4i"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kMD-wD-Wgo" firstAttribute="top" secondItem="mzK-Nr-Aaw" secondAttribute="bottom" constant="32" id="Q4T-Or-PUz"/>
+                            <constraint firstAttribute="trailing" secondItem="Vt9-o6-lrH" secondAttribute="trailing" constant="16" id="2QI-M3-iVS"/>
+                            <constraint firstItem="kMD-wD-Wgo" firstAttribute="top" secondItem="mzK-Nr-Aaw" secondAttribute="bottom" constant="16" id="Q4T-Or-PUz"/>
                             <constraint firstItem="u0E-Xv-c4i" firstAttribute="bottom" secondItem="sJf-0J-laM" secondAttribute="bottom" constant="16" id="Rkj-1l-qWC"/>
                             <constraint firstItem="u0E-Xv-c4i" firstAttribute="trailing" secondItem="sJf-0J-laM" secondAttribute="trailing" constant="16" id="T6x-KX-6Q1"/>
                             <constraint firstItem="kMD-wD-Wgo" firstAttribute="leading" secondItem="u0E-Xv-c4i" secondAttribute="leading" constant="16" id="VP3-8e-ysd"/>
                             <constraint firstItem="u0E-Xv-c4i" firstAttribute="trailing" secondItem="mzK-Nr-Aaw" secondAttribute="trailing" constant="16" id="Xvw-Y1-pkY"/>
+                            <constraint firstItem="Vt9-o6-lrH" firstAttribute="leading" secondItem="lp8-Z6-j8k" secondAttribute="leading" constant="16" id="Zty-NT-x0V"/>
                             <constraint firstItem="mzK-Nr-Aaw" firstAttribute="top" secondItem="u0E-Xv-c4i" secondAttribute="top" constant="36" id="e2M-XD-tmI"/>
                             <constraint firstItem="sJf-0J-laM" firstAttribute="leading" secondItem="u0E-Xv-c4i" secondAttribute="leading" constant="16" id="gj6-s9-ZmO"/>
                             <constraint firstItem="mzK-Nr-Aaw" firstAttribute="leading" secondItem="u0E-Xv-c4i" secondAttribute="leading" constant="16" id="mnN-xq-Nv1"/>
+                            <constraint firstItem="Vt9-o6-lrH" firstAttribute="top" secondItem="kMD-wD-Wgo" secondAttribute="bottom" constant="16" id="nkn-X4-Gbg"/>
                             <constraint firstItem="u0E-Xv-c4i" firstAttribute="trailing" secondItem="kMD-wD-Wgo" secondAttribute="trailing" constant="16" id="uoU-vh-Zme"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Cadastrar" id="80K-HM-BKc"/>
                     <connections>
+                        <outlet property="button" destination="sJf-0J-laM" id="33Q-ta-1LY"/>
                         <outlet property="password" destination="kMD-wD-Wgo" id="rqU-8e-lVS"/>
+                        <outlet property="rulesLabel" destination="Vt9-o6-lrH" id="gtk-EA-QaE"/>
                         <outlet property="userField" destination="mzK-Nr-Aaw" id="hdZ-ej-sj0"/>
                     </connections>
                 </viewController>
@@ -73,13 +101,35 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" title="Login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIJ-Ia-qyl" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="444" width="288" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VTB-op-drV"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qzH-9z-b7P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1J-2t-IQB" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="502" width="288" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="T01-CW-NAa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cadastrar"/>
+                                <connections>
+                                    <action selector="RegisterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IRW-Rd-8p4"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sarahcampinho@hotmail.com" borderStyle="roundedRect" placeholder="Usuário" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PbI-iG-yA5">
-                                <rect key="frame" x="16" y="36" width="288" height="46"/>
+                                <rect key="frame" x="16" y="261" width="288" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
@@ -97,7 +147,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wzdzjak6@" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59p-Wd-fii">
-                                <rect key="frame" x="16" y="98" width="288" height="46"/>
+                                <rect key="frame" x="16" y="323" width="288" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="6jh-nr-vCM"/>
@@ -105,28 +155,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SIJ-Ia-qyl">
-                                <rect key="frame" x="16" y="416" width="288" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="VTB-op-drV"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Login"/>
-                                <connections>
-                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qzH-9z-b7P"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1J-2t-IQB">
-                                <rect key="frame" x="16" y="492" width="288" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="T01-CW-NAa"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Cadastrar"/>
-                                <connections>
-                                    <action selector="RegisterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IRW-Rd-8p4"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jH-S9-yyh">
+                                <rect key="frame" x="28" y="30" width="264" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dcu" translatesAutoresizingMaskIntoConstraints="NO" id="LKN-rA-Koh">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="TWx-Aw-BDR"/>
+                                            <constraint firstAttribute="height" constant="80" id="egh-OB-WkG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DCU Project" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d4t-4U-nyP">
+                                        <rect key="frame" x="80" y="0.0" width="184" height="80"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="32"/>
+                                        <color key="textColor" name="AccentColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.98433417079999996" green="0.98029500250000001" blue="0.98823636770000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -136,24 +183,28 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="59p-Wd-fii" secondAttribute="trailing" constant="16" id="BSA-Gl-YLN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PbI-iG-yA5" secondAttribute="trailing" constant="16" id="DhG-3N-8Zf"/>
                             <constraint firstItem="K1J-2t-IQB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EIJ-5R-dBu"/>
-                            <constraint firstItem="K1J-2t-IQB" firstAttribute="top" secondItem="SIJ-Ia-qyl" secondAttribute="bottom" constant="16" id="ELN-X8-8YF"/>
+                            <constraint firstItem="K1J-2t-IQB" firstAttribute="top" secondItem="SIJ-Ia-qyl" secondAttribute="bottom" constant="8" symbolic="YES" id="ELN-X8-8YF"/>
                             <constraint firstItem="59p-Wd-fii" firstAttribute="top" secondItem="PbI-iG-yA5" secondAttribute="bottom" constant="16" id="GTZ-5H-7WA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="K1J-2t-IQB" secondAttribute="bottom" constant="16" id="Q5n-aK-S91"/>
+                            <constraint firstItem="PbI-iG-yA5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="V1L-Jo-JOf"/>
+                            <constraint firstItem="5jH-S9-yyh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="VUB-fz-5wV"/>
+                            <constraint firstItem="5jH-S9-yyh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="XBC-gw-yJ9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SIJ-Ia-qyl" secondAttribute="trailing" constant="16" id="bly-hI-dqY"/>
                             <constraint firstItem="59p-Wd-fii" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ebi-4l-bjE"/>
                             <constraint firstItem="PbI-iG-yA5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gvf-wa-Atr"/>
-                            <constraint firstItem="PbI-iG-yA5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="vZb-VI-6G1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="YI5-yw-Ko8"/>
                     <connections>
+                        <outlet property="loginButton" destination="SIJ-Ia-qyl" id="JId-is-WuS"/>
                         <outlet property="passwordField" destination="59p-Wd-fii" id="5Dl-Tg-Pz2"/>
+                        <outlet property="registerButton" destination="K1J-2t-IQB" id="4xV-cd-f7r"/>
                         <outlet property="userField" destination="PbI-iG-yA5" id="t4l-Wb-FdA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1483" y="80"/>
+            <point key="canvasLocation" x="1481.25" y="79.225352112676063"/>
         </scene>
         <!--Projetos-->
         <scene sceneID="E7Q-bz-CQd">
@@ -231,46 +282,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-5a-yVd">
-                                <rect key="frame" x="16" y="492" width="288" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Luw-5a-yVd" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="502" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="AJm-xe-mXj"/>
+                                    <constraint firstAttribute="height" constant="50" id="AJm-xe-mXj"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Criar"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Continuar"/>
                                 <connections>
                                     <action selector="createButtonPressed:" destination="VwK-eu-37A" eventType="touchUpInside" id="oor-fi-scu"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yr4-33-EKe">
-                                <rect key="frame" x="16" y="32" width="288" height="424"/>
+                                <rect key="frame" x="16" y="32" width="288" height="382"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4DD-dT-4QJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="46"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="jv8-BC-gJZ"/>
+                                            <constraint firstAttribute="height" constant="46" id="jv8-BC-gJZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Equipe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="imU-Vm-4zC">
-                                        <rect key="frame" x="0.0" y="76" width="288" height="60"/>
+                                        <rect key="frame" x="0.0" y="62" width="288" height="46"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="RHP-f3-BZJ"/>
+                                            <constraint firstAttribute="height" constant="46" id="RHP-f3-BZJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XVF-pG-RJY">
-                                        <rect key="frame" x="0.0" y="152" width="288" height="60"/>
+                                        <rect key="frame" x="0.0" y="124" width="288" height="46"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="flq-mJ-wVN"/>
+                                            <constraint firstAttribute="height" constant="46" id="flq-mJ-wVN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecionar Data:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEX-3T-XML">
-                                        <rect key="frame" x="0.0" y="228" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="186" width="288" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="LVr-vg-bXN"/>
                                         </constraints>
@@ -279,7 +330,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="DhX-0H-Btg">
-                                        <rect key="frame" x="0.0" y="274" width="288" height="150"/>
+                                        <rect key="frame" x="0.0" y="232" width="288" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="Tcv-rC-sPP"/>
                                         </constraints>
@@ -357,8 +408,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bZs-UJ-8ao">
-                                <rect key="frame" x="16" y="16" width="288" height="411"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bZs-UJ-8ao">
+                                <rect key="frame" x="16" y="16" width="288" height="231"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHI-D0-KQ5">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
@@ -369,7 +420,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Equipe" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-Nc-3Zb">
-                                        <rect key="frame" x="0.0" y="87" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="66" width="288" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="acT-Ko-uuJ"/>
                                         </constraints>
@@ -377,50 +428,67 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dsi-7Y-6mV">
-                                        <rect key="frame" x="0.0" y="174" width="288" height="50"/>
+                                        <rect key="frame" x="0.0" y="132" width="288" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="jSb-XZ-WDY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Definição" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1RU-nv-slV">
-                                        <rect key="frame" x="0.0" y="261" width="288" height="150"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="KbH-We-hOs"/>
-                                        </constraints>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" keyboardDismissMode="onDrag" editable="NO" text="Descrição" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pKw-dl-aLQ">
+                                        <rect key="frame" x="0.0" y="198" width="288" height="33"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sa-VX-OCO">
-                                <rect key="frame" x="16" y="443" width="288" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="vla-Gu-NbE"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Editar"/>
-                                <connections>
-                                    <action selector="buttonTouched:" destination="URj-3c-3bl" eventType="touchUpInside" id="3Ku-gs-Ke1"/>
-                                    <action selector="createButtonPressed:" destination="VwK-eu-37A" eventType="touchUpInside" id="wQx-ZZ-hAE"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4Gq-id-abr">
+                                <rect key="frame" x="16" y="453" width="288" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sa-VX-OCO" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="vla-Gu-NbE"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Editar"/>
+                                        <connections>
+                                            <action selector="buttonTouched:" destination="URj-3c-3bl" eventType="touchUpInside" id="3Ku-gs-Ke1"/>
+                                            <action selector="createButtonPressed:" destination="VwK-eu-37A" eventType="touchUpInside" id="wQx-ZZ-hAE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivS-Rc-QDI" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                        <rect key="frame" x="148" y="0.0" width="140" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kLu-dC-ylU"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Criar Design"/>
+                                        <connections>
+                                            <action selector="createDesign:" destination="URj-3c-3bl" eventType="touchUpInside" id="PVW-Cu-Ezs"/>
+                                            <action selector="createDesign:" destination="H5a-tl-HSf" eventType="touchUpInside" id="szF-f4-66u"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iPO-Fk-RyH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0Sa-VX-OCO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tFj-Ha-BUn" secondAttribute="bottom" constant="16" id="3qZ-Hg-9lE"/>
                             <constraint firstAttribute="trailing" secondItem="tFj-Ha-BUn" secondAttribute="trailing" constant="16" id="7uH-70-5ug"/>
+                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="trailing" secondItem="4Gq-id-abr" secondAttribute="trailing" constant="16" id="Dh0-w7-j2r"/>
                             <constraint firstItem="tFj-Ha-BUn" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" constant="16" id="E4y-gV-g0E"/>
-                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="trailing" secondItem="0Sa-VX-OCO" secondAttribute="trailing" constant="16" id="EmF-HV-WO8"/>
+                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="bottom" secondItem="4Gq-id-abr" secondAttribute="bottom" constant="16" id="Jjc-XN-BUd"/>
                             <constraint firstItem="iPO-Fk-RyH" firstAttribute="trailing" secondItem="bZs-UJ-8ao" secondAttribute="trailing" constant="16" id="NIu-XY-Rzg"/>
-                            <constraint firstItem="0Sa-VX-OCO" firstAttribute="top" secondItem="bZs-UJ-8ao" secondAttribute="bottom" constant="16" id="bnG-bo-cF5"/>
                             <constraint firstItem="bZs-UJ-8ao" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" constant="16" id="cmF-cz-AIh"/>
+                            <constraint firstItem="4Gq-id-abr" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" constant="16" id="d9j-3p-bHE"/>
                             <constraint firstItem="tFj-Ha-BUn" firstAttribute="top" secondItem="iPO-Fk-RyH" secondAttribute="top" constant="16" id="dUK-O9-aPZ"/>
                             <constraint firstItem="bZs-UJ-8ao" firstAttribute="top" secondItem="iPO-Fk-RyH" secondAttribute="top" constant="16" id="fds-sW-Pls"/>
-                            <constraint firstItem="0Sa-VX-OCO" firstAttribute="leading" secondItem="iPO-Fk-RyH" secondAttribute="leading" constant="16" id="hnw-Wx-uTx"/>
-                            <constraint firstItem="iPO-Fk-RyH" firstAttribute="bottom" secondItem="0Sa-VX-OCO" secondAttribute="bottom" constant="16" id="uTm-uN-mdj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Detalhes" image="list.bullet.rectangle" catalog="system" id="OA1-7g-Anb"/>
@@ -429,7 +497,8 @@
                         <outlet property="button" destination="0Sa-VX-OCO" id="C4x-Jh-iRp"/>
                         <outlet property="category" destination="Dsi-7Y-6mV" id="Eag-sh-EsO"/>
                         <outlet property="datePicker" destination="bVR-24-3Yo" id="Mtk-ic-ZkD"/>
-                        <outlet property="definition" destination="1RU-nv-slV" id="lrs-Xv-eSK"/>
+                        <outlet property="definition" destination="pKw-dl-aLQ" id="Ray-9x-BL1"/>
+                        <outlet property="designButton" destination="ivS-Rc-QDI" id="dKq-Ig-Y0W"/>
                         <outlet property="name" destination="KHI-D0-KQ5" id="LAc-NL-tew"/>
                         <outlet property="stackViewFirst" destination="bZs-UJ-8ao" id="Osy-UW-dHd"/>
                         <outlet property="stackViewSecond" destination="tFj-Ha-BUn" id="CGE-E5-sMM"/>
@@ -438,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2E-UK-sUG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3195.6521739130435" y="1097.5446428571429"/>
+            <point key="canvasLocation" x="3195" y="1097.5352112676057"/>
         </scene>
         <!--Definir-->
         <scene sceneID="dRk-uQ-Nal">
@@ -589,9 +658,9 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tki-6D-6NM">
-                                <rect key="frame" x="16" y="16" width="288" height="51"/>
+                                <rect key="frame" x="16" y="16" width="288" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hIv-Ke-nPg"/>
+                                    <constraint firstAttribute="height" constant="40" id="hIv-Ke-nPg"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Heurísticas"/>
@@ -602,7 +671,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LjL-We-jbh">
-                                <rect key="frame" x="16" y="82" width="288" height="345"/>
+                                <rect key="frame" x="16" y="72" width="288" height="365"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="BcS-Ws-xTg">
@@ -615,13 +684,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUV-9X-GPa">
-                                <rect key="frame" x="16" y="443" width="288" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUV-9X-GPa" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="453" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="9Ki-ZG-vzx"/>
+                                    <constraint firstAttribute="height" constant="50" id="9Ki-ZG-vzx"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Adicionar"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Adicionar"/>
                                 <connections>
                                     <action selector="addButtonTouched:" destination="efh-Ew-GGt" eventType="touchUpInside" id="X7v-OR-Ufx"/>
                                     <action selector="goToInsertPreAvaliation:" destination="Ff4-IK-rJB" eventType="touchUpInside" id="8mC-QQ-3UZ"/>
@@ -646,6 +715,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                     <tabBarItem key="tabBarItem" title="Pré-Avaliação" image="checklist" catalog="system" id="YTh-Fs-8fB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="button" destination="TUV-9X-GPa" id="RkC-QP-nzZ"/>
                         <outlet property="segmentedControl" destination="tki-6D-6NM" id="UUp-f0-n3k"/>
                         <outlet property="tableView" destination="LjL-We-jbh" id="6US-0g-TCM"/>
                     </connections>
@@ -663,7 +733,10 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EBJ-T7-wch">
-                                <rect key="frame" x="16" y="16" width="288" height="32"/>
+                                <rect key="frame" x="16" y="16" width="288" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="S4K-wZ-Rl4"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Persona"/>
                                     <segment title="Questionário"/>
@@ -674,7 +747,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f8A-wu-Gay">
-                                <rect key="frame" x="16" y="63" width="288" height="374"/>
+                                <rect key="frame" x="16" y="72" width="288" height="385"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Digite o nome" id="OZg-6j-ZvC">
                                     <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
@@ -701,21 +774,10 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIB-GN-qqY">
-                                <rect key="frame" x="16" y="453" width="136" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ezb-Y9-A1a"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Criar Design"/>
-                                <connections>
-                                    <action selector="createDesign:" destination="H5a-tl-HSf" eventType="touchUpInside" id="aWA-0H-fIu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsZ-EA-VpQ">
-                                <rect key="frame" x="168" y="453" width="136" height="50"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Adicionar"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsZ-EA-VpQ" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="473" width="288" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Adicionar"/>
                                 <connections>
                                     <action selector="addButton:" destination="H5a-tl-HSf" eventType="touchUpInside" id="fvJ-3X-sNt"/>
                                 </connections>
@@ -725,17 +787,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="EBJ-T7-wch" secondAttribute="trailing" constant="16" id="2km-Xu-rGf"/>
-                            <constraint firstItem="xsZ-EA-VpQ" firstAttribute="width" secondItem="nIB-GN-qqY" secondAttribute="width" id="BKY-Rk-9GG"/>
-                            <constraint firstItem="xsZ-EA-VpQ" firstAttribute="top" secondItem="nIB-GN-qqY" secondAttribute="top" id="BXP-vw-eGs"/>
                             <constraint firstItem="EBJ-T7-wch" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="EDa-wn-Bhu"/>
-                            <constraint firstItem="nIB-GN-qqY" firstAttribute="top" secondItem="f8A-wu-Gay" secondAttribute="bottom" constant="16" id="LHj-xD-hKS"/>
-                            <constraint firstItem="Y3L-fn-Rkb" firstAttribute="bottom" secondItem="nIB-GN-qqY" secondAttribute="bottom" constant="16" id="N1x-aK-Cmr"/>
+                            <constraint firstItem="xsZ-EA-VpQ" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="GCy-Qh-oUc"/>
                             <constraint firstItem="f8A-wu-Gay" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="Te0-je-43X"/>
-                            <constraint firstItem="xsZ-EA-VpQ" firstAttribute="bottom" secondItem="nIB-GN-qqY" secondAttribute="bottom" id="bde-7n-g1i"/>
+                            <constraint firstItem="xsZ-EA-VpQ" firstAttribute="top" secondItem="f8A-wu-Gay" secondAttribute="bottom" constant="16" id="a72-Ji-tBj"/>
+                            <constraint firstItem="Y3L-fn-Rkb" firstAttribute="bottom" secondItem="xsZ-EA-VpQ" secondAttribute="bottom" constant="16" id="k7R-0f-BcK"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="xsZ-EA-VpQ" secondAttribute="trailing" constant="16" id="pcT-tS-6y5"/>
                             <constraint firstItem="EBJ-T7-wch" firstAttribute="top" secondItem="Y3L-fn-Rkb" secondAttribute="top" constant="16" id="qNQ-4e-mi6"/>
-                            <constraint firstItem="nIB-GN-qqY" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="rzx-cX-Mw2"/>
-                            <constraint firstItem="xsZ-EA-VpQ" firstAttribute="leading" secondItem="nIB-GN-qqY" secondAttribute="trailing" constant="16" id="vFq-lX-DDr"/>
                             <constraint firstItem="f8A-wu-Gay" firstAttribute="top" secondItem="EBJ-T7-wch" secondAttribute="bottom" constant="16" id="ykt-Zz-5bL"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="f8A-wu-Gay" secondAttribute="trailing" constant="16" id="z9J-Hk-WMd"/>
                         </constraints>
@@ -743,6 +801,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                     <tabBarItem key="tabBarItem" title="Análise" image="doc.text.magnifyingglass" catalog="system" id="0A1-zl-1wM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addButton" destination="xsZ-EA-VpQ" id="biQ-np-h0G"/>
                         <outlet property="analyseSegmentedControl" destination="EBJ-T7-wch" id="JxV-AX-ixt"/>
                         <outlet property="searchBar" destination="OZg-6j-ZvC" id="Iav-cY-RMn"/>
                         <outlet property="tableView" destination="f8A-wu-Gay" id="NY4-PK-uvk"/>
@@ -782,32 +841,34 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Descreva a sua análise" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QlN-Kl-HzY">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descreva a sua análise" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HDv-62-XRB">
                                 <rect key="frame" x="16" y="180" width="288" height="372"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Yx-5B-QLW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="41I-Tx-9fu" firstAttribute="top" secondItem="8Yx-5B-QLW" secondAttribute="top" constant="32" id="70p-7S-XX9"/>
+                            <constraint firstItem="HDv-62-XRB" firstAttribute="top" secondItem="nvA-ub-sTv" secondAttribute="bottom" constant="16" id="9JU-d6-uVP"/>
                             <constraint firstItem="nvA-ub-sTv" firstAttribute="top" secondItem="41I-Tx-9fu" secondAttribute="bottom" constant="32" id="Cw7-cZ-p1Z"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="bottom" secondItem="QlN-Kl-HzY" secondAttribute="bottom" constant="16" id="VIT-Jw-YQe"/>
-                            <constraint firstItem="QlN-Kl-HzY" firstAttribute="top" secondItem="nvA-ub-sTv" secondAttribute="bottom" constant="16" id="f2X-fu-DER"/>
+                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="bottom" secondItem="HDv-62-XRB" secondAttribute="bottom" constant="16" id="F1E-z5-jhJ"/>
+                            <constraint firstItem="HDv-62-XRB" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="Po3-Ll-n9g"/>
                             <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="nvA-ub-sTv" secondAttribute="trailing" constant="16" id="i8x-Oz-6F2"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="QlN-Kl-HzY" secondAttribute="trailing" constant="16" id="iTx-RQ-WKV"/>
                             <constraint firstItem="nvA-ub-sTv" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="j5x-Ry-Plo"/>
                             <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="41I-Tx-9fu" secondAttribute="trailing" constant="16" id="jXa-zv-ET0"/>
-                            <constraint firstItem="QlN-Kl-HzY" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="mQG-0C-xq1"/>
                             <constraint firstItem="41I-Tx-9fu" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="tIA-a4-fOc"/>
+                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="HDv-62-XRB" secondAttribute="trailing" constant="16" id="uxc-gZ-rEj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Análise" id="GSR-qN-9fo">
                         <barButtonItem key="rightBarButtonItem" title="Editar" style="plain" id="jcn-E5-4RN"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="detail" destination="QlN-Kl-HzY" id="UW9-Ys-vUa"/>
+                        <outlet property="detail" destination="HDv-62-XRB" id="aGZ-PK-Mn8"/>
                         <outlet property="name" destination="nvA-ub-sTv" id="GR1-02-gfM"/>
                         <outlet property="segmentedControl" destination="41I-Tx-9fu" id="DT8-UH-mk8"/>
                     </connections>
@@ -838,15 +899,15 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zhe-ie-dl5">
-                                <rect key="frame" x="16" y="102" width="288" height="325"/>
+                                <rect key="frame" x="16" y="102" width="288" height="335"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRk-yl-TjB">
-                                <rect key="frame" x="16" y="443" width="288" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRk-yl-TjB" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="453" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="gWo-Di-bhf"/>
+                                    <constraint firstAttribute="height" constant="50" id="gWo-Di-bhf"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Salvar"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Salvar"/>
                                 <connections>
                                     <action selector="addButtonTouched:" destination="efh-Ew-GGt" eventType="touchUpInside" id="HeD-D1-tYV"/>
                                 </connections>
@@ -890,7 +951,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TTq-yH-aR3">
-                                <rect key="frame" x="16" y="16" width="288" height="411"/>
+                                <rect key="frame" x="16" y="16" width="288" height="421"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="d3V-Fa-2x0">
                                     <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
@@ -916,13 +977,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1y5-jE-Pvc">
-                                <rect key="frame" x="16" y="443" width="288" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1y5-jE-Pvc" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="453" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ZJs-kI-8UC"/>
+                                    <constraint firstAttribute="height" constant="50" id="ZJs-kI-8UC"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Adicionar"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Adicionar"/>
                                 <connections>
                                     <action selector="addAvaliation:" destination="2AY-nr-fGb" eventType="touchUpInside" id="0ju-AX-aI8"/>
                                     <action selector="addButtonTouched:" destination="efh-Ew-GGt" eventType="touchUpInside" id="h8H-pG-Hwf"/>
@@ -944,6 +1005,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                     <tabBarItem key="tabBarItem" title="Avaliação" image="text.badge.checkmark" catalog="system" id="3DC-fg-nt5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="button" destination="1y5-jE-Pvc" id="2nn-M4-x6G"/>
                         <outlet property="searchBar" destination="d3V-Fa-2x0" id="zQs-zA-9Wb"/>
                         <outlet property="tableView" destination="TTq-yH-aR3" id="Y7q-IC-VQx"/>
                     </connections>
@@ -1033,13 +1095,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDa-st-nAF">
-                                <rect key="frame" x="16" y="443" width="288" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDa-st-nAF" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="453" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="CcA-qY-T8k"/>
+                                    <constraint firstAttribute="height" constant="50" id="CcA-qY-T8k"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Próximo"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Próximo"/>
                                 <connections>
                                     <action selector="buttonTouched:" destination="fjo-LJ-ucP" eventType="touchUpInside" id="brD-CS-1Pk"/>
                                 </connections>
@@ -1082,27 +1144,26 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0q8-w8-kFu">
-                                <rect key="frame" x="16" y="16" width="288" height="312"/>
+                                <rect key="frame" x="16" y="16" width="288" height="334"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Comentários" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ovY-Id-XBz">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="100"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Comentários" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Bf6-91-pV0">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="B2e-sk-Rx6"/>
+                                            <constraint firstAttribute="height" constant="128" id="O7p-Dw-mru"/>
                                         </constraints>
+                                        <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data da avaliação:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERZ-Nv-4K6">
-                                        <rect key="frame" x="0.0" y="116" width="288" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="TSN-EE-oW4"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="144" width="288" height="24"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="NyW-wX-u6S">
-                                        <rect key="frame" x="0.0" y="162" width="288" height="150"/>
+                                        <rect key="frame" x="0.0" y="184" width="288" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="vMN-37-riq"/>
                                         </constraints>
@@ -1110,13 +1171,13 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                                     </datePicker>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcT-bN-6Gc">
-                                <rect key="frame" x="16" y="492" width="288" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcT-bN-6Gc" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
+                                <rect key="frame" x="16" y="502" width="288" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="eLi-bE-g8a"/>
+                                    <constraint firstAttribute="height" constant="50" id="eLi-bE-g8a"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Salvar"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Salvar"/>
                                 <connections>
                                     <action selector="buttonTouched:" destination="Bha-nJ-UMQ" eventType="touchUpInside" id="R0D-2T-kgA"/>
                                 </connections>
@@ -1136,7 +1197,7 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
                     </view>
                     <connections>
                         <outlet property="button" destination="TcT-bN-6Gc" id="LZ2-bf-c4y"/>
-                        <outlet property="comments" destination="ovY-Id-XBz" id="Kji-Pq-nzU"/>
+                        <outlet property="comments" destination="Bf6-91-pV0" id="010-C8-51g"/>
                         <outlet property="datePicker" destination="NyW-wX-u6S" id="u7v-oz-p3Y"/>
                     </connections>
                 </viewController>
@@ -1147,17 +1208,24 @@ aqui um processo completo utilizando a ferramenta! Bora lá ver?</string>
     </scenes>
     <resources>
         <image name="checklist" catalog="system" width="128" height="105"/>
+        <image name="dcu" width="1350" height="900"/>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="107" height="128"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <image name="macwindow.badge.plus" catalog="system" width="128" height="95"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

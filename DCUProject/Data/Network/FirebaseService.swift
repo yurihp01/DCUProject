@@ -22,7 +22,7 @@ protocol FirebaseServiceProtocol: AnyObject {
     func getProjectsAsInvite(_ onCompletion: @escaping ([Project]) -> ())
     func addProject(project: Project, onCompletion: @escaping (Result<Project, FirebaseError>) -> ())
     func updateProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ())
-    func addImage(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ())
+    func uploadMedia(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ())
 }
 
 class FirebaseService: FirebaseServiceProtocol {
@@ -44,6 +44,8 @@ class FirebaseService: FirebaseServiceProtocol {
         projectRef.database.reference(withPath: "analyse")
     }
     
+    let storageRef = Storage.storage(url: "gs://dcu-project-25b74.appspot.com").reference().child("images")
+
     func removeHandle(handle: Handle) {
         Auth.auth().removeStateDidChangeListener(handle)
     }
@@ -52,7 +54,7 @@ class FirebaseService: FirebaseServiceProtocol {
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)
             return "Logado com sucesso!"
-        } catch {
+        } catch let error {
             return error.localizedDescription
         }
     }
@@ -62,15 +64,13 @@ class FirebaseService: FirebaseServiceProtocol {
             try await Auth.auth().createUser(withEmail: email, password: password)
             return "Usuário criado com sucesso!"
         } catch {
-            return error.localizedDescription
+            return "Erro ao cadastrar usuário. Verifique a sua internet e tente novamente."
         }
     }
     
     func getProjects(_ onCompletion: @escaping ([Project]) -> ()) {
         let ref = projectRef.queryOrdered(byChild: "owner").queryEqual(toValue : currentUser?.email)
             ref.observeSingleEvent(of: .value, with: { snapshot in
-                // Get user value
-                
                 let data = snapshot.value as? Dictionary<String, Any> ?? Dictionary()
                 
                 let projects = data.values.compactMap { value -> Project? in
@@ -86,8 +86,6 @@ class FirebaseService: FirebaseServiceProtocol {
     func getProjectsAsInvite(_ onCompletion: @escaping ([Project]) -> ()) {
         let ref = projectRef.queryOrdered(byChild: "users")
             ref.observeSingleEvent(of: .value, with: { snapshot in
-                // Get user value
-                
                 let data = snapshot.value as? Dictionary<String, Any> ?? Dictionary()
                 
                 let projects = data.values.compactMap { value -> Project? in
@@ -111,7 +109,7 @@ class FirebaseService: FirebaseServiceProtocol {
                 onCompletion(.success(project))
                 return
             }
-            onCompletion(.failure(.notFound))
+            onCompletion(.failure(.notAdded))
         }
     }
     
@@ -121,50 +119,25 @@ class FirebaseService: FirebaseServiceProtocol {
                 onCompletion(.success("Projeto atualizado com sucesso"))
                 return
             }
-            onCompletion(.failure(.notFound))
+            onCompletion(.failure(.notUpdated))
         }
     }
     
-    func addPreAvaliation(preAvaliation: PreAvaliation, onCompletion: @escaping (String) -> ()) {
-        self.projectRef.child(project?.id ?? "").setValue(project?.toDict()) { [weak self] error, database in
-            if error == nil {
-                self?.project?.id = database.key
-                self?.project?.preAvaliation = preAvaliation
-                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
-                onCompletion("Pré-Avaliação adicionada com sucesso!")
-            } else {
-                onCompletion(error?.localizedDescription ?? "")
-            }
-        }
-    }
-    
-    func addAvaliation(avaliation: Avaliation, onCompletion: @escaping (String) -> ()) {
-        self.projectRef.child(project?.id ?? "").setValue(project?.toDict()) { [weak self] error, database in
-            if error == nil {
-                self?.project?.id = database.key
-                self?.project?.avaliations.append(avaliation)
-                self?.projectRef.child(database.key ?? "").setValue(self?.project?.toDict())
-                onCompletion("Avaliação adicionada com sucesso!")
-            } else {
-                onCompletion(error?.localizedDescription ?? "")
-            }
-        }
-    }
-    
-    func addImage(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ()) {
-        let storageRef = Storage.storage().reference().child(name)
-        if let uploadData = image.pngData() {
-            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+    func uploadMedia(name: String, image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ()) {
+        let nameRef = storageRef.child(name)
+        if let uploadData = image.jpegData(compressionQuality: 0.5) {
+            nameRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
-                    completion(.failure(.notFound))
-                } else if let photoUrl = metadata?.path {
-                    completion(.success(photoUrl))
+                    print("error")
+                    completion(.failure(.internetConnection))
+                } else {
+                    nameRef.downloadURL(completion: { (url, error) in
+                        completion(.success(url?.absoluteString ?? ""))
+                    })
                 }
             }
         }
     }
-    
-    
 }
 
 

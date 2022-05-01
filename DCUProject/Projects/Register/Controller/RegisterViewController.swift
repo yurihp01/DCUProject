@@ -13,9 +13,14 @@ class RegisterViewController: BaseViewController {
     
     @IBOutlet weak var userField: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var button: BorderedButton!
+    @IBOutlet weak var rulesLabel: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        button.style = .blue
+        rulesLabel.layer.borderWidth = 1
+        rulesLabel.layer.borderColor = UIColor.black.cgColor
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -28,15 +33,16 @@ class RegisterViewController: BaseViewController {
         Task.init {
             let email = userField.text ?? ""
             let password = password.text ?? ""
-            if let message = await viewModel?.registerUser(with: email, password: password),
-               message.contains("criado") {
+            let message = await viewModel?.registerUser(with: email, password: password)
+            
+            if message != nil, message!.contains("criado") {
                 stopLoading()
                 showMessage(message: message) {_ in
                     self.coordinator?.goToProjectsScreen()
                 }
             } else {
                 stopLoading()
-                showAlert(message: "Email ou senha incorretos. Verifique os campos e tente novamente!")
+                showAlert(message: message)
             }
         }
     }

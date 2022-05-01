@@ -24,7 +24,6 @@ class ProjectsCoordinator: Coordinator {
         viewController.viewModel = ProjectsViewModel()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: false)
-        navigationController.viewControllers.removeFirst(navigationController.viewControllers.count - 1)
     }
     
     func goToCompletedProject(with project: Project) {

@@ -11,7 +11,7 @@ class AnalyseViewController: BaseViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var detail: UITextField!
+    @IBOutlet weak var detail: UITextView!
     
     weak var coordinator: AnalyseCoordinator?
     
@@ -45,12 +45,13 @@ private extension AnalyseViewController {
         name.text = analyse.name
         detail.text = analyse.detail
         segmentedControl.selectedSegmentIndex = AnalyseType(rawValue: analyse.type)?.getTypeId ?? 0
+        detail.delegate = self
     }
     
     func setViewsVisibility() {
-        detail.isEnabled = viewModel?.buttonType == .edit ? false : true
-        name.isEnabled = detail.isEnabled
-        segmentedControl.isEnabled = detail.isEnabled
+        detail.isEditable = viewModel?.buttonType == .edit ? false : true
+        name.isEnabled = detail.isEditable
+        segmentedControl.isEnabled = detail.isEditable
     }
     
     func saveAnalyse(complete: @escaping () -> ()) {
@@ -110,5 +111,21 @@ private extension AnalyseViewController {
     func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel?.buttonType.rawValue, style: .plain, target: self, action: #selector(continueButtonPressed))
         navigationItem.rightBarButtonItem?.title = viewModel?.buttonType.rawValue
+    }
+}
+
+extension AnalyseViewController: UITextViewDelegate {
+    func textViewDidBeginEditing (_ textView: UITextView) {
+        if detail.textColor == UIColor.lightGray && detail.isFirstResponder {
+            detail.text = nil
+            detail.textColor = .white
+        }
+    }
+    
+    func textViewDidEndEditing (_ textView: UITextView) {
+        if detail.text.isEmpty || detail.text == "" {
+            detail.textColor = .lightGray
+            detail.text = "Descreva a sua análise"
+        }
     }
 }

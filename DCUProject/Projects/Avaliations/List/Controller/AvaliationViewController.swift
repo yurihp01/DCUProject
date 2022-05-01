@@ -16,12 +16,14 @@ class AvaliationViewController: BaseViewController {
     var viewModel: AvaliationProtocol?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var button: BorderedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setDelegation()
+        button.style = .blue
     }
     
     

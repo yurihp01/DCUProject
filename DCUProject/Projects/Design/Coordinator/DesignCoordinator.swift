@@ -26,10 +26,6 @@ class DesignCoordinator: Coordinator {
     func start() {
         viewController.viewModel = DesignViewModel(project: project)
         viewController.coordinator = self
-    }
-    
-    func getViewController() -> DesignViewController {
-        start()
-        return viewController
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

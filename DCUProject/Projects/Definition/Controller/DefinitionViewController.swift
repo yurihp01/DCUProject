@@ -14,7 +14,6 @@ class DefinitionViewController: BaseViewController {
     
     weak var coordinator: DefinitionCoordinator?
     var viewModel: DefinitionProtocol?
-    var buttonType: ButtonType = .save
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +62,7 @@ private extension DefinitionViewController {
     }
     
     func setNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: buttonType.rawValue, style: .plain, target: self, action: #selector(continueButtonPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(continueButtonPressed))
     }
 }
 

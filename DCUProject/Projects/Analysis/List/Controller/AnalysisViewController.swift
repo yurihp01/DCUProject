@@ -11,6 +11,7 @@ class AnalysisViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var analyseSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var addButton: BorderedButton!
     
     weak var coordinator: AnalysisCoordinator?
     var viewModel: AnalysisViewModelProtocol?
@@ -20,6 +21,7 @@ class AnalysisViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegation()
+        addButton.style = .blue
 //        setNavigationController()
     }
     
@@ -44,11 +46,6 @@ class AnalysisViewController: BaseViewController {
             print("Error")
         }
         tableView.reloadData()
-    }
-    
-    @IBAction func createDesign(_ sender: UIButton) {
-        guard let project = viewModel?.project else { return }
-        coordinator?.goToDesign(project: project)
     }
     
     @IBAction func addButton(_ sender: UIButton) {

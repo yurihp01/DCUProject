@@ -15,7 +15,7 @@ class InsertAvaliationViewController: BaseViewController {
     
     @IBOutlet weak var status: DropDown!
     @IBOutlet weak var severity: DropDown!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var button: BorderedButton!
     @IBOutlet weak var avaliator: UITextField!
     @IBOutlet weak var titleField: UITextField!
     
@@ -27,6 +27,7 @@ class InsertAvaliationViewController: BaseViewController {
         super.viewDidLoad()
         setFields()
         setDropdowns()
+        button.style = .blue
     }
         
     @IBAction func buttonTouched(_ sender: UIButton) {
@@ -82,7 +83,7 @@ private extension InsertAvaliationViewController {
             heuristic.text = avaliation.heuristic
             avaliator.text = avaliation.avaliator
             status.text = avaliation.status == "Sucesso" ? "Sucesso" : "Defeito"
-            severity.text = avaliation.status == "Sucesso" ? "Sucesso" : avaliation.status
+            severity.text = avaliation.status == "Sucesso" ? "" : avaliation.status
         }
         title = buttonType.rawValue
     }

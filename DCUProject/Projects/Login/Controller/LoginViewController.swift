@@ -14,10 +14,14 @@ class LoginViewController: BaseViewController {
     
     @IBOutlet weak var userField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginButton: BorderedButton!
+    @IBOutlet weak var registerButton: BorderedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        loginButton.style = .blue
+        registerButton.style = .white
+        title = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {

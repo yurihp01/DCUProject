@@ -13,7 +13,7 @@ class InsertProjectViewController: BaseViewController {
     @IBOutlet weak var team: UITextField!
     @IBOutlet weak var category: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var createButton: BorderedButton!
     
     weak var coordinator: InsertProjectCoordinator?
     var viewModel: InsertProjectProtocol?
@@ -23,6 +23,7 @@ class InsertProjectViewController: BaseViewController {
         super.viewDidLoad()
         setDatePicker()
         project?.analysis = [Analyse(detail: "1", type: .persona, name: "A")]
+        createButton.style = .blue
     }
 
     @IBAction func createButtonPressed(_ sender: UIButton) {

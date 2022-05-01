@@ -33,4 +33,11 @@ class DetailsCoordinator: Coordinator {
         start()
         return controller
     }
+    
+    func goToDesign(project: Project) {
+        let coordinator = DesignCoordinator(navigationController: navigationController, project: project)
+        coordinator.parentCoordinator = self
+        add(coordinator)
+        coordinator.start()
+    }
 }

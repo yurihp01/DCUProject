@@ -10,9 +10,9 @@ import UIKit
 
 class InsertAvaliationSecondViewController: BaseViewController {
     
-    @IBOutlet weak var comments: UITextField!
+    @IBOutlet weak var comments: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var button: BorderedButton!
     
     weak var coordinator: InsertAvaliationSecondCoordinator?
     var viewModel: InsertAvaliationSecondViewModel?
@@ -22,6 +22,9 @@ class InsertAvaliationSecondViewController: BaseViewController {
         super.viewDidLoad()
         setFields()
         setDatePicker()
+        button.style = .blue
+        comments.delegate = self
+        comments.resignFirstResponder()
     }
 
     @IBAction func buttonTouched(_ sender: UIButton) {
@@ -67,4 +70,20 @@ extension UINavigationController {
       popToViewController(vc, animated: animated)
     }
   }
+}
+
+extension InsertAvaliationSecondViewController: UITextViewDelegate {
+    func textViewDidBeginEditing (_ textView: UITextView) {
+        if comments.textColor == UIColor.lightGray && comments.isFirstResponder {
+            comments.text = nil
+            comments.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing (_ textView: UITextView) {
+        if comments.text.isEmpty || comments.text == "" {
+            comments.textColor = .lightGray
+            comments.text = "Definição"
+        }
+    }
 }

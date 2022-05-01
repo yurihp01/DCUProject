@@ -32,10 +32,11 @@ class DetailsViewController: BaseViewController {
     @IBOutlet weak var team: UITextField!
     @IBOutlet weak var category: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var definition: UITextField!
+    @IBOutlet weak var button: BorderedButton!
+    @IBOutlet weak var definition: UITextView!
     @IBOutlet weak var stackViewSecond: UIStackView!
     @IBOutlet weak var stackViewFirst: UIStackView!
+    @IBOutlet weak var designButton: BorderedButton!
     
     weak var coordinator: DetailsCoordinator?
     var viewModel: DetailsViewModel?
@@ -45,6 +46,9 @@ class DetailsViewController: BaseViewController {
         super.viewDidLoad()
         setFields()
         setDatePicker()
+        button.style = .blue
+        designButton.style = .white
+        definition.delegate = self
     }
     
     @IBAction func buttonTouched(_ sender: UIButton) {
@@ -67,6 +71,11 @@ class DetailsViewController: BaseViewController {
             self.viewModel?.project.users.append(message)
             self.showMessage(message: "Enviado com sucesso", handler: nil)
         }
+    }
+    
+    @IBAction func createDesign(_ sender: UIButton) {
+        guard let project = viewModel?.project else { return }
+        coordinator?.goToDesign(project: project)
     }
 }
 
@@ -118,12 +127,28 @@ private extension DetailsViewController {
         name.isEnabled.toggle()
         team.isEnabled.toggle()
         category.isEnabled.toggle()
-        definition.isEnabled.toggle()
+        definition.isEditable.toggle()
         datePicker.isEnabled.toggle()
         button.setTitle(buttonType.rawValue, for: .normal)
     }
     
     func setDatePicker() {
         datePicker.maximumDate = Date()
+    }
+}
+
+extension DetailsViewController: UITextViewDelegate {
+    func textViewDidBeginEditing (_ textView: UITextView) {
+        if definition.textColor == UIColor.lightGray && definition.isFirstResponder {
+            definition.text = nil
+            definition.textColor = .white
+        }
+    }
+    
+    func textViewDidEndEditing (_ textView: UITextView) {
+        if definition.text.isEmpty || definition.text == "" {
+            definition.textColor = .lightGray
+            definition.text = "Definição"
+        }
     }
 }

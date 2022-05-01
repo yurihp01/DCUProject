@@ -26,6 +26,14 @@ class RegisterViewModel {
 
 extension RegisterViewModel: RegisterViewModelProtocol {
     func registerUser(with email: String, password: String) async -> String {
+        if !email.isValidEmail {
+            return "Digite um e-mail válido e tente novamente!"
+        }
+        
+        if !password.isValidPassword {
+            return "Digite uma senha válida e tente novamente!"
+        }
+        
         return await firebaseService.register(email: email, password: password)
     }
 }

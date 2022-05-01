@@ -31,7 +31,7 @@ class DesignViewModel {
 
 extension DesignViewModel: DesignViewModelProtocol {
     func uploadMedia(image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ()) {
-        firebase.addImage(name: "\(project.name?.lowercased() ?? "project").png", image: image, completion: { [weak self] result in
+        firebase.uploadMedia(name: "\(project.name ?? "")-\(project.id ?? "").png", image: image, completion: { [weak self] result in
             switch result {
             case .success(let url):
                 self?.project.design = url
