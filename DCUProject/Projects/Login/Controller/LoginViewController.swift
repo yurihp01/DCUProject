@@ -12,8 +12,8 @@ class LoginViewController: BaseViewController {
     weak var coordinator: LoginCoordinator?
     var handle: Handle?
     
-    @IBOutlet weak var userField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var userField: FloatingLabelField!
+    @IBOutlet weak var passwordField: FloatingLabelField!
     @IBOutlet weak var loginButton: BorderedButton!
     @IBOutlet weak var registerButton: BorderedButton!
     

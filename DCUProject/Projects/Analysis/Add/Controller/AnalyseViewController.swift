@@ -10,7 +10,7 @@ import UIKit
 class AnalyseViewController: BaseViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var name: FloatingLabelField!
     @IBOutlet weak var detail: UITextView!
     
     weak var coordinator: AnalyseCoordinator?

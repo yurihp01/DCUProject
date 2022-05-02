@@ -45,15 +45,17 @@ class PreAvaliationViewController: BaseViewController {
             
             switch self.segmentedType {
             case .heuristic:
-                self.viewModel?.project.preAvaliation.heuristics.append(text)
+                FirebaseService.project?.preAvaliation.heuristics.append(text)
             case .screen:
-                self.viewModel?.project.preAvaliation.screens.append(text)
+                FirebaseService.project?.preAvaliation.screens.append(text)
             }
             
             self.viewModel?.setPreAvaliation { [weak self] result in
                 switch result {
                 case .success(let message):
-                    self?.showMessage(message: message)
+                    self?.showMessage(message: message, handler: { _ in
+                        self?.tableView.reloadData()
+                    })
                 case .failure(let error):
                     self?.showAlert(message: error.errorDescription)
                 }
@@ -87,7 +89,7 @@ private extension PreAvaliationViewController {
 
 extension PreAvaliationViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let list = segmentedType == .heuristic ? viewModel?.project.preAvaliation.heuristics : viewModel?.project.preAvaliation.screens,
+        guard let list = segmentedType == .heuristic ? viewModel?.project?.preAvaliation.heuristics : viewModel?.project?.preAvaliation.screens,
               list.count > 0 else { return UITableViewCell() }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -101,15 +103,17 @@ extension PreAvaliationViewController: UITableViewDelegate, UITableViewDataSourc
             
             switch self.segmentedType {
             case .heuristic:
-                self.viewModel?.project.preAvaliation.heuristics[indexPath.row] = text
+                FirebaseService.project?.preAvaliation.heuristics[indexPath.row] = text
             case .screen:
-                self.viewModel?.project.preAvaliation.screens[indexPath.row] = text
+                FirebaseService.project?.preAvaliation.screens[indexPath.row] = text
             }
             
             self.viewModel?.setPreAvaliation { [weak self] result in
                 switch result {
                 case .success(let message):
-                    self?.showMessage(message: message)
+                    self?.showMessage(message: message) { _ in
+                        self?.tableView.reloadData()
+                    }
                 case .failure(let error):
                     self?.showAlert(message: error.errorDescription)
                 }
@@ -118,7 +122,7 @@ extension PreAvaliationViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let preAvaliation = viewModel?.project.preAvaliation else { return 0 }
+        guard let preAvaliation = viewModel?.project?.preAvaliation else { return 0 }
         return segmentedType == .heuristic ? preAvaliation.heuristics.count : preAvaliation.screens.count
     }
 }

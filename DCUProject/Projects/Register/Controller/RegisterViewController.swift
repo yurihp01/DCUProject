@@ -11,8 +11,8 @@ class RegisterViewController: BaseViewController {
     weak var coordinator: RegisterCoordinator?
     var viewModel: RegisterViewModel?
     
-    @IBOutlet weak var userField: UITextField!
-    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var userField: FloatingLabelField!
+    @IBOutlet weak var password: FloatingLabelField!
     @IBOutlet weak var button: BorderedButton!
     @IBOutlet weak var rulesLabel: UIView!
     

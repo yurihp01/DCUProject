@@ -14,7 +14,6 @@ typealias Handle = AuthStateDidChangeListenerHandle
 protocol FirebaseServiceProtocol: AnyObject {
     var handle: Handle { get }
     var currentUser: Firebase.User? { get }
-    var project: Project? { get set }
     func removeHandle(handle: Handle)
     func login(email: String, password: String) async -> String
     func register(email: String, password: String) async -> String
@@ -26,7 +25,7 @@ protocol FirebaseServiceProtocol: AnyObject {
 }
 
 class FirebaseService: FirebaseServiceProtocol {
-    var project: Project?
+    static var project: Project?
     
     var currentUser: Firebase.User? {
         return Auth.auth().currentUser
@@ -99,10 +98,10 @@ class FirebaseService: FirebaseServiceProtocol {
     }
     
     func addProject(project: Project, onCompletion: @escaping (Result<Project, FirebaseError>) -> ()) {
-        self.project = project
+        FirebaseService.project = project
         self.projectRef.childByAutoId().setValue(project.toDict()) { [weak self] error, database in
             guard let self = self,
-                  var project = self.project else { return }
+                  var project = FirebaseService.project else { return }
             if error == nil {
                 project.id = database.key
                 self.projectRef.child(database.key ?? "").setValue(project.toDict())
@@ -116,6 +115,7 @@ class FirebaseService: FirebaseServiceProtocol {
     func updateProject(project: Project, onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
         self.projectRef.updateChildValues([project.id ?? "":project.toDict()]) { error, _ in
             if error == nil {
+                FirebaseService.project = project
                 onCompletion(.success("Projeto atualizado com sucesso"))
                 return
             }
@@ -132,7 +132,9 @@ class FirebaseService: FirebaseServiceProtocol {
                     completion(.failure(.internetConnection))
                 } else {
                     nameRef.downloadURL(completion: { (url, error) in
-                        completion(.success(url?.absoluteString ?? ""))
+                        let url = url?.absoluteString ?? ""
+                        FirebaseService.project?.design = url
+                        completion(.success(url))
                     })
                 }
             }

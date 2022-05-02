@@ -9,9 +9,9 @@ import UIKit
 
 class InsertProjectViewController: BaseViewController {
 
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var team: UITextField!
-    @IBOutlet weak var category: UITextField!
+    @IBOutlet weak var name: FloatingLabelField!
+    @IBOutlet weak var team: FloatingLabelField!
+    @IBOutlet weak var category: FloatingLabelField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var createButton: BorderedButton!
     

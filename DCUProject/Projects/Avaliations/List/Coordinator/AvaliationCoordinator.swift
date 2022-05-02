@@ -12,16 +12,14 @@ class AvaliationCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
     
-    let project: Project
     let viewController = AvaliationViewController.instantiate(storyboardName: .main)
     
-    init (navigationController: UINavigationController, project: Project) {
+    init (navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.project = project
     }
     
     func start() {
-        viewController.viewModel = AvaliationViewModel(project: project)
+        viewController.viewModel = AvaliationViewModel()
         viewController.coordinator = self
     }
     
@@ -30,7 +28,7 @@ class AvaliationCoordinator: Coordinator {
         return viewController
     }
     
-    func goToInsertAvaliation(avaliation: Avaliation?) {
+    func goToInsertAvaliation(avaliation: Avaliation?, project: Project) {
         let coordinator = InsertAvaliationCoordinator(navigationController: navigationController, project: project, avaliation: avaliation)
         add(coordinator)
         coordinator.parentCoordinator = self

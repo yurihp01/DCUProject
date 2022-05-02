@@ -35,7 +35,7 @@ extension DesignViewModel: DesignViewModelProtocol {
             switch result {
             case .success(let url):
                 self?.project.design = url
-                self?.addProject(completion: { result in
+                self?.addImage(completion: { result in
                     completion(result)
                 })
             case .failure(let error):
@@ -44,7 +44,7 @@ extension DesignViewModel: DesignViewModelProtocol {
         })
     }
     
-    func addProject(completion: @escaping (Result<String, FirebaseError>) -> ()) {
+    func addImage(completion: @escaping (Result<String, FirebaseError>) -> ()) {
         firebase.updateProject(project: project) { result in
             completion(result)
         }

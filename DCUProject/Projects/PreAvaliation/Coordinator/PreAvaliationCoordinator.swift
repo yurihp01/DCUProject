@@ -14,17 +14,14 @@ class PreAvaliationCoordinator: Coordinator {
     
     var parentCoordinator: Coordinator?
     
-    let project: Project
-    
     let viewController = PreAvaliationViewController.instantiate(storyboardName: .main)
     
-    init(navigationController: UINavigationController, project: Project) {
-        self.project = project
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        viewController.viewModel = PreAvaliationViewModel(project: project)
+        viewController.viewModel = PreAvaliationViewModel()
         viewController.coordinator = self
     }
     

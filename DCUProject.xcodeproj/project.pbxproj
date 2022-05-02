@@ -73,6 +73,7 @@
 		DAE9671B2802149A00B4FA43 /* InsertAvaliationSecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE967162802149900B4FA43 /* InsertAvaliationSecondViewModel.swift */; };
 		DAE9671C2802149A00B4FA43 /* InsertAvaliationSecondCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE967182802149900B4FA43 /* InsertAvaliationSecondCoordinator.swift */; };
 		DAE9671D2802149A00B4FA43 /* InsertAvaliationSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE9671A2802149900B4FA43 /* InsertAvaliationSecondViewController.swift */; };
+		DAF2CB34281EF7DD008E6BB9 /* FloatingLabelField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2CB33281EF7DD008E6BB9 /* FloatingLabelField.swift */; };
 		DAFB371E2809B0B000C63FB4 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFB371D2809B0B000C63FB4 /* FirebaseError.swift */; };
 		DC6CAF708AE8AB0E92371A7C /* Pods_DCUProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB0283430A0C3FB8249AE10 /* Pods_DCUProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -172,6 +173,7 @@
 		DAE967162802149900B4FA43 /* InsertAvaliationSecondViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondViewModel.swift; sourceTree = "<group>"; };
 		DAE967182802149900B4FA43 /* InsertAvaliationSecondCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondCoordinator.swift; sourceTree = "<group>"; };
 		DAE9671A2802149900B4FA43 /* InsertAvaliationSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertAvaliationSecondViewController.swift; sourceTree = "<group>"; };
+		DAF2CB33281EF7DD008E6BB9 /* FloatingLabelField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabelField.swift; sourceTree = "<group>"; };
 		DAFB371D2809B0B000C63FB4 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -732,6 +734,7 @@
 			children = (
 				DAA26E9527E1709100D85059 /* ImagePicker.swift */,
 				DA9AE5E4281C7B1900DAA69E /* BorderedButton.swift */,
+				DAF2CB33281EF7DD008E6BB9 /* FloatingLabelField.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1161,6 +1164,7 @@
 				15CEE3E727CE9C9D0098CA0B /* ProjectsViewModel.swift in Sources */,
 				DAB41A2727F3BD850035199F /* Avaliation.swift in Sources */,
 				15CEE3FE27CE9D880098CA0B /* AnalyseCoordinator.swift in Sources */,
+				DAF2CB34281EF7DD008E6BB9 /* FloatingLabelField.swift in Sources */,
 				15CEE40527CE9E670098CA0B /* DefinitionViewModel.swift in Sources */,
 				15EA485A27D39D2600D3A3B4 /* DetailsCoordinator.swift in Sources */,
 				15CEE40D27CED5C40098CA0B /* UITextView+Extensions.swift in Sources */,

@@ -26,7 +26,6 @@ class AvaliationViewController: BaseViewController {
         button.style = .blue
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -40,7 +39,8 @@ class AvaliationViewController: BaseViewController {
     }
     
     @IBAction func addAvaliation(_ sender: UIButton) {
-        coordinator?.goToInsertAvaliation(avaliation: nil)
+        guard let project = viewModel?.project else { return }
+        coordinator?.goToInsertAvaliation(avaliation: nil, project: project)
     }
 }
 
@@ -54,8 +54,9 @@ extension AvaliationViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let avaliation = viewModel?.getAvaliations(by: searchBar.text)[indexPath.row] else { return }
-        coordinator?.goToInsertAvaliation(avaliation: avaliation)
+        guard let avaliation = viewModel?.getAvaliations(by: searchBar.text)[indexPath.row],
+        let project = viewModel?.project else { return }
+        coordinator?.goToInsertAvaliation(avaliation: avaliation, project: project)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,6 +72,6 @@ extension AvaliationViewController: UISearchBarDelegate {
 
 extension AvaliationViewController: AvaliationDelegate {
     func getAvaliation(with avaliation: Avaliation) {
-        viewModel?.project.avaliations.append(avaliation)
+        viewModel?.project?.avaliations.append(avaliation)
     }
 }

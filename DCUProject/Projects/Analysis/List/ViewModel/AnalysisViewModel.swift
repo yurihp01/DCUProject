@@ -9,15 +9,21 @@ import Foundation
 
 protocol AnalysisViewModelProtocol {
     func getAnalysis(by name: String?, and type: String) -> [Analyse]
-    var project: Project { get set }
+    var project: Project? { get set }
 }
 
 class AnalysisViewModel {
-    var project: Project
+    var project: Project? {
+        get {
+            return FirebaseService.project
+        }
+        
+        set {}
+    }
+    
     var firebase: FirebaseServiceProtocol
     
-    init(project: Project) {
-        self.project = project
+    init() {
         self.firebase = FirebaseService()
         print("INIT - AnalysisViewModel ")
     }
@@ -29,9 +35,9 @@ class AnalysisViewModel {
 
 extension AnalysisViewModel: AnalysisViewModelProtocol {
     func getAnalysis(by name: String?, and type: String) -> [Analyse] {
-        let analysis = project.analysis
+        let analysis = project?.analysis ?? []
         guard let name = name, !name.isEmpty else {
-            return  analysis.filter({ $0.analyseType.rawValue.elementsEqual(type) })
+            return analysis.filter({ $0.analyseType.rawValue.elementsEqual(type) })
         }
         return analysis.filter({ $0.name.lowercased().contains(name.lowercased()) && $0.analyseType.rawValue.elementsEqual(type)
         })

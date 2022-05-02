@@ -12,18 +12,16 @@ class AnalysisCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var parentCoordinator: Coordinator?
     
-    let project: Project
     let delegate: HomeViewDelegate
     let viewController = AnalysisViewController.instantiate(storyboardName: .main)
     
-    init (navigationController: UINavigationController, project: Project, delegate: HomeViewDelegate) {
+    init (navigationController: UINavigationController, delegate: HomeViewDelegate) {
         self.navigationController = navigationController
-        self.project = project
         self.delegate = delegate
     }
     
     func start() {
-        viewController.viewModel = AnalysisViewModel(project: project)
+        viewController.viewModel = AnalysisViewModel()
         viewController.coordinator = self
         viewController.homeDelegate = delegate
     }
@@ -33,7 +31,7 @@ class AnalysisCoordinator: Coordinator {
         return viewController
     }
     
-    func goToAnalyseFlow(flow: AnalyseFlow, analyse: Analyse? = nil) {
+    func goToAnalyseFlow(flow: AnalyseFlow, project: Project, analyse: Analyse? = nil) {
         let coordinator = AnalyseCoordinator(navigationController: navigationController, analyseFlow: flow, project: project)
         coordinator.parentCoordinator = self
         add(coordinator)

@@ -42,6 +42,5 @@ extension HomeViewController: UITabBarControllerDelegate {
 extension HomeViewController: HomeViewDelegate {
     func showMoreOption(items: [UIBarButtonItem]) {
         self.tabBarController?.navigationItem.rightBarButtonItems = items
-        
     }
 }

@@ -59,6 +59,7 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let project = viewModel?.getProjects(by: searchBar.text)[indexPath.row] else { return }
+        FirebaseService.project = project
         coordinator?.goToCompletedProject(with: project)
     }
     

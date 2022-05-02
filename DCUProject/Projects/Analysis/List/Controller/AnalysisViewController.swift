@@ -31,7 +31,8 @@ class AnalysisViewController: BaseViewController {
     }
     
     @objc func goToInsertAnalyse() {
-        coordinator?.goToAnalyseFlow(flow: .insert)
+        guard let project = viewModel?.project else { return }
+        coordinator?.goToAnalyseFlow(flow: .insert, project: project)
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -49,7 +50,8 @@ class AnalysisViewController: BaseViewController {
     }
     
     @IBAction func addButton(_ sender: UIButton) {
-        coordinator?.goToAnalyseFlow(flow: .insert)
+        guard let project = viewModel?.project else { return }
+        coordinator?.goToAnalyseFlow(flow: .insert, project: project)
     }
 }
 
@@ -78,8 +80,9 @@ extension AnalysisViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let analyse = viewModel?.getAnalysis(by: searchBar.text, and: type)[indexPath.row] else { return }
-        coordinator?.goToAnalyseFlow(flow: .edit, analyse: analyse)
+        guard let analyse = viewModel?.getAnalysis(by: searchBar.text, and: type)[indexPath.row],
+              let project = viewModel?.project else { return }
+        coordinator?.goToAnalyseFlow(flow: .edit, project: project, analyse: analyse)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

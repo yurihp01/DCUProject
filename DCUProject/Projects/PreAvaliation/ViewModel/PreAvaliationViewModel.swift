@@ -9,16 +9,22 @@ import Firebase
 
 protocol PreAvaliationViewModelProtocol {
     func setPreAvaliation(_ completion: @escaping (Result<String, FirebaseError>) -> ())
-    var project: Project { get set }
+    var project: Project? { get set }
 }
 
 class PreAvaliationViewModel {
-    var project: Project
+    var project: Project? {
+        get {
+            return FirebaseService.project
+        }
+        
+        set {}
+    }
+    
     let firebase: FirebaseServiceProtocol
     var preAvaliation: PreAvaliation?
     
-    init(project: Project) {
-        self.project = project
+    init() {
         firebase = FirebaseService()
         print("INIT - PreAvaliationViewModel ")
     }
@@ -30,6 +36,7 @@ class PreAvaliationViewModel {
 
 extension PreAvaliationViewModel: PreAvaliationViewModelProtocol {
     func setPreAvaliation(_ completion: @escaping (Result<String, FirebaseError>) -> ()) {
+        guard let project = project else { return }
         firebase.updateProject(project: project) { result in
             completion(result)
         }

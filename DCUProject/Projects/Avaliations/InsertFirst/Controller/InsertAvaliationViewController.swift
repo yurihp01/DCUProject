@@ -16,8 +16,8 @@ class InsertAvaliationViewController: BaseViewController {
     @IBOutlet weak var status: DropDown!
     @IBOutlet weak var severity: DropDown!
     @IBOutlet weak var button: BorderedButton!
-    @IBOutlet weak var avaliator: UITextField!
-    @IBOutlet weak var titleField: UITextField!
+    @IBOutlet weak var avaliator: FloatingLabelField!
+    @IBOutlet weak var titleField: FloatingLabelField!
     
     weak var coordinator: InsertAvaliationCoordinator?
     var viewModel: InsertAvaliationViewModel?
