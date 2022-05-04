@@ -23,11 +23,15 @@ class AnalyseViewController: BaseViewController {
         setViewsVisibility()
         setViews()
         setNavigationBar()
+        
         detail.delegate = self
         detail.layer.borderColor = UIColor.gray.cgColor
         detail.layer.borderWidth = 0.2
         detail.layer.cornerRadius = 4
         detail.clipsToBounds = true
+        
+        detail.textColor = .lightGray
+
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -49,6 +53,7 @@ private extension AnalyseViewController {
         guard let analyse = viewModel?.analyse else { return }
         name.text = analyse.name
         detail.text = analyse.detail
+        detail.textColor = detail.text.isEmpty ? .lightGray : .black
         segmentedControl.selectedSegmentIndex = AnalyseType(rawValue: analyse.type)?.getTypeId ?? 0
         
     }
@@ -121,16 +126,9 @@ private extension AnalyseViewController {
 
 extension AnalyseViewController: UITextViewDelegate {
     func textViewDidBeginEditing (_ textView: UITextView) {
-        if detail.textColor == UIColor.lightGray && detail.isFirstResponder {
-            detail.text = nil
-            detail.textColor = .white
-        }
-    }
-    
-    func textViewDidEndEditing (_ textView: UITextView) {
-        if detail.text.isEmpty || detail.text == "" {
-            detail.textColor = .lightGray
-            detail.text = "Descreva a sua análise"
+        if textView.textColor == UIColor.lightGray {
+            textView.textColor = UIColor.black
+            textView.text = ""
         }
     }
 }

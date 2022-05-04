@@ -28,6 +28,8 @@ class InsertAvaliationSecondViewController: BaseViewController {
         comments.layer.borderWidth = 0.2
         comments.layer.cornerRadius = 4
         comments.clipsToBounds = true
+        comments.textColor = .lightGray
+        comments.text = "Digite um comentário"
     }
 
     @IBAction func buttonTouched(_ sender: UIButton) {
@@ -54,7 +56,14 @@ class InsertAvaliationSecondViewController: BaseViewController {
 private extension InsertAvaliationSecondViewController {
     func setFields() {
         guard let viewModel = viewModel else { return }
-        comments.text = viewModel.avaliation.comments
+        if viewModel.avaliation.comments.isEmpty {
+            comments.textColor = .lightGray
+            comments.text = "Digite um comentário"
+        } else {
+            comments.text = viewModel.avaliation.comments
+            comments.textColor = .black
+        }
+        
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "dd/MM/yyyy"
         datePicker.date = dateFormat.date(from: viewModel.avaliation.date) ?? Date()
@@ -76,17 +85,10 @@ extension UINavigationController {
 }
 
 extension InsertAvaliationSecondViewController: UITextViewDelegate {
-    func textViewDidBeginEditing (_ textView: UITextView) {
-        if comments.textColor == UIColor.lightGray && comments.isFirstResponder {
-            comments.text = nil
-            comments.textColor = .black
-        }
-    }
-    
-    func textViewDidEndEditing (_ textView: UITextView) {
-        if comments.text.isEmpty || comments.text == "" {
-            comments.textColor = .lightGray
-            comments.text = "Definição"
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.textColor = UIColor.black
+            textView.text = ""
         }
     }
 }

@@ -48,7 +48,6 @@ class DetailsViewController: BaseViewController {
         setDatePicker()
         button.style = .blue
         designButton.style = .white
-        definition.delegate = self
         definition.layer.borderColor = UIColor.gray.cgColor
         definition.layer.borderWidth = 0.2
         definition.layer.cornerRadius = 4
@@ -138,21 +137,5 @@ private extension DetailsViewController {
     
     func setDatePicker() {
         datePicker.maximumDate = Date()
-    }
-}
-
-extension DetailsViewController: UITextViewDelegate {
-    func textViewDidBeginEditing (_ textView: UITextView) {
-        if definition.textColor == UIColor.lightGray && definition.isFirstResponder {
-            definition.text = nil
-            definition.textColor = .white
-        }
-    }
-    
-    func textViewDidEndEditing (_ textView: UITextView) {
-        if definition.text.isEmpty || definition.text == "" {
-            definition.textColor = .lightGray
-            definition.text = "Definição"
-        }
     }
 }
