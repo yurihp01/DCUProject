@@ -5,7 +5,6 @@
 //  Created by PRO on 05/03/2022.
 //
 
-import iOSDropDown
 import UIKit
 
 class InsertAvaliationSecondViewController: BaseViewController {
@@ -25,6 +24,10 @@ class InsertAvaliationSecondViewController: BaseViewController {
         button.style = .blue
         comments.delegate = self
         comments.resignFirstResponder()
+        comments.layer.borderColor = UIColor.gray.cgColor
+        comments.layer.borderWidth = 0.2
+        comments.layer.cornerRadius = 4
+        comments.clipsToBounds = true
     }
 
     @IBAction func buttonTouched(_ sender: UIButton) {

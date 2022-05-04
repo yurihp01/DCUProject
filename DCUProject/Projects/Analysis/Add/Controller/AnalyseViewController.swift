@@ -23,6 +23,11 @@ class AnalyseViewController: BaseViewController {
         setViewsVisibility()
         setViews()
         setNavigationBar()
+        detail.delegate = self
+        detail.layer.borderColor = UIColor.gray.cgColor
+        detail.layer.borderWidth = 0.2
+        detail.layer.cornerRadius = 4
+        detail.clipsToBounds = true
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -45,7 +50,7 @@ private extension AnalyseViewController {
         name.text = analyse.name
         detail.text = analyse.detail
         segmentedControl.selectedSegmentIndex = AnalyseType(rawValue: analyse.type)?.getTypeId ?? 0
-        detail.delegate = self
+        
     }
     
     func setViewsVisibility() {

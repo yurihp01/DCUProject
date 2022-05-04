@@ -9,7 +9,6 @@ target 'DCUProject' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-  pod 'iOSDropDown'
   pod 'Kingfisher', '~> 7.2'
   
   target 'DCUProjectTests' do

@@ -49,6 +49,10 @@ class DetailsViewController: BaseViewController {
         button.style = .blue
         designButton.style = .white
         definition.delegate = self
+        definition.layer.borderColor = UIColor.gray.cgColor
+        definition.layer.borderWidth = 0.2
+        definition.layer.cornerRadius = 4
+        definition.clipsToBounds = true
     }
     
     @IBAction func buttonTouched(_ sender: UIButton) {

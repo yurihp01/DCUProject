@@ -19,6 +19,10 @@ class DefinitionViewController: BaseViewController {
         super.viewDidLoad()
         setNavigationBar()
         setViews()
+        definitionText.layer.borderColor = UIColor.gray.cgColor
+        definitionText.layer.borderWidth = 0.2
+        definitionText.layer.cornerRadius = 4
+        definitionText.clipsToBounds = true
     }
     
     @objc func continueButtonPressed() {
