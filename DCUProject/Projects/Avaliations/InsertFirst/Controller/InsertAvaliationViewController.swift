@@ -49,7 +49,7 @@ class InsertAvaliationViewController: BaseViewController {
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "dd/MM/yyyy"
             let date = viewModel.avaliation?.date ?? dateFormat.string(from: Date())
-            var avaliation = Avaliation(title: titleField, date: date, screen: screen, heuristic: heuristic, avaliator: avaliator, comments: "", status: status)
+            var avaliation = Avaliation(title: titleField, date: date, screen: screen, heuristic: heuristic, avaliator: avaliator, comments: viewModel.avaliation?.comments ?? "", status: status)
             avaliation.id = viewModel.avaliation?.id ?? UUID().uuidString
             
             if !severity.isEnabled {
