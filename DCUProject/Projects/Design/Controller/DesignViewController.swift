@@ -10,10 +10,9 @@ import Kingfisher
 
 class DesignViewController: BaseViewController {
 
-    @IBOutlet weak var prototypeImage: UIImageView!
+    @IBOutlet weak var insertButton: BorderedButton!
     @IBOutlet weak var selectedImage: UIImageView!
     @IBOutlet weak var addButton: BorderedButton!
-    
     var picker: ImagePicker!
     
     weak var coordinator: DesignCoordinator?
@@ -24,7 +23,9 @@ class DesignViewController: BaseViewController {
         addImagePicker()
         getImage()
         addButton.style = .blue
+        insertButton.style = .white
         selectedImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageSelectedTapped)))
+
     }
     
     func getImage() {
@@ -76,9 +77,12 @@ class DesignViewController: BaseViewController {
         addButton.isEnabled = false
     }
     
+    @IBAction func addInsertButtonTouched(_ sender: UIButton) {
+        picker.present(from: sender)
+    }
+    
     @objc func imageSelectedTapped(_ sender: UITapGestureRecognizer) {
-        let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
+        let newImageView = UIImageView(image: selectedImage.image)
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .init(red: 0, green: 0, blue: 0, alpha: 0.7)
         newImageView.contentMode = .scaleAspectFit
@@ -98,15 +102,8 @@ class DesignViewController: BaseViewController {
 }
 
 private extension DesignViewController {
-    func addTapGesture() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-            prototypeImage.isUserInteractionEnabled = true
-        prototypeImage.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
     func addImagePicker() {
         self.picker = ImagePicker(presentationController: self, delegate: self)
-        addTapGesture()
     }
 }
 

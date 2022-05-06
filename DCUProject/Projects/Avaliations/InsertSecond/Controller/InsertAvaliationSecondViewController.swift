@@ -13,6 +13,19 @@ class InsertAvaliationSecondViewController: BaseViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var button: BorderedButton!
     
+    lazy var label: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = .darkGray
+        label.text = "Detalhes"
+        label.font = .systemFont(ofSize: 12)
+        label.layer.backgroundColor = UIColor.white.cgColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.frame = CGRect(x: 0, y: 0, width: comments.frame.size.width, height: 14)
+        view.addSubview(label)
+        return label
+    }()
+    
     weak var coordinator: InsertAvaliationSecondCoordinator?
     var viewModel: InsertAvaliationSecondViewModel?
     var buttonType: ButtonType = .save
@@ -22,14 +35,14 @@ class InsertAvaliationSecondViewController: BaseViewController {
         setFields()
         setDatePicker()
         button.style = .blue
-        comments.delegate = self
-        comments.resignFirstResponder()
         comments.layer.borderColor = UIColor.gray.cgColor
         comments.layer.borderWidth = 0.2
         comments.layer.cornerRadius = 4
         comments.clipsToBounds = true
-        comments.textColor = .lightGray
-        comments.text = "Digite um comentário"
+        label.bottomAnchor.constraint(equalTo:
+        comments.topAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo:
+        comments.leftAnchor).isActive = true
     }
 
     @IBAction func buttonTouched(_ sender: UIButton) {
@@ -56,14 +69,7 @@ class InsertAvaliationSecondViewController: BaseViewController {
 private extension InsertAvaliationSecondViewController {
     func setFields() {
         guard let viewModel = viewModel else { return }
-        if viewModel.avaliation.comments.isEmpty {
-            comments.textColor = .lightGray
-            comments.text = "Digite um comentário"
-        } else {
-            comments.text = viewModel.avaliation.comments
-            comments.textColor = .black
-        }
-        
+        comments.text = viewModel.avaliation.comments
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "dd/MM/yyyy"
         datePicker.date = dateFormat.date(from: viewModel.avaliation.date) ?? Date()
@@ -82,13 +88,4 @@ extension UINavigationController {
       popToViewController(vc, animated: animated)
     }
   }
-}
-
-extension InsertAvaliationSecondViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.textColor = UIColor.black
-            textView.text = ""
-        }
-    }
 }

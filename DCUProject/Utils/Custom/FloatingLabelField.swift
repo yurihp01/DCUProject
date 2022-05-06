@@ -104,14 +104,10 @@ extension FloatingLabelField: UITextFieldDelegate {
                text.trimmingCharacters(in: .whitespaces).count <= 1 {
                 floatingLabel.text = nil
                 placeholder = self._placeholder
-            } else {
-                
             }
         } else {
             floatingLabel.text = placeholder
-            
         }
         return true
     }
-    
 }

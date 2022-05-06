@@ -13,6 +13,19 @@ class AnalyseViewController: BaseViewController {
     @IBOutlet weak var name: FloatingLabelField!
     @IBOutlet weak var detail: UITextView!
     
+    lazy var label: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = .darkGray
+        label.text = "Detalhes"
+        label.font = .systemFont(ofSize: 12)
+        label.layer.backgroundColor = UIColor.white.cgColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.frame = CGRect(x: 0, y: 0, width: detail.frame.size.width, height: 14)
+        view.addSubview(label)
+        return label
+    }()
+    
     weak var coordinator: AnalyseCoordinator?
     
     var viewModel: AnalyseProtocol?
@@ -24,14 +37,13 @@ class AnalyseViewController: BaseViewController {
         setViews()
         setNavigationBar()
         
-        detail.delegate = self
         detail.layer.borderColor = UIColor.gray.cgColor
         detail.layer.borderWidth = 0.2
         detail.layer.cornerRadius = 4
         detail.clipsToBounds = true
         
-        detail.textColor = .lightGray
-
+        label.bottomAnchor.constraint(equalTo:detail.topAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo: detail.leftAnchor).isActive = true
     }
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -53,9 +65,7 @@ private extension AnalyseViewController {
         guard let analyse = viewModel?.analyse else { return }
         name.text = analyse.name
         detail.text = analyse.detail
-        detail.textColor = detail.text.isEmpty ? .lightGray : .black
         segmentedControl.selectedSegmentIndex = AnalyseType(rawValue: analyse.type)?.getTypeId ?? 0
-        
     }
     
     func setViewsVisibility() {
@@ -121,14 +131,5 @@ private extension AnalyseViewController {
     func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel?.buttonType.rawValue, style: .plain, target: self, action: #selector(continueButtonPressed))
         navigationItem.rightBarButtonItem?.title = viewModel?.buttonType.rawValue
-    }
-}
-
-extension AnalyseViewController: UITextViewDelegate {
-    func textViewDidBeginEditing (_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.textColor = UIColor.black
-            textView.text = ""
-        }
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 class DefinitionViewController: BaseViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var definitionText: UITextView!
+    @IBOutlet weak var definitionText: FloatingLabelView!
     
     weak var coordinator: DefinitionCoordinator?
     var viewModel: DefinitionProtocol?
@@ -41,7 +41,6 @@ class DefinitionViewController: BaseViewController {
                 self?.showAlert(message: error.errorDescription)
             }
         }
-        
     }
     
     @IBAction func share(_ sender: UIButton) {
@@ -54,27 +53,10 @@ class DefinitionViewController: BaseViewController {
 
 private extension DefinitionViewController {
     func setViews() {
-        guard let viewModel = viewModel else { return }
         titleLabel.text = Constants.question
-        definitionText.text =  viewModel.placeholder
-        definitionText.textColor = .lightGray
-        setTextView()
-    }
-    
-    func setTextView() {
-        definitionText.delegate = self
     }
     
     func setNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(continueButtonPressed))
-    }
-}
-
-extension DefinitionViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.textColor = UIColor.black
-            textView.text = ""
-        }
     }
 }

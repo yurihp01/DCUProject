@@ -9,7 +9,7 @@ import UIKit
 
 enum ButtonType: String {
     case edit = "Editar"
-    case save = "Alterar"
+    case save = "Inserir"
     case next = "Continuar"
 }
 
@@ -38,6 +38,19 @@ class DetailsViewController: BaseViewController {
     @IBOutlet weak var stackViewFirst: UIStackView!
     @IBOutlet weak var designButton: BorderedButton!
     
+    lazy var label: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
+        label.textColor = .darkGray
+        label.text = "Detalhes"
+        label.font = .systemFont(ofSize: 12)
+        label.layer.backgroundColor = UIColor.white.cgColor
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.clipsToBounds = true
+        label.frame = CGRect(x: 0, y: 0, width: definition.frame.size.width, height: 14)
+        view.addSubview(label)
+        return label
+    }()
+    
     weak var coordinator: DetailsCoordinator?
     var viewModel: DetailsViewModel?
     var buttonType: ButtonType = .edit
@@ -52,6 +65,8 @@ class DetailsViewController: BaseViewController {
         definition.layer.borderWidth = 0.2
         definition.layer.cornerRadius = 4
         definition.clipsToBounds = true
+        label.bottomAnchor.constraint(equalTo: definition.topAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo: definition.leftAnchor).isActive = true
     }
     
     @IBAction func buttonTouched(_ sender: UIButton) {
@@ -66,7 +81,7 @@ class DetailsViewController: BaseViewController {
         }
         
         buttonType == .edit ? switchViews() : addFields()
-
+        label.isHidden = stackViewFirst.isHidden
     }
     
     @IBAction func shareButton(_ sender: UIButton) {
