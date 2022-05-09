@@ -108,14 +108,14 @@ private extension AnalyseViewController {
         switch viewModel?.type {
         case .insert:
             saveAnalyse {
-                self.showMessage(message: "Projeto salvo com sucesso!") { _ in
+                self.showMessage(message: "Análise salva com sucesso!") { _ in
                     coordinator.stop()
                 }
             }
         case .edit:
             if viewModel?.buttonType == .save {
                 saveAnalyse {
-                    self.showMessage(message: "Projeto alterado com sucesso!") { _ in
+                    self.showMessage(message: "Análise alterada com sucesso!") { _ in
                         coordinator.stop()
                     }
                 }

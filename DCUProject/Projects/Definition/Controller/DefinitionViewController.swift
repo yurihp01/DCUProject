@@ -10,7 +10,7 @@ import UIKit
 class DefinitionViewController: BaseViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var definitionText: FloatingLabelView!
+    @IBOutlet weak var definitionText: UITextView!
     
     weak var coordinator: DefinitionCoordinator?
     var viewModel: DefinitionProtocol?

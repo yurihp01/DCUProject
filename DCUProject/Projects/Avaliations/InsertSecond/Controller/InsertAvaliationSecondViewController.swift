@@ -28,7 +28,7 @@ class InsertAvaliationSecondViewController: BaseViewController {
     
     weak var coordinator: InsertAvaliationSecondCoordinator?
     var viewModel: InsertAvaliationSecondViewModel?
-    var buttonType: ButtonType = .save
+    var buttonType: AvaliationButtonType = .save
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +55,8 @@ class InsertAvaliationSecondViewController: BaseViewController {
          
         viewModel.addAvaliation(completion: { [weak self] result in
             switch result {
-            case .success(let message):
-                self?.showMessage(message: message, handler: { _ in
+            case .success:
+                self?.showMessage(message: self?.buttonType == .save ? "Avaliação adicionada com sucesso!" : "Avaliação alterada com sucesso!", handler: { _ in
                     self?.navigationController?.popToViewController(ofClass: HomeViewController.self)
                 })
             case .failure(let error):

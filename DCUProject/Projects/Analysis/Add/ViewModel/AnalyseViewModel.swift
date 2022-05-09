@@ -22,7 +22,7 @@ protocol AnalyseProtocol {
     var analyse: Analyse? { get set }
     var project: Project { get set }
     var type: AnalyseFlow { get }
-    var buttonType: ButtonType { get set }
+    var buttonType: AvaliationButtonType { get set }
     
     func addAnalyse(onCompletion: @escaping (Result<String, FirebaseError>) -> ())
 }
@@ -31,7 +31,7 @@ class AnalyseViewModel {
     var project: Project
     var analyse: Analyse?
     var type: AnalyseFlow
-    var buttonType: ButtonType
+    var buttonType: AvaliationButtonType
     
     let firebase: FirebaseServiceProtocol
     

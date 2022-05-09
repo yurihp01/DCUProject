@@ -29,7 +29,7 @@ class DesignViewController: BaseViewController {
     }
     
     func getImage() {
-        if let url = viewModel?.project.design,
+        if let url = viewModel?.project?.design,
            !url.isEmpty {
             let processor = DownsamplingImageProcessor(size: selectedImage.bounds.size)
             selectedImage.kf.indicatorType = .activity

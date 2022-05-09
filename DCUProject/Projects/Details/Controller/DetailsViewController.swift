@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum AvaliationButtonType: String {
+    case edit = "Editar"
+    case save = "Inserir"
+}
+
 enum ButtonType: String {
     case edit = "Editar"
     case save = "Inserir"
@@ -22,6 +27,17 @@ extension ButtonType {
             self = .edit
         case .next:
             self = .save
+        }
+    }
+}
+
+extension AvaliationButtonType {
+    mutating func toggle() {
+        switch self {
+        case .edit:
+            self = .save
+        case .save:
+            self = .edit
         }
     }
 }

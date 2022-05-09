@@ -9,19 +9,24 @@ import FirebaseStorage
 import Firebase
 
 protocol DesignViewModelProtocol {
-    var project: Project { get }
+    var project: Project? { get }
     func uploadMedia(image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ())
     func getCurrentUser() -> Firebase.User?
 }
 
 class DesignViewModel {
     let firebase: FirebaseServiceProtocol
-    var project: Project
+    var project: Project? {
+        get {
+            return FirebaseService.project
+        }
+        
+        set {}
+    }
     
-    init (project: Project) {
+    init () {
         print("INIT: DesignViewModel")
         firebase = FirebaseService()
-        self.project = project
     }
     
     deinit {
@@ -31,10 +36,11 @@ class DesignViewModel {
 
 extension DesignViewModel: DesignViewModelProtocol {
     func uploadMedia(image: UIImage, completion: @escaping (Result<String, FirebaseError>) -> ()) {
-        firebase.uploadMedia(name: "\(project.name ?? "")-\(project.id ?? "").png", image: image, completion: { [weak self] result in
+        let project = FirebaseService.project
+        firebase.uploadMedia(name: "\(project?.name ?? "")-\(project?.id ?? "").png", image: image, completion: { [weak self] result in
             switch result {
             case .success(let url):
-                self?.project.design = url
+                self?.project?.design = url
                 self?.addImage(completion: { result in
                     completion(result)
                 })
@@ -45,6 +51,7 @@ extension DesignViewModel: DesignViewModelProtocol {
     }
     
     func addImage(completion: @escaping (Result<String, FirebaseError>) -> ()) {
+        guard let project = FirebaseService.project else { return }
         firebase.updateProject(project: project) { result in
             completion(result)
         }
