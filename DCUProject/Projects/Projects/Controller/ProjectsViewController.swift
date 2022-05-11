@@ -64,7 +64,7 @@ extension ProjectsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.getProjects(by: searchBar.text) .count ?? 0
+        return viewModel?.getProjects(by: searchBar.text).count ?? 0
     }
 }
 

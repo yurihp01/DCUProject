@@ -28,6 +28,82 @@ struct Project: Codable {
         case name, description, team, category, date, analysis, users, owner, id, preAvaliation, avaliations, design
     }
     
+    func getPDF() -> String {
+        var text = ""
+        
+        if let id = id, !id.isEmpty {
+            text.append("Id: \(id)\n")
+        }
+        
+        if let description = description, !description.isEmpty {
+            text.append("Descrição: \(description)\n")
+        }
+        
+        if let team = team, !team.isEmpty {
+            text.append("Time: \(team)\n")
+        }
+        
+        if let category = category, !category.isEmpty {
+            text.append("Categoria: \(category)\n")
+        }
+        
+        if let date = date, !date.isEmpty {
+            text.append("Data: \(date)\n")
+        }
+        
+        if let owner = owner, !owner.isEmpty {
+            text.append("Criador: \(owner)\n")
+        }
+        
+        if !design.isEmpty {
+            text.append("Link do Protótipo: \(design)\n")
+        }
+        
+        if !analysis.isEmpty {
+            text.append("\nAnálises\n\n")
+            
+            for i in 0...analysis.count - 1 {
+                text.append("Título: \(analysis[i].name)\n")
+                text.append("Id: \(analysis[i].id)\n")
+                text.append("Tipo: \(analysis[i].type)\n")
+                text.append("Detalhes: \(analysis[i].detail)\n\n")
+            }
+        }
+        
+        if !preAvaliation.heuristics.isEmpty || !preAvaliation.screens.isEmpty {
+            text.append("Pré-Avaliação\n")
+            text.append("Id: \(preAvaliation.id)\n")
+            
+            if !preAvaliation.heuristics.isEmpty {
+                text.append("Heurísticas: \(preAvaliation.heuristics.joined(separator: ", "))\n")
+            }
+            
+            if !preAvaliation.screens.isEmpty {
+                text.append("Telas: \(preAvaliation.screens.joined(separator: ", "))\n")
+            }
+        }
+        
+        if !avaliations.isEmpty {
+            text.append("\nAvaliações\n")
+            for i in 0...avaliations.count - 1 {
+                text.append("Título: \(avaliations[i].title)\n")
+                text.append("Id: \(avaliations[i].id)\n")
+                text.append("Tela: \(avaliations[i].screen)\n")
+                text.append("Heurística: \(avaliations[i].heuristic)\n")
+                text.append("Status: \(avaliations[i].status)\n")
+                text.append("Avaliador: \(avaliations[i].avaliator)\n")
+                text.append("Comentários:\(avaliations[i].comments)\n")
+                text.append("Data: \(avaliations[i].date)\n")
+            }
+        }
+        
+        if !users.isEmpty {
+            text.append("\nConvidados: \(users.joined(separator: ", "))\n")
+        }
+        
+       return text
+    }
+    
     func toDict() -> NSDictionary {
         let dict = [
             "name":NSString(string: name ?? ""),

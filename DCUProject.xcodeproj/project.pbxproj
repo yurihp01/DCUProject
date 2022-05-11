@@ -58,6 +58,7 @@
 		9D8A7014FD0795B7523F3ED8 /* Pods_DCUProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415C146CAA57742255342DE9 /* Pods_DCUProject.framework */; };
 		C19792A0DD03E615C1396520 /* Pods_DCUProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D10F0261DF9837AEECFF47 /* Pods_DCUProjectTests.framework */; };
 		DA2A9A620C5A65D52BCA789D /* Pods_DCUProject_DCUProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFB2E701F025C425CB4D87D0 /* Pods_DCUProject_DCUProjectUITests.framework */; };
+		DA9729D1282B2733000BA1D7 /* PDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9729D0282B2733000BA1D7 /* PDF.swift */; };
 		DA9AE5E3281C72F800DAA69E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AE5E2281C72F800DAA69E /* String+Extensions.swift */; };
 		DA9AE5E5281C7B1900DAA69E /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9AE5E4281C7B1900DAA69E /* BorderedButton.swift */; };
 		DAA26E9627E1709100D85059 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA26E9527E1709100D85059 /* ImagePicker.swift */; };
@@ -155,6 +156,7 @@
 		415C146CAA57742255342DE9 /* Pods_DCUProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCUProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56BB25B2526B854D740D9A71 /* Pods-DCUProject-DCUProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject-DCUProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-DCUProject-DCUProjectUITests/Pods-DCUProject-DCUProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		ACECB2F6BA2F2EFA1397DF1C /* Pods-DCUProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCUProject.release.xcconfig"; path = "Target Support Files/Pods-DCUProject/Pods-DCUProject.release.xcconfig"; sourceTree = "<group>"; };
+		DA9729D0282B2733000BA1D7 /* PDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDF.swift; sourceTree = "<group>"; };
 		DA9AE5E2281C72F800DAA69E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DA9AE5E4281C7B1900DAA69E /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		DAA26E9527E1709100D85059 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				15A3127D27C30C5A00B2177C /* Project.swift */,
 				15EA486A27DA9B4400D3A3B4 /* Analyse.swift */,
 				DAB41A2627F3BD850035199F /* Avaliation.swift */,
+				DA9729D0282B2733000BA1D7 /* PDF.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1186,6 +1189,7 @@
 				DAA26E9F27E173BA00D85059 /* DesignCoordinator.swift in Sources */,
 				15CEE40127CE9D880098CA0B /* AnalysisCoordinator.swift in Sources */,
 				15CEE3FF27CE9D880098CA0B /* AnalyseViewController.swift in Sources */,
+				DA9729D1282B2733000BA1D7 /* PDF.swift in Sources */,
 				15CEE41027CED8230098CA0B /* InsertProjectViewModel.swift in Sources */,
 				DAA26E9E27E173BA00D85059 /* DesignViewModel.swift in Sources */,
 				DAA26EA027E173BA00D85059 /* DesignViewController.swift in Sources */,
