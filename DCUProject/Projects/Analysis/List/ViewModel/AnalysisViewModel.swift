@@ -8,8 +8,9 @@
 import Foundation
 
 protocol AnalysisViewModelProtocol {
-    func getAnalysis(by name: String?, and type: String) -> [Analyse]
     var project: Project? { get set }
+    func addAnalyse(onCompletion: @escaping (Result<String, FirebaseError>) -> ())
+    func getAnalysis(by name: String?) -> [Question]
 }
 
 class AnalysisViewModel {
@@ -34,12 +35,18 @@ class AnalysisViewModel {
 }
 
 extension AnalysisViewModel: AnalysisViewModelProtocol {
-    func getAnalysis(by name: String?, and type: String) -> [Analyse] {
-        let analysis = project?.analysis ?? []
+    func getAnalysis(by name: String?) -> [Question] {
         guard let name = name, !name.isEmpty else {
-            return analysis.filter({ $0.analyseType.rawValue.elementsEqual(type) })
+            return project?.analyse.questions ?? []
         }
-        return analysis.filter({ $0.name.lowercased().contains(name.lowercased()) && $0.analyseType.rawValue.elementsEqual(type)
+        return project?.analyse.questions.filter({ $0.question.lowercased().contains(name.lowercased())
+        }) ?? []
+    }
+    
+    func addAnalyse(onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
+        guard let project = project else { return }
+        firebase.updateProject(project: project, onCompletion: { result in
+            return onCompletion(result)
         })
     }
 }

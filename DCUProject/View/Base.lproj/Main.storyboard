@@ -771,6 +771,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUm-h2-TEv">
+                                <rect key="frame" x="16" y="104" width="288" height="333"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome da análise" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDh-Ca-HAJ" customClass="FloatingLabelField" customModule="DCUProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ud5-fD-SOW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Nome da análise"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O3P-J8-w4A">
+                                        <rect key="frame" x="0.0" y="74" width="288" height="259"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="O3P-J8-w4A" firstAttribute="leading" secondItem="iUm-h2-TEv" secondAttribute="leading" id="1Wx-nd-K4h"/>
+                                    <constraint firstAttribute="trailing" secondItem="O3P-J8-w4A" secondAttribute="trailing" id="37r-ok-ux1"/>
+                                    <constraint firstAttribute="bottom" secondItem="O3P-J8-w4A" secondAttribute="bottom" id="AoX-28-D9k"/>
+                                    <constraint firstItem="bDh-Ca-HAJ" firstAttribute="top" secondItem="iUm-h2-TEv" secondAttribute="top" id="QuP-BX-brs"/>
+                                    <constraint firstItem="bDh-Ca-HAJ" firstAttribute="leading" secondItem="iUm-h2-TEv" secondAttribute="leading" id="XeT-HP-co1"/>
+                                    <constraint firstItem="O3P-J8-w4A" firstAttribute="top" secondItem="bDh-Ca-HAJ" secondAttribute="bottom" constant="24" id="dyc-NR-sav"/>
+                                    <constraint firstAttribute="trailing" secondItem="bDh-Ca-HAJ" secondAttribute="trailing" id="eGZ-AC-7Jg"/>
+                                </constraints>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EBJ-T7-wch">
                                 <rect key="frame" x="16" y="32" width="288" height="41"/>
                                 <constraints>
@@ -785,8 +822,8 @@
                                     <action selector="segmentedControlChanged:" destination="H5a-tl-HSf" eventType="valueChanged" id="GP5-w8-Low"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f8A-wu-Gay">
-                                <rect key="frame" x="16" y="88" width="288" height="349"/>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f8A-wu-Gay">
+                                <rect key="frame" x="16" y="96" width="288" height="341"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Digite o nome" id="OZg-6j-ZvC">
                                     <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
@@ -831,12 +868,16 @@
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="EBJ-T7-wch" secondAttribute="trailing" constant="16" id="2km-Xu-rGf"/>
                             <constraint firstItem="EBJ-T7-wch" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="EDa-wn-Bhu"/>
                             <constraint firstItem="xsZ-EA-VpQ" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="GCy-Qh-oUc"/>
+                            <constraint firstItem="iUm-h2-TEv" firstAttribute="top" secondItem="EBJ-T7-wch" secondAttribute="bottom" constant="32" id="Kxv-Wi-2Ok"/>
+                            <constraint firstItem="xsZ-EA-VpQ" firstAttribute="top" secondItem="iUm-h2-TEv" secondAttribute="bottom" constant="16" id="PfI-MA-IEN"/>
                             <constraint firstItem="f8A-wu-Gay" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="Te0-je-43X"/>
                             <constraint firstItem="xsZ-EA-VpQ" firstAttribute="top" secondItem="f8A-wu-Gay" secondAttribute="bottom" constant="16" id="a72-Ji-tBj"/>
+                            <constraint firstItem="iUm-h2-TEv" firstAttribute="leading" secondItem="Y3L-fn-Rkb" secondAttribute="leading" constant="16" id="bqi-7Q-B4b"/>
+                            <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="iUm-h2-TEv" secondAttribute="trailing" constant="16" id="ivZ-jn-gQQ"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="bottom" secondItem="xsZ-EA-VpQ" secondAttribute="bottom" constant="16" id="k7R-0f-BcK"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="xsZ-EA-VpQ" secondAttribute="trailing" constant="16" id="pcT-tS-6y5"/>
                             <constraint firstItem="EBJ-T7-wch" firstAttribute="top" secondItem="Y3L-fn-Rkb" secondAttribute="top" constant="32" id="qNQ-4e-mi6"/>
-                            <constraint firstItem="f8A-wu-Gay" firstAttribute="top" secondItem="EBJ-T7-wch" secondAttribute="bottom" constant="16" id="ykt-Zz-5bL"/>
+                            <constraint firstItem="f8A-wu-Gay" firstAttribute="top" secondItem="EBJ-T7-wch" secondAttribute="bottom" constant="24" id="ykt-Zz-5bL"/>
                             <constraint firstItem="Y3L-fn-Rkb" firstAttribute="trailing" secondItem="f8A-wu-Gay" secondAttribute="trailing" constant="16" id="z9J-Hk-WMd"/>
                         </constraints>
                     </view>
@@ -845,86 +886,16 @@
                     <connections>
                         <outlet property="addButton" destination="xsZ-EA-VpQ" id="biQ-np-h0G"/>
                         <outlet property="analyseSegmentedControl" destination="EBJ-T7-wch" id="JxV-AX-ixt"/>
+                        <outlet property="nameField" destination="bDh-Ca-HAJ" id="eaV-oM-4Sq"/>
                         <outlet property="searchBar" destination="OZg-6j-ZvC" id="Iav-cY-RMn"/>
+                        <outlet property="segmentView" destination="iUm-h2-TEv" id="5RF-Bh-aFD"/>
                         <outlet property="tableView" destination="f8A-wu-Gay" id="NY4-PK-uvk"/>
+                        <outlet property="textView" destination="O3P-J8-w4A" id="mY5-bn-do2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpS-bo-k3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3928.125" y="1097.5352112676057"/>
-        </scene>
-        <!--Detalhes-->
-        <scene sceneID="62J-z7-fNg">
-            <objects>
-                <viewController storyboardIdentifier="AnalyseViewController" title="Detalhes" id="350-aG-giv" customClass="AnalyseViewController" customModule="DCUProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qyc-IE-c3v">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="41I-Tx-9fu">
-                                <rect key="frame" x="16" y="32" width="288" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Y1t-Qc-fsH"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Persona"/>
-                                    <segment title="Questionário"/>
-                                    <segment title="Entrevista"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentedControlChanged:" destination="350-aG-giv" eventType="valueChanged" id="4D0-3r-Q7Q"/>
-                                </connections>
-                            </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome da análise" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nvA-ub-sTv" customClass="FloatingLabelField" customModule="DCUProject" customModuleProvider="target">
-                                <rect key="frame" x="16" y="104" width="288" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="MRd-11-sTa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Nome da análise"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HDv-62-XRB">
-                                <rect key="frame" x="16" y="178" width="288" height="374"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8Yx-5B-QLW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="41I-Tx-9fu" firstAttribute="top" secondItem="8Yx-5B-QLW" secondAttribute="top" constant="32" id="70p-7S-XX9"/>
-                            <constraint firstItem="HDv-62-XRB" firstAttribute="top" secondItem="nvA-ub-sTv" secondAttribute="bottom" constant="24" id="9JU-d6-uVP"/>
-                            <constraint firstItem="nvA-ub-sTv" firstAttribute="top" secondItem="41I-Tx-9fu" secondAttribute="bottom" constant="32" id="Cw7-cZ-p1Z"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="bottom" secondItem="HDv-62-XRB" secondAttribute="bottom" constant="16" id="F1E-z5-jhJ"/>
-                            <constraint firstItem="HDv-62-XRB" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="Po3-Ll-n9g"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="nvA-ub-sTv" secondAttribute="trailing" constant="16" id="i8x-Oz-6F2"/>
-                            <constraint firstItem="nvA-ub-sTv" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="j5x-Ry-Plo"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="41I-Tx-9fu" secondAttribute="trailing" constant="16" id="jXa-zv-ET0"/>
-                            <constraint firstItem="41I-Tx-9fu" firstAttribute="leading" secondItem="8Yx-5B-QLW" secondAttribute="leading" constant="16" id="tIA-a4-fOc"/>
-                            <constraint firstItem="8Yx-5B-QLW" firstAttribute="trailing" secondItem="HDv-62-XRB" secondAttribute="trailing" constant="16" id="uxc-gZ-rEj"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Análise" id="GSR-qN-9fo">
-                        <barButtonItem key="rightBarButtonItem" title="Editar" style="plain" id="jcn-E5-4RN"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="detail" destination="HDv-62-XRB" id="ABi-yR-YAh"/>
-                        <outlet property="name" destination="nvA-ub-sTv" id="GR1-02-gfM"/>
-                        <outlet property="segmentedControl" destination="41I-Tx-9fu" id="DT8-UH-mk8"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eQ3-2l-PCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3928.985507246377" y="1826.7857142857142"/>
         </scene>
         <!--Design-->
         <scene sceneID="rwR-WX-dUc">
@@ -1268,10 +1239,10 @@
         <image name="arrow." width="128" height="128"/>
         <image name="checklist" catalog="system" width="128" height="105"/>
         <image name="dcu" width="1350" height="900"/>
-        <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <image name="doc.fill" catalog="system" width="32" height="32"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="107" height="128"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus" catalog="system" width="32" height="32"/>
         <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

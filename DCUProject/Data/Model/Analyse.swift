@@ -31,6 +31,7 @@ struct Analyse {
     var name: String
     var detail: String
     var type: String = ""
+    var questions: [Question] = []
     var analyseType: AnalyseType {
         didSet {
             type = analyseType.rawValue
@@ -46,7 +47,7 @@ struct Analyse {
 
 extension Analyse: Codable {
     enum CodingKeys: String, CodingKey {
-        case detail, name, analyseType, id
+        case detail, name, analyseType, id, questions
     }
     
     func toDict() -> NSDictionary {
@@ -55,6 +56,7 @@ extension Analyse: Codable {
             "detail":NSString(string: detail),
             "name":NSString(string: name),
             "analyseType":NSString(string: analyseType.rawValue),
+            "questions":NSArray(array: questions),
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
     }
@@ -65,6 +67,7 @@ extension Analyse: Codable {
         name = try values.decode(String.self, forKey: .name)
         detail = try values.decode(String.self, forKey: .detail)
         type = try values.decode(String.self, forKey: .analyseType)
+        questions = try values.decodeIfPresent([Question].self, forKey: .questions) ?? []
         analyseType = AnalyseType(rawValue: type)!
     }
     
@@ -78,12 +81,36 @@ extension Analyse: Codable {
     
     static let mockedAnalyse = Analyse(detail: "O detalhe é legal ", type: .interview, name: "Análise 1")
     
-    static let mockedAnalyses = [
-        Analyse(detail: "Entrevista 1 ", type: .interview, name: "Análise 1"),
-        Analyse(detail: "Entrevista 2 ", type: .interview, name: "Análise 2"),
-        Analyse(detail: "Persona 1 ", type: .persona, name: "Análise 3"),
-        Analyse(detail: "Persona 2 ", type: .persona, name: "Análise 4"),
-        Analyse(detail: "Questionário 1 ", type: .quiz, name: "Análise 5"),
-        Analyse(detail: "Questionário 1 ", type: .quiz, name: "Análise 6")
-    ]
+    static let mockedAnalyses = Analyse(detail: "Entrevista 1 ", type: .interview, name: "Análise 1")
+}
+
+struct Question {
+    var question: String = ""
+    var answer: String = ""
+}
+
+extension Question: Codable {
+    enum CodingKeys: String, CodingKey {
+        case question, answer
+    }
+    
+    func toDict() -> NSDictionary {
+        let dict = [
+            "question": NSString(string: question),
+            "answer":NSString(string: answer)
+        ] as [String : Any]
+        return NSDictionary(dictionary: dict)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        question = try values.decode(String.self, forKey: .question)
+        answer = try values.decode(String.self, forKey: .answer)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(question, forKey: .question)
+        try container.encode(answer, forKey: .answer)
+    }
 }

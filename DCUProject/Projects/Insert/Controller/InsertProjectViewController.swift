@@ -22,7 +22,6 @@ class InsertProjectViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDatePicker()
-        project?.analysis = [Analyse(detail: "1", type: .persona, name: "A")]
         createButton.style = .blue
     }
 
@@ -50,9 +49,5 @@ class InsertProjectViewController: BaseViewController {
 private extension InsertProjectViewController {
     func setDatePicker() {
         datePicker.maximumDate = Date()
-    }
-    
-    func addColaborator() {
-        
     }
 }

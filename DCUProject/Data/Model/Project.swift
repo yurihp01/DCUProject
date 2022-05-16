@@ -9,7 +9,7 @@ import UIKit
 
 struct Project: Codable {
     var name, date, description, team, category, owner, id: String?
-    var analysis: [Analyse] = []
+    var analyse: Analyse = Analyse(detail: "", type: .quiz, name: "")
     var users: [String] = []
     var preAvaliation: PreAvaliation = PreAvaliation(screens: [], heuristics: [])
     var avaliations: [Avaliation] = []
@@ -25,7 +25,7 @@ struct Project: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case name, description, team, category, date, analysis, users, owner, id, preAvaliation, avaliations, design
+        case name, description, team, category, date, analyse, users, owner, id, preAvaliation, avaliations, design
     }
     
     func getPDF() -> String {
@@ -59,19 +59,25 @@ struct Project: Codable {
             text.append("Link do Protótipo: \(design)\n")
         }
         
-        if !analysis.isEmpty {
-            text.append("\nAnálises\n\n")
+        if !analyse.name.isEmpty {
+            text.append("\nAnálise\n\n")
             
-            for i in 0...analysis.count - 1 {
-                text.append("Título: \(analysis[i].name)\n")
-                text.append("Id: \(analysis[i].id)\n")
-                text.append("Tipo: \(analysis[i].type)\n")
-                text.append("Detalhes: \(analysis[i].detail)\n\n")
+            text.append("Título: \(analyse.name)\n")
+            text.append("Id: \(analyse.id)\n")
+            text.append("Tipo: \(analyse.type)\n")
+            
+            if analyse.type == "Questionário" {
+                for question in analyse.questions {
+                    text.append("Questão: \(question.question)\n")
+                    text.append("Resposta: \(question.answer)\n")
+                }
+            } else {
+                text.append("Descrição: \(analyse.detail)\n")
             }
         }
         
         if !preAvaliation.heuristics.isEmpty || !preAvaliation.screens.isEmpty {
-            text.append("Pré-Avaliação\n")
+            text.append("\nPré-Avaliação\n")
             text.append("Id: \(preAvaliation.id)\n")
             
             if !preAvaliation.heuristics.isEmpty {
@@ -116,7 +122,7 @@ struct Project: Codable {
             "preAvaliation": preAvaliation.toDict(),
             "avaliations":NSArray(array: avaliations.map { $0.toDict() }),
             "users":NSArray(array: users),
-            "analysis":NSArray(array: analysis.map { $0.toDict() }),
+            "analyse": analyse.toDict(),
             "design":NSString(string: design)
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
@@ -133,7 +139,7 @@ struct Project: Codable {
         team = try values.decode(String.self, forKey: .team)
         category = try values.decode(String.self, forKey: .category)
         date = try values.decode(String.self, forKey: .date)
-        analysis = try values.decodeIfPresent([Analyse].self, forKey: .analysis) ?? []
+        analyse = try values.decode(Analyse.self, forKey: .analyse)
         users = try values.decodeIfPresent([String].self, forKey: .users) ?? []
         owner = try values.decode(String.self, forKey: .owner)
         id = try values.decode(String.self, forKey: .id)
@@ -149,7 +155,7 @@ struct Project: Codable {
         try container.encode(team, forKey: .team)
         try container.encode(category, forKey: .category)
         try container.encode(date, forKey: .date)
-        try container.encode(analysis, forKey: .analysis)
+        try container.encode(analyse, forKey: .analyse)
         try container.encode(users, forKey: .users)
         try container.encode(owner, forKey: .owner)
         try container.encode(id, forKey: .id)
@@ -176,7 +182,7 @@ struct Project: Codable {
     
     static var mockedProject: Project {
         var project = Project(name: "Project 1", team: "Team 1", category: "Category 1", owner: "sarahcampinho@hotmail.com", date: "28/10/2022")
-        project.analysis = Analyse.mockedAnalyses
+        project.analyse = Analyse.mockedAnalyses
         project.preAvaliation = mockedPreAvaliation
         project.avaliations = mockedAvaliation
         project.design = mockedDesign
