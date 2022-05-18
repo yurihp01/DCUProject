@@ -28,87 +28,7 @@ struct Project: Codable {
         case name, description, team, category, date, analyse, users, owner, id, preAvaliation, avaliations, design
     }
     
-    func getPDF() -> String {
-        var text = ""
-        
-        if let id = id, !id.isEmpty {
-            text.append("Id: \(id)\n")
-        }
-        
-        if let description = description, !description.isEmpty {
-            text.append("Descrição: \(description)\n")
-        }
-        
-        if let team = team, !team.isEmpty {
-            text.append("Time: \(team)\n")
-        }
-        
-        if let category = category, !category.isEmpty {
-            text.append("Categoria: \(category)\n")
-        }
-        
-        if let date = date, !date.isEmpty {
-            text.append("Data: \(date)\n")
-        }
-        
-        if let owner = owner, !owner.isEmpty {
-            text.append("Criador: \(owner)\n")
-        }
-        
-        if !design.isEmpty {
-            text.append("Link do Protótipo: \(design)\n")
-        }
-        
-        if !analyse.name.isEmpty {
-            text.append("\nAnálise\n\n")
-            
-            text.append("Título: \(analyse.name)\n")
-            text.append("Id: \(analyse.id)\n")
-            text.append("Tipo: \(analyse.type)\n")
-            
-            if analyse.type == "Questionário" {
-                for question in analyse.questions {
-                    text.append("Questão: \(question.question)\n")
-                    text.append("Resposta: \(question.answer)\n")
-                }
-            } else {
-                text.append("Descrição: \(analyse.detail)\n")
-            }
-        }
-        
-        if !preAvaliation.heuristics.isEmpty || !preAvaliation.screens.isEmpty {
-            text.append("\nPré-Avaliação\n")
-            text.append("Id: \(preAvaliation.id)\n")
-            
-            if !preAvaliation.heuristics.isEmpty {
-                text.append("Heurísticas: \(preAvaliation.heuristics.joined(separator: ", "))\n")
-            }
-            
-            if !preAvaliation.screens.isEmpty {
-                text.append("Telas: \(preAvaliation.screens.joined(separator: ", "))\n")
-            }
-        }
-        
-        if !avaliations.isEmpty {
-            text.append("\nAvaliações\n")
-            for i in 0...avaliations.count - 1 {
-                text.append("Título: \(avaliations[i].title)\n")
-                text.append("Id: \(avaliations[i].id)\n")
-                text.append("Tela: \(avaliations[i].screen)\n")
-                text.append("Heurística: \(avaliations[i].heuristic)\n")
-                text.append("Status: \(avaliations[i].status)\n")
-                text.append("Avaliador: \(avaliations[i].avaliator)\n")
-                text.append("Comentários:\(avaliations[i].comments)\n")
-                text.append("Data: \(avaliations[i].date)\n")
-            }
-        }
-        
-        if !users.isEmpty {
-            text.append("\nConvidados: \(users.joined(separator: ", "))\n")
-        }
-        
-       return text
-    }
+    
     
     func toDict() -> NSDictionary {
         let dict = [
@@ -196,4 +116,92 @@ struct Project: Codable {
         Project(name: "Project 3", team: "Team 3", category: "Category 3", owner: "a@a.com", date: "28/10/2022", description: "Project 3 legal"),
         Project(name: "Project 4", team: "Team 4", category: "Category 4", owner: "a@a.com", date: "28/10/2022", description: "Project 4 legal")
     ]
+    
+//    MARK: - Get PDF
+    
+    func getPDF() -> String {
+        var text = ""
+        
+        if let id = id, !id.isEmpty {
+            text.append("Id: \(id)\n")
+        }
+        
+        if let description = description, !description.isEmpty {
+            text.append("Descrição: \(description)\n")
+        }
+        
+        if let team = team, !team.isEmpty {
+            text.append("Time: \(team)\n")
+        }
+        
+        if let category = category, !category.isEmpty {
+            text.append("Categoria: \(category)\n")
+        }
+        
+        if let date = date, !date.isEmpty {
+            text.append("Data: \(date)\n")
+        }
+        
+        if let owner = owner, !owner.isEmpty {
+            text.append("Criador: \(owner)\n")
+        }
+        
+        if !design.isEmpty {
+            text.append("Link do Protótipo: \(design)\n")
+        }
+        
+        if !analyse.name.isEmpty {
+            text.append("\nAnálise\n\n")
+            
+            text.append("Título: \(analyse.name)\n")
+            text.append("Id: \(analyse.id)\n")
+            text.append("Tipo: \(analyse.type)\n")
+            text.append("Descrição: \(analyse.detail)\n")
+        }
+        
+        if analyse.type == "Questionário" {
+            text.append("\nAnálise\n\n")
+            
+            text.append("Id: \(analyse.id)\n")
+            text.append("Tipo: \(analyse.type)\n\n")
+            
+            for question in analyse.questions {
+                text.append("Questão: \(question.question)\n")
+                text.append("Resposta: \(question.answer)\n\n")
+            }
+        }
+        
+        if !preAvaliation.heuristics.isEmpty || !preAvaliation.screens.isEmpty {
+            text.append("\nPré-Avaliação\n")
+            text.append("Id: \(preAvaliation.id)\n")
+            
+            if !preAvaliation.heuristics.isEmpty {
+                text.append("Heurísticas: \(preAvaliation.heuristics.joined(separator: ", "))\n")
+            }
+            
+            if !preAvaliation.screens.isEmpty {
+                text.append("Telas: \(preAvaliation.screens.joined(separator: ", "))\n")
+            }
+        }
+        
+        if !avaliations.isEmpty {
+            text.append("\nAvaliações\n")
+            for i in 0...avaliations.count - 1 {
+                text.append("Título: \(avaliations[i].title)\n")
+                text.append("Id: \(avaliations[i].id)\n")
+                text.append("Tela: \(avaliations[i].screen)\n")
+                text.append("Heurística: \(avaliations[i].heuristic)\n")
+                text.append("Status: \(avaliations[i].status)\n")
+                text.append("Avaliador: \(avaliations[i].avaliator)\n")
+                text.append("Comentários:\(avaliations[i].comments)\n")
+                text.append("Data: \(avaliations[i].date)\n")
+            }
+        }
+        
+        if !users.isEmpty {
+            text.append("\nConvidados: \(users.joined(separator: ", "))\n")
+        }
+        
+       return text
+    }
 }

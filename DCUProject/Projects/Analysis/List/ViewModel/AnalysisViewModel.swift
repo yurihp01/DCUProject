@@ -9,7 +9,7 @@ import Foundation
 
 protocol AnalysisViewModelProtocol {
     var project: Project? { get set }
-    func addAnalyse(onCompletion: @escaping (Result<String, FirebaseError>) -> ())
+    func addAnalyse(project: Project?, onCompletion: @escaping (Result<String, FirebaseError>) -> ())
     func getAnalysis(by name: String?) -> [Question]
 }
 
@@ -43,7 +43,7 @@ extension AnalysisViewModel: AnalysisViewModelProtocol {
         }) ?? []
     }
     
-    func addAnalyse(onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
+    func addAnalyse(project: Project?, onCompletion: @escaping (Result<String, FirebaseError>) -> ()) {
         guard let project = project else { return }
         firebase.updateProject(project: project, onCompletion: { result in
             return onCompletion(result)

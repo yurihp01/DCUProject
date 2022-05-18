@@ -12,6 +12,7 @@ class QuestionModal: UIView {
     @IBOutlet weak var answerView: UITextView!
     @IBOutlet weak var button: BorderedButton!
     
+    private var indexPath: IndexPath?
     private var delegate: AnalysisDelegate?
     
     lazy var label: UILabel = {
@@ -40,7 +41,7 @@ class QuestionModal: UIView {
     func xibSetup(frame: CGRect) {
         let view = loadXib()
         view.frame = frame
-        view.backgroundColor = .clear.withAlphaComponent(0.3)
+        view.backgroundColor = .black.withAlphaComponent(0.7)
         addSubview(view)
     }
     
@@ -61,10 +62,15 @@ class QuestionModal: UIView {
         label.leftAnchor.constraint(equalTo: answerView.leftAnchor).isActive = true
     }
     
-    func setFields(question: String, answer: String = "", delegate: AnalysisDelegate) {
+    func setFields(delegate: AnalysisDelegate, question: String, answer: String = "", indexPath: IndexPath? = nil) {
         questionField.text = question
         answerView.text = answer
         self.delegate = delegate
+        self.indexPath = indexPath
+    }
+    
+    @IBAction func closeButtonTouched(_ sender: Any) {
+        removeFromSuperview()
     }
     
     @IBAction func buttonTouched(_ sender: Any) {
@@ -74,16 +80,20 @@ class QuestionModal: UIView {
             let question: Question
             
             if let answer = answerView.text, !answer.isEmpty {
-                question = Question(question: text, answer: text)
+                question = Question(question: text, answer: answer)
             } else {
                 question =  Question(question: text)
             }
             
-            delegate?.onButtonClicked(question: question)
+            if let indexPath = indexPath {
+                delegate?.onButtonClicked(question: question, modal: self, indexPath: indexPath)
+                return
+            }
+            
+            delegate?.onButtonClicked(question: question, modal: self)
+        } else {
+            delegate?.showAlert()
         }
-        
-//        showAlert(message: "Insira uma pergunta e tente novamente!")
-        
     }
     
 }

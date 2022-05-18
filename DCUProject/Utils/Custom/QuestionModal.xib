@@ -22,20 +22,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccm-l0-E9s">
-                    <rect key="frame" x="32" y="258" width="350" height="380"/>
+                    <rect key="frame" x="32" y="218" width="350" height="460"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gCs-dl-Df3">
-                            <rect key="frame" x="16" y="90" width="318" height="208"/>
+                            <rect key="frame" x="16" y="146" width="318" height="232"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <color key="textColor" systemColor="labelColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QaZ-5j-o4B" customClass="BorderedButton" customModule="DCUProject" customModuleProvider="target">
-                            <rect key="frame" x="16" y="314" width="318" height="50"/>
+                            <rect key="frame" x="16" y="394" width="318" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="I6W-YU-vAZ"/>
                             </constraints>
+                            <color key="tintColor" systemColor="systemBackgroundColor"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Inserir"/>
                             <connections>
@@ -43,7 +44,7 @@
                             </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pergunta" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFx-dA-bh4" customClass="FloatingLabelField" customModule="DCUProject" customModuleProvider="target">
-                            <rect key="frame" x="16" y="20" width="318" height="50"/>
+                            <rect key="frame" x="16" y="72" width="318" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Om0-BE-LOg"/>
                             </constraints>
@@ -53,26 +54,47 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Pergunta"/>
                             </userDefinedRuntimeAttributes>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfa-cu-3YW">
+                            <rect key="frame" x="294" y="16" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="C1h-en-SzO"/>
+                                <constraint firstAttribute="width" constant="40" id="bFh-Gh-cC8"/>
+                            </constraints>
+                            <buttonConfiguration key="configuration" style="plain"/>
+                            <connections>
+                                <action selector="closeButtonTouched:" destination="-1" eventType="touchUpInside" id="qkU-RO-rQ5"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questionário" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4J-av-cm2">
+                            <rect key="frame" x="126.5" y="25.5" width="97" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="QaZ-5j-o4B" firstAttribute="top" secondItem="gCs-dl-Df3" secondAttribute="bottom" constant="16" id="1Re-CY-x4P"/>
                         <constraint firstAttribute="width" constant="350" id="7Pa-eU-MmY"/>
-                        <constraint firstAttribute="height" constant="380" id="7tn-CF-IKN"/>
-                        <constraint firstItem="gCs-dl-Df3" firstAttribute="top" secondItem="lFx-dA-bh4" secondAttribute="bottom" constant="20" id="Pek-ZA-fZ0"/>
+                        <constraint firstAttribute="height" constant="460" id="7tn-CF-IKN"/>
                         <constraint firstItem="QaZ-5j-o4B" firstAttribute="leading" secondItem="ccm-l0-E9s" secondAttribute="leading" constant="16" id="QMT-ip-92U"/>
+                        <constraint firstItem="nfa-cu-3YW" firstAttribute="top" secondItem="ccm-l0-E9s" secondAttribute="top" constant="16" id="QSB-p0-a5i"/>
+                        <constraint firstItem="gCs-dl-Df3" firstAttribute="top" secondItem="lFx-dA-bh4" secondAttribute="bottom" constant="24" id="Vnx-7M-dvo"/>
                         <constraint firstAttribute="bottom" secondItem="QaZ-5j-o4B" secondAttribute="bottom" constant="16" id="WAU-Mt-IZ2"/>
-                        <constraint firstItem="lFx-dA-bh4" firstAttribute="top" secondItem="ccm-l0-E9s" secondAttribute="top" constant="20" id="ZFM-Dt-B2u"/>
+                        <constraint firstItem="W4J-av-cm2" firstAttribute="centerY" secondItem="nfa-cu-3YW" secondAttribute="centerY" id="ekR-aT-pAD"/>
                         <constraint firstAttribute="trailing" secondItem="gCs-dl-Df3" secondAttribute="trailing" constant="16" id="gz5-Rm-gjF"/>
+                        <constraint firstItem="W4J-av-cm2" firstAttribute="centerX" secondItem="ccm-l0-E9s" secondAttribute="centerX" id="kCI-mI-B0b"/>
                         <constraint firstAttribute="trailing" secondItem="lFx-dA-bh4" secondAttribute="trailing" constant="16" id="mQk-Hd-s0b"/>
                         <constraint firstAttribute="trailing" secondItem="QaZ-5j-o4B" secondAttribute="trailing" constant="16" id="mtu-xj-IpG"/>
                         <constraint firstItem="gCs-dl-Df3" firstAttribute="leading" secondItem="ccm-l0-E9s" secondAttribute="leading" constant="16" id="t5P-ys-ZFD"/>
+                        <constraint firstAttribute="trailing" secondItem="nfa-cu-3YW" secondAttribute="trailing" constant="16" id="v5P-RC-Mbn"/>
                         <constraint firstItem="lFx-dA-bh4" firstAttribute="leading" secondItem="ccm-l0-E9s" secondAttribute="leading" constant="16" id="v5s-q8-fYZ"/>
+                        <constraint firstItem="lFx-dA-bh4" firstAttribute="top" secondItem="nfa-cu-3YW" secondAttribute="bottom" constant="16" id="zwU-ii-AsG"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" red="0.75691818545372225" green="0.75657821503395017" blue="0.77291398195876293" alpha="0.27577593537414968" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" red="0.75691818545372225" green="0.75657821503395017" blue="0.77291398195876293" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ccm-l0-E9s" secondAttribute="trailing" constant="32" id="sxF-Ne-ooe"/>
                 <constraint firstItem="ccm-l0-E9s" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="udu-fp-HIj"/>

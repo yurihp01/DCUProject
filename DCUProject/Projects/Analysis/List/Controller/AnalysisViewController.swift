@@ -8,7 +8,9 @@
 import UIKit
 
 protocol AnalysisDelegate: AnyObject {
-    func onButtonClicked(question: Question)
+    func onButtonClicked(question: Question, modal: QuestionModal)
+    func onButtonClicked(question: Question, modal: QuestionModal, indexPath: IndexPath)
+    func showAlert()
 }
 
 class AnalysisViewController: BaseViewController {
@@ -67,7 +69,7 @@ class AnalysisViewController: BaseViewController {
             analyseType = .quiz
             segmentView.isHidden = true
             tableView.isHidden = false
-            
+            tableView.reloadData()
         case 2:
             analyseType = .interview
             segmentView.isHidden = false
@@ -82,7 +84,7 @@ class AnalysisViewController: BaseViewController {
         
         if analyseSegmentedControl.selectedSegmentIndex == 1 {
             let modal = QuestionModal(frame: view.frame)
-            modal.setFields(question: "", delegate: self)
+            modal.setFields(delegate: self, question: "")
             view.addSubview(modal)
         } else if buttonType == .save, checkFields() {
             let analyse = Analyse(detail: textView.text, type: analyseType, name: nameField.text!)
@@ -136,20 +138,19 @@ private extension AnalysisViewController {
 
 extension AnalysisViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let analyses = viewModel?.getAnalysis(by: searchBar.text),
-              analyses.count > 0 else { return UITableViewCell() }
+        guard let questions = viewModel?.getAnalysis(by: searchBar.text),
+              questions.count > 0 else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = analyses[indexPath.row].question
+        cell.textLabel?.text = questions[indexPath.row].question
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let question = viewModel?.getAnalysis(by: searchBar.text)[indexPath.row] else { return }
-        
-//        let modal = QuestionModal(nibName: "QuestionModal", bundle: nil)
-//        modal.setFields(question: question.question, answer: question.answer, delegate: self)
-//        navigationController?.modalPresentationStyle = .overCurrentContext
-//        navigationController?.present(modal, animated: true)
+        let modal = QuestionModal(frame: view.frame)
+        modal.setFields(delegate: self, question: question.question, answer: question.answer, indexPath: indexPath)
+        view.addSubview(modal)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -164,8 +165,28 @@ extension AnalysisViewController: UISearchBarDelegate {
 }
 
 extension AnalysisViewController: AnalysisDelegate {
-    func onButtonClicked(question: Question) {
-        viewModel?.addAnalyse(onCompletion: { [weak self] result in
+    func showAlert() {
+        showAlert(message: "Insira uma pergunta e tente novamente!")
+    }
+    
+    func onButtonClicked(question: Question, modal: QuestionModal, indexPath: IndexPath) {
+        var project = viewModel?.project
+        project?.analyse.questions[indexPath.row] = question
+        addAnalyse(modal: modal, project: project)
+    }
+    
+    func onButtonClicked(question: Question, modal: QuestionModal) {
+        var project = viewModel?.project
+        project?.analyse.questions.append(question)
+        addAnalyse(modal: modal, project: project)
+//        ver o porque nao está pegando o ID do projeto.
+//        corrigir botoes de inserir e editar na analise
+//
+    }
+    
+    func addAnalyse(modal: QuestionModal, project: Project?) {
+        
+        viewModel?.addAnalyse(project: project, onCompletion: { [weak self] result in
             switch result {
             case .success(let message):
                 self?.showMessage(message: message)
@@ -173,6 +194,7 @@ extension AnalysisViewController: AnalysisDelegate {
             case .failure(let error):
                 self?.showAlert(message: error.errorDescription)
             }
+            modal.removeFromSuperview()
         })
     }
 }

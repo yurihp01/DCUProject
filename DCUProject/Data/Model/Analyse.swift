@@ -56,7 +56,7 @@ extension Analyse: Codable {
             "detail":NSString(string: detail),
             "name":NSString(string: name),
             "analyseType":NSString(string: analyseType.rawValue),
-            "questions":NSArray(array: questions),
+            "questions":NSArray(array: questions.map { $0.toDict() }),
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
     }
@@ -77,6 +77,7 @@ extension Analyse: Codable {
         try container.encode(name, forKey: .name)
         try container.encode(detail, forKey: .detail)
         try container.encode(analyseType.rawValue, forKey: .analyseType)
+        try container.encode(questions, forKey: .questions)
     }
     
     static let mockedAnalyse = Analyse(detail: "O detalhe é legal ", type: .interview, name: "Análise 1")
@@ -97,7 +98,7 @@ extension Question: Codable {
     func toDict() -> NSDictionary {
         let dict = [
             "question": NSString(string: question),
-            "answer":NSString(string: answer)
+            "answer": NSString(string: answer)
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
     }
