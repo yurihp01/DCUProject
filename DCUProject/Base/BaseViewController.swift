@@ -41,6 +41,7 @@ class BaseViewController: UIViewController, Storyboarded {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField() { newTextField in
             newTextField.placeholder = placeholder
+            newTextField.addDoneButtonOnKeyboard()
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in return })
         alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in

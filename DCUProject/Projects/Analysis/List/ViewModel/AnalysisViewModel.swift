@@ -37,9 +37,9 @@ class AnalysisViewModel {
 extension AnalysisViewModel: AnalysisViewModelProtocol {
     func getAnalysis(by name: String?) -> [Question] {
         guard let name = name, !name.isEmpty else {
-            return project?.analyse.questions ?? []
+            return project?.analyse?.questions ?? []
         }
-        return project?.analyse.questions.filter({ $0.question.lowercased().contains(name.lowercased())
+        return project?.analyse?.questions.filter({ $0.question.lowercased().contains(name.lowercased())
         }) ?? []
     }
     

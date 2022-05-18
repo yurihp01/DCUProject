@@ -9,7 +9,7 @@ import UIKit
 
 struct Project: Codable {
     var name, date, description, team, category, owner, id: String?
-    var analyse: Analyse = Analyse(detail: "", type: .quiz, name: "")
+    var analyse: Analyse?
     var users: [String] = []
     var preAvaliation: PreAvaliation = PreAvaliation(screens: [], heuristics: [])
     var avaliations: [Avaliation] = []
@@ -28,8 +28,6 @@ struct Project: Codable {
         case name, description, team, category, date, analyse, users, owner, id, preAvaliation, avaliations, design
     }
     
-    
-    
     func toDict() -> NSDictionary {
         let dict = [
             "name":NSString(string: name ?? ""),
@@ -42,7 +40,7 @@ struct Project: Codable {
             "preAvaliation": preAvaliation.toDict(),
             "avaliations":NSArray(array: avaliations.map { $0.toDict() }),
             "users":NSArray(array: users),
-            "analyse": analyse.toDict(),
+            "analyse": analyse?.toDict(),
             "design":NSString(string: design)
         ] as [String : Any]
         return NSDictionary(dictionary: dict)
@@ -59,7 +57,7 @@ struct Project: Codable {
         team = try values.decode(String.self, forKey: .team)
         category = try values.decode(String.self, forKey: .category)
         date = try values.decode(String.self, forKey: .date)
-        analyse = try values.decode(Analyse.self, forKey: .analyse)
+        analyse = try values.decodeIfPresent(Analyse.self, forKey: .analyse)
         users = try values.decodeIfPresent([String].self, forKey: .users) ?? []
         owner = try values.decode(String.self, forKey: .owner)
         id = try values.decode(String.self, forKey: .id)
@@ -147,27 +145,29 @@ struct Project: Codable {
         }
         
         if !design.isEmpty {
-            text.append("Link do Protótipo: \(design)\n")
+            text.append("\nLink do Protótipo: \(design)\n")
         }
         
-        if !analyse.name.isEmpty {
-            text.append("\nAnálise\n\n")
+        if let analyse = analyse {
+            if analyse.name.isEmpty {
+                text.append("\nAnálise\n\n")
+                
+                text.append("Título: \(analyse.name)\n")
+                text.append("Id: \(analyse.id)\n")
+                text.append("Tipo: \(analyse.analyseType.rawValue)\n")
+                text.append("Descrição: \(analyse.detail)\n")
+            }
             
-            text.append("Título: \(analyse.name)\n")
-            text.append("Id: \(analyse.id)\n")
-            text.append("Tipo: \(analyse.type)\n")
-            text.append("Descrição: \(analyse.detail)\n")
-        }
-        
-        if analyse.type == "Questionário" {
-            text.append("\nAnálise\n\n")
-            
-            text.append("Id: \(analyse.id)\n")
-            text.append("Tipo: \(analyse.type)\n\n")
-            
-            for question in analyse.questions {
-                text.append("Questão: \(question.question)\n")
-                text.append("Resposta: \(question.answer)\n\n")
+            if analyse.type == "Questionário" {
+                text.append("\nAnálise\n\n")
+                
+                text.append("Id: \(analyse.id)\n")
+                text.append("Tipo: \(analyse.type)\n")
+                
+                for question in analyse.questions {
+                    text.append("\nQuestão: \(question.question)\n")
+                    text.append("Resposta: \(question.answer)\n")
+                }
             }
         }
         
@@ -187,13 +187,17 @@ struct Project: Codable {
         if !avaliations.isEmpty {
             text.append("\nAvaliações\n")
             for i in 0...avaliations.count - 1 {
-                text.append("Título: \(avaliations[i].title)\n")
+                text.append("\nTítulo: \(avaliations[i].title)\n")
                 text.append("Id: \(avaliations[i].id)\n")
                 text.append("Tela: \(avaliations[i].screen)\n")
                 text.append("Heurística: \(avaliations[i].heuristic)\n")
                 text.append("Status: \(avaliations[i].status)\n")
                 text.append("Avaliador: \(avaliations[i].avaliator)\n")
-                text.append("Comentários:\(avaliations[i].comments)\n")
+                
+                if !avaliations[i].comments.isEmpty {
+                    text.append("Comentários:\(avaliations[i].comments)\n")
+                }
+                
                 text.append("Data: \(avaliations[i].date)\n")
             }
         }

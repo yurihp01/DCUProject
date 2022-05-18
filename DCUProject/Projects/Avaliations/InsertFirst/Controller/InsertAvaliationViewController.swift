@@ -39,6 +39,18 @@ class InsertAvaliationViewController: BaseViewController {
     }
         
     @IBAction func buttonTouched(_ sender: UIButton) {
+        guard let project = viewModel?.project else { return }
+        
+        if project.preAvaliation.screens.isEmpty {
+            showAlert(message: "Não há telas previamente cadastradas. Insira, ao menos, uma no menu Pré-Avaliação e tente novamente!")
+            return
+        }
+        
+        if project.preAvaliation.heuristics.isEmpty {
+            showAlert(message: "Não há heurísticas previamente cadastradas. Insira, ao menos, uma no menu Pré-Avaliação e tente novamente!")
+            return
+        }
+        
         if let screen = screen.text, !screen.isEmpty,
            let heuristic = heuristic.text, !heuristic.isEmpty,
            let avaliator = avaliator.text, !avaliator.isEmpty,
@@ -54,8 +66,10 @@ class InsertAvaliationViewController: BaseViewController {
             
             if !severity.isEnabled {
                 avaliation.status = status
-            } else if let severity = severity.text {
+            } else if let severity = severity.text, !severity.isEmpty {
                 avaliation.status = severity
+            } else {
+                showAlert(message: "Selecione uma severidade e tente novamente!")
             }
             
             coordinator?.goToInsertSecondPart(project: viewModel.project, avaliation: avaliation, title: title)

@@ -65,15 +65,18 @@ class AnalysisViewController: BaseViewController {
             segmentView.isHidden = false
             tableView.isHidden = true
             analyseType = .persona
+            setVisibilityWithSegmentedControl()
         case 1:
             analyseType = .quiz
             segmentView.isHidden = true
             tableView.isHidden = false
             tableView.reloadData()
+            addButton.setTitle(AvaliationButtonType.save.rawValue, for: .normal)
         case 2:
             analyseType = .interview
             segmentView.isHidden = false
             tableView.isHidden = true
+            setVisibilityWithSegmentedControl()
         default:
             print("Error")
         }
@@ -85,10 +88,22 @@ class AnalysisViewController: BaseViewController {
         if analyseSegmentedControl.selectedSegmentIndex == 1 {
             let modal = QuestionModal(frame: view.frame)
             modal.setFields(delegate: self, question: "")
+            nameField.text?.removeAll()
+            textView.text.removeAll()
             view.addSubview(modal)
         } else if buttonType == .save, checkFields() {
-            let analyse = Analyse(detail: textView.text, type: analyseType, name: nameField.text!)
-            viewModel?.project?.analyse = analyse
+            var analyse = Analyse(detail: textView.text, type: analyseType, name: nameField.text!)
+            analyse.questions.removeAll()
+            var project = viewModel?.project
+            project?.analyse = analyse
+            viewModel?.addAnalyse(project: project, onCompletion: { [weak self] result in
+                switch result {
+                case .success(let message):
+                    self?.showMessage(message: message)
+                case .failure(let error):
+                    self?.showAlert(message: error.errorDescription)
+                }
+            })
         }
         
         setViewsVisibility()
@@ -105,6 +120,12 @@ private extension AnalysisViewController {
         }
     }
     
+    func setVisibilityWithSegmentedControl() {
+        nameField.isEnabled = buttonType == .save
+        textView.isEditable = nameField.isEnabled
+        addButton.setTitle(buttonType.rawValue, for: .normal)
+    }
+    
     func setDelegation() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -113,11 +134,17 @@ private extension AnalysisViewController {
     }
     
     func setViews() {
-        guard let analyse = viewModel?.project?.analyse,
-              !analyse.name.isEmpty else { return }
+        guard let analyse = viewModel?.project?.analyse else { return }
         nameField.text = analyse.name
         textView.text = analyse.detail
         analyseSegmentedControl.selectedSegmentIndex = AnalyseType(rawValue: analyse.type)?.getTypeId ?? 0
+        if analyseSegmentedControl.selectedSegmentIndex == 1 {
+            analyseType = .quiz
+            segmentView.isHidden = true
+            tableView.isHidden = false
+            addButton.setTitle(AvaliationButtonType.save.rawValue, for: .normal)
+            return
+        }
         buttonType = .edit
         addButton.setTitle(buttonType.rawValue, for: .normal)
     }
@@ -171,17 +198,20 @@ extension AnalysisViewController: AnalysisDelegate {
     
     func onButtonClicked(question: Question, modal: QuestionModal, indexPath: IndexPath) {
         var project = viewModel?.project
-        project?.analyse.questions[indexPath.row] = question
+        project?.analyse?.questions[indexPath.row] = question
+        project?.analyse?.analyseType = analyseType
+        project?.analyse?.name.removeAll()
+        project?.analyse?.detail.removeAll()
         addAnalyse(modal: modal, project: project)
     }
     
     func onButtonClicked(question: Question, modal: QuestionModal) {
         var project = viewModel?.project
-        project?.analyse.questions.append(question)
+        project?.analyse?.questions.append(question)
+        project?.analyse?.analyseType = analyseType
+        project?.analyse?.name.removeAll()
+        project?.analyse?.detail.removeAll()
         addAnalyse(modal: modal, project: project)
-//        ver o porque nao está pegando o ID do projeto.
-//        corrigir botoes de inserir e editar na analise
-//
     }
     
     func addAnalyse(modal: QuestionModal, project: Project?) {

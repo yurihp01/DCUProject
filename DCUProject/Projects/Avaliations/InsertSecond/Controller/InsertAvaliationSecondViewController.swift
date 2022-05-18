@@ -16,7 +16,7 @@ class InsertAvaliationSecondViewController: BaseViewController {
     lazy var label: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.textColor = .darkGray
-        label.text = "Detalhes"
+        label.text = "Comentários"
         label.font = .systemFont(ofSize: 12)
         label.layer.backgroundColor = UIColor.white.cgColor
         label.translatesAutoresizingMaskIntoConstraints = false
