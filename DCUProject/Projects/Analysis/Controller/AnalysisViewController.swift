@@ -151,7 +151,7 @@ private extension AnalysisViewController {
     
     func checkFields() -> Bool {
         if nameField.text!.isEmpty || nameField.text == nil {
-            showAlert(message: "O campo título está vazio. Preencha e tente novamente!")
+            showAlert(message: "O campo nome está vazio. Preencha e tente novamente!")
             return false
         }
       
@@ -207,6 +207,7 @@ extension AnalysisViewController: AnalysisDelegate {
     
     func onButtonClicked(question: Question, modal: QuestionModal) {
         var project = viewModel?.project
+        project?.analyse = Analyse(detail: "", type: .quiz, name: "")
         project?.analyse?.questions.append(question)
         project?.analyse?.analyseType = analyseType
         project?.analyse?.name.removeAll()
