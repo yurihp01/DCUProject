@@ -24,20 +24,16 @@ class InsertProjectViewController: BaseViewController {
         setDatePicker()
         createButton.style = .blue
     }
-
+    
     @IBAction func createButtonPressed(_ sender: UIButton) {
-        guard let name = name.text, !name.isEmpty,
-          let team = team.text, !team.isEmpty,
-          let category = category.text, !category.isEmpty,
-          let email = viewModel?.getCurrentUser()?.email else {
-               showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
+        guard let email = viewModel?.getCurrentUser()?.email, checkFields() else {
                return
            }
         
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "dd/MM/yyyy"
 
-        project = Project(name: name, team: team, category: category, owner: email, date: dateFormat.string(from: datePicker.date))
+        project = Project(name: name.text!, team: team.text!, category: category.text!, owner: email, date: dateFormat.string(from: datePicker.date))
         coordinator?.goToDefinition(from: .insert, project: project!)
     }
     
@@ -49,5 +45,24 @@ class InsertProjectViewController: BaseViewController {
 private extension InsertProjectViewController {
     func setDatePicker() {
         datePicker.maximumDate = Date()
+    }
+    
+    func checkFields() -> Bool {
+        if name.text!.isEmpty || name.text == nil {
+            showAlert(message: "O campo título está vazio. Preencha e tente novamente!")
+            return false
+        }
+      
+        if team.text!.isEmpty || team.text == nil {
+            showAlert(message: "O campo equipe está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        if category.text!.isEmpty || category.text == nil {
+            showAlert(message: "O campo categoria está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        return true
     }
 }

@@ -54,7 +54,10 @@ class FirebaseService: FirebaseServiceProtocol {
             try await Auth.auth().signIn(withEmail: email, password: password)
             return "Logado com sucesso!"
         } catch let error {
-            return error.localizedDescription
+            if error.localizedDescription.contains("There is no user record") {
+                return "Usuário não encontrado. Crie uma conta para acessar!"
+            }
+            return "Erro ao fazer login. Verifique sua conexão a internet e tente novamente."
         }
     }
     
@@ -62,7 +65,10 @@ class FirebaseService: FirebaseServiceProtocol {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
             return "Usuário criado com sucesso!"
-        } catch {
+        } catch let error {
+            if error.localizedDescription.contains("The email address is already in") {
+                return "O e-mail inserido já existe, verifique sua senha e tente novamente."
+            }
             return "Erro ao cadastrar usuário. Verifique a sua internet e tente novamente."
         }
     }

@@ -51,21 +51,16 @@ class InsertAvaliationViewController: BaseViewController {
             return
         }
         
-        if let screen = screen.text, !screen.isEmpty,
-           let heuristic = heuristic.text, !heuristic.isEmpty,
-           let avaliator = avaliator.text, !avaliator.isEmpty,
-           let status = status.text, !status.isEmpty,
-           let titleField = titleField.text,
-           let title = title,
-           let viewModel = viewModel {
+        if let title = title,
+           let viewModel = viewModel, checkFields() {
             let dateFormat = DateFormatter()
             dateFormat.dateFormat = "dd/MM/yyyy"
             let date = viewModel.avaliation?.date ?? dateFormat.string(from: Date())
-            var avaliation = Avaliation(title: titleField, date: date, screen: screen, heuristic: heuristic, avaliator: avaliator, comments: viewModel.avaliation?.comments ?? "", status: status)
+            var avaliation = Avaliation(title: titleField.text!, date: date, screen: screen.text!, heuristic: heuristic.text!, avaliator: avaliator.text!, comments: viewModel.avaliation?.comments ?? "", status: status.text!)
             avaliation.id = viewModel.avaliation?.id ?? UUID().uuidString
             
             if !severity.isEnabled {
-                avaliation.status = status
+                avaliation.status = status.text!
             } else if let severity = severity.text, !severity.isEmpty {
                 avaliation.status = severity
             } else {
@@ -73,14 +68,40 @@ class InsertAvaliationViewController: BaseViewController {
             }
             
             coordinator?.goToInsertSecondPart(project: viewModel.project, avaliation: avaliation, title: title)
-        } else {
-               showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
-               return
         }
     }
 }
 
 private extension InsertAvaliationViewController {
+    func checkFields() -> Bool {
+        if screen.text!.isEmpty || screen.text == nil {
+            showAlert(message: "O campo tela está vazio. Preencha e tente novamente!")
+            return false
+        }
+      
+        if heuristic.text!.isEmpty || heuristic.text == nil {
+            showAlert(message: "O campo heurística está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        if avaliator.text!.isEmpty || avaliator.text == nil {
+            showAlert(message: "O campo avaliador está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        if status.text!.isEmpty || status.text == nil {
+            showAlert(message: "O campo status está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        if titleField.text!.isEmpty || titleField.text == nil {
+            showAlert(message: "O campo título está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        return true
+    }
+    
     func addTransparentView(frames: CGRect) {
          transparentView.frame = self.view.frame
          self.view.addSubview(transparentView)

@@ -85,16 +85,32 @@ class DetailsViewController: BaseViewController {
         label.leftAnchor.constraint(equalTo: definition.leftAnchor).isActive = true
     }
     
-    @IBAction func buttonTouched(_ sender: UIButton) {
-        guard
-            let name = name.text, !name.isEmpty,
-            let team = team.text, !team.isEmpty,
-            let category = category.text, !category.isEmpty,
-            let definition = definition.text, !definition.isEmpty
-        else {
-               showAlert(message: "Ainda há campos a serem preenchidos. Verifique e tente novamente!")
-               return
+    func checkFields() -> Bool {
+        if name.text!.isEmpty || name.text == nil {
+            showAlert(message: "O campo nome está vazio. Preencha e tente novamente!")
+            return false
         }
+      
+        if team.text!.isEmpty || team.text == nil {
+            showAlert(message: "O campo equipe está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        if category.text!.isEmpty || category.text == nil {
+            showAlert(message: "O campo categoria está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        if definition.text!.isEmpty || definition.text == nil {
+            showAlert(message: "O campo detalhes está vazio. Preencha e tente novamente!")
+            return false
+        }
+        
+        return true
+    }
+    
+    @IBAction func buttonTouched(_ sender: UIButton) {
+        guard checkFields() else { return }
         
         buttonType == .edit ? switchViews() : addFields()
         label.isHidden = stackViewFirst.isHidden

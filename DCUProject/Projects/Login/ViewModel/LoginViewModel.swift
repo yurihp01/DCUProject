@@ -38,11 +38,11 @@ extension LoginViewModel: LoginViewModelProtocol {
     
     func login(email: String?, password: String?) async -> String {
         if email != nil, !email!.isValidEmail {
-            return "Digite um e-mail válido e tente novamente!"
+            return "O campo e-mail está inválido. Verifique e tente novamente!"
         }
         
         if password != nil, !password!.isValidPassword {
-            return "Digite uma senha válida e tente novamente!"
+            return "O campo senha está inválido. Verifique e tente novamente!"
         }
         
         return await firebaseService.login(email: email!, password: password!)

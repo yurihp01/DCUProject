@@ -13,7 +13,7 @@ class BaseViewController: UIViewController, Storyboarded {
     lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .gray
+        activityIndicator.style = .medium
         activityIndicator.backgroundColor = .white
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator

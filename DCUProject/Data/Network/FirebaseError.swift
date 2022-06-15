@@ -20,11 +20,11 @@ extension FirebaseError: LocalizedError {
         case .notFound:
             return "Não foram encontrados projetos associado a esse usuário"
         case .internetConnection:
-            return "Falha ao inserir protótipo. Verifique sua conexão a internet e tente novamente."
+            return "Erro ao inserir protótipo. Verifique sua conexão a internet e tente novamente."
         case .notAdded:
-            return "Falha ao inserir projeto. Verifique sua conexão a internet e tente novamente."
+            return "Erro ao inserir projeto. Verifique sua conexão a internet e tente novamente."
         case .notUpdated:
-            return "Falha ao atualizar projeto. Verifique sua conexão a internet e tente novamente."
+            return "Erro ao atualizar projeto. Verifique sua conexão a internet e tente novamente."
         }
     }
 }

@@ -37,9 +37,8 @@
                                     <constraint firstAttribute="height" constant="40" id="M4O-UE-8Yr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="_placeholder" value="Senha"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
@@ -142,7 +141,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sarahcampinho@hotmail.com" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PbI-iG-yA5" customClass="FloatingLabelField" customModule="DCUProject" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PbI-iG-yA5" customClass="FloatingLabelField" customModule="DCUProject" customModuleProvider="target">
                                 <rect key="frame" x="16" y="261" width="288" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -161,7 +160,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wzdzjak6@" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59p-Wd-fii" customClass="FloatingLabelField" customModule="DCUProject" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59p-Wd-fii" customClass="FloatingLabelField" customModule="DCUProject" customModuleProvider="target">
                                 <rect key="frame" x="16" y="331" width="288" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -532,7 +531,9 @@
                             <constraint firstItem="bZs-UJ-8ao" firstAttribute="top" secondItem="iPO-Fk-RyH" secondAttribute="top" constant="44" id="fds-sW-Pls"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Detalhes" image="list.bullet.rectangle" catalog="system" id="OA1-7g-Anb"/>
+                    <tabBarItem key="tabBarItem" title="Detalhes" image="list.bullet.rectangle" catalog="system" id="OA1-7g-Anb">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="button" destination="0Sa-VX-OCO" id="C4x-Jh-iRp"/>
@@ -1239,10 +1240,10 @@
         <image name="arrow." width="128" height="128"/>
         <image name="checklist" catalog="system" width="128" height="105"/>
         <image name="dcu" width="1350" height="900"/>
-        <image name="doc.fill" catalog="system" width="32" height="32"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="107" height="128"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
-        <image name="plus" catalog="system" width="32" height="32"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
