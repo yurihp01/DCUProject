@@ -10,7 +10,7 @@ import Foundation
 struct Constants {
     // MARK: - Base
     static let indicator = "indicator"
-    static let titleError = "Erro :("
+    static let titleError = "Alerta"
     
     // MARK: - Views
     static let cell = "cell"

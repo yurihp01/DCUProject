@@ -17,22 +17,6 @@ enum Status: Codable {
         case .defect: return "Defeito"
         }
     }
-    
-    func getStatus(text: String) -> Status {
-        switch text {
-        case "Sucesso": return Status.success
-        case Severity.cosmetic.rawValue:
-            return Status.defect(severity: .cosmetic)
-        case Severity.lower.rawValue:
-            return Status.defect(severity: .lower)
-        case Severity.serious.rawValue:
-            return Status.defect(severity: .serious)
-        case Severity.disaster.rawValue:
-            return Status.defect(severity: .disaster)
-        default:
-            return Status.success
-        }
-    }
 }
 
 enum Severity: String, Codable {

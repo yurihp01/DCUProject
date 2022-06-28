@@ -31,7 +31,7 @@ extension RegisterViewModel: RegisterViewModelProtocol {
         }
         
         if !password.isValidPassword {
-            return "Digite uma senha válida e tente novamente!"
+            return "A senha precisa seguir todas as regras. Por favor, tente novamente!"
         }
         
         return await firebaseService.register(email: email, password: password)
