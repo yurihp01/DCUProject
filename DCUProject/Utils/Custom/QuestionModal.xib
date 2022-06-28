@@ -41,7 +41,7 @@
                             </constraints>
                             <color key="tintColor" systemColor="systemBackgroundColor"/>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Inserir"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Adicionar"/>
                             <connections>
                                 <action selector="buttonTouched:" destination="-1" eventType="touchUpInside" id="fbI-VZ-lHS"/>
                             </connections>

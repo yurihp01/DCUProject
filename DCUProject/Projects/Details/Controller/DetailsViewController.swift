@@ -9,12 +9,12 @@ import UIKit
 
 enum AvaliationButtonType: String {
     case edit = "Editar"
-    case save = "Inserir"
+    case save = "Adicionar"
 }
 
 enum ButtonType: String {
     case edit = "Editar"
-    case save = "Inserir"
+    case save = "Adicionar"
     case next = "Continuar"
 }
 

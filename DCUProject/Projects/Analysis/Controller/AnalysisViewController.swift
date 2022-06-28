@@ -100,13 +100,17 @@ class AnalysisViewController: BaseViewController {
                 switch result {
                 case .success(let message):
                     self?.showMessage(message: message)
+                    self?.setViewsVisibility()
                 case .failure(let error):
                     self?.showAlert(message: error.errorDescription)
                 }
             })
+        } else if buttonType == .edit {
+            setViewsVisibility()
+            nameField.isEnabled = true
+            textView.isEditable = true
+            addButton.setTitle(buttonType.rawValue, for: .normal)
         }
-        
-        setViewsVisibility()
     }
 }
 
@@ -146,7 +150,8 @@ private extension AnalysisViewController {
             return
         }
         buttonType = .edit
-        addButton.setTitle(buttonType.rawValue, for: .normal)
+        setVisibilityWithSegmentedControl()
+        
     }
     
     func checkFields() -> Bool {
