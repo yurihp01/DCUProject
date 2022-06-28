@@ -212,7 +212,10 @@ extension AnalysisViewController: AnalysisDelegate {
     
     func onButtonClicked(question: Question, modal: QuestionModal) {
         var project = viewModel?.project
-        project?.analyse = Analyse(detail: "", type: .quiz, name: "")
+        if project?.analyse == nil {
+            project?.analyse = Analyse(detail: "", type: .quiz, name: "")
+        }
+        
         project?.analyse?.questions.append(question)
         project?.analyse?.analyseType = analyseType
         project?.analyse?.name.removeAll()

@@ -149,7 +149,7 @@ struct Project: Codable {
         }
         
         if let analyse = analyse {
-            if analyse.name.isEmpty {
+            if !analyse.name.isEmpty {
                 text.append("\nAnálise\n\n")
                 
                 text.append("Título: \(analyse.name)\n")
