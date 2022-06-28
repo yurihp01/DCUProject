@@ -46,6 +46,17 @@ class BorderedButton: UIButton {
         super.layoutSubviews()
         setButton()
     }
+    
+    func setEnable(enable: Bool) {
+        let style = style
+        if !enable {
+            self.setTitleColor(.white, for: .normal)
+            self.layer.backgroundColor = UIColor.lightGray.cgColor
+            self.layer.borderColor = UIColor.lightGray.cgColor
+        } else {
+            self.style = style
+        }
+    }
 }
 
 private extension BorderedButton {

@@ -23,6 +23,7 @@ class DesignViewController: BaseViewController {
         addImagePicker()
         getImage()
         addButton.style = .blue
+        addButton.setEnable(enable: false)
         insertButton.style = .white
         selectedImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageSelectedTapped)))
 
@@ -74,7 +75,7 @@ class DesignViewController: BaseViewController {
                 self?.selectedImage.image = nil
             }
         })
-        addButton.isEnabled = false
+        addButton.setEnable(enable: false)
     }
     
     @IBAction func addInsertButtonTouched(_ sender: UIButton) {
@@ -111,7 +112,6 @@ extension DesignViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         selectedImage.image = image
         selectedImage.isUserInteractionEnabled = true
-        addButton.isEnabled = true
-        
+        addButton.setEnable(enable: true)
     }
 }

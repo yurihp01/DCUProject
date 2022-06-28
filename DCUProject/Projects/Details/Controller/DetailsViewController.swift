@@ -119,7 +119,15 @@ class DetailsViewController: BaseViewController {
     @IBAction func shareButton(_ sender: UIButton) {
         alertWithTextField(title: "Convidar usuário", message: "Digite o e-mail", placeholder: "email@gmail.com") { message in
             self.viewModel?.project.users.append(message)
-            self.showMessage(message: "Enviado com sucesso", handler: nil)
+            self.viewModel?.updateProject(completion: { result in
+                switch result {
+                case .success:
+                    self.showMessage(message: "Convite enviado com sucesso", handler: nil)
+                case .failure:
+                    self.showMessage(message: "Erro ao enviar convite", handler: nil)
+                }
+            })
+            
         }
     }
     
